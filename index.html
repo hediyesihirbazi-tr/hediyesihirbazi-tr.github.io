@@ -125,9 +125,11 @@
     </div>
 
     <script>
-        // --- V13.0 GENİŞLETİLMİŞ VERİTABANI ---
-        // Sevgili ve Arkadaş Ortak Kümeleri Güçlendirildi
-        // Seyrek Kategoriler (Baba Bakım, Anne Teknoloji vb.) Dolduruldu
+        // --- V14.0 TAMAMLANMIŞ VERİTABANI ---
+        // EKLENENLER: 
+        // 1. "Arkadaş - Bitki" (Lego çiçekler, kaktüsler, teraryumlar)
+        // 2. "Sevgili Kadın - Bitki" (Güller, orkideler, tasarım buketler)
+        // 3. Eksik olan tüm çapraz kategoriler kontrol edildi ve dolduruldu.
         
         const hediyeHavuzu = {
             "sevgili_kadin": {
@@ -157,7 +159,14 @@
                 },
                 "moda": { "dusuk":[{t:"Şal",d:"Desenli.",i:"fa-user",l:"kadın+şal"}, {t:"Kemer",d:"İnce.",i:"fa-minus",l:"kadın+kemer"}, {t:"Toka",d:"İncili.",i:"fa-star",l:"incili+toka"}, {t:"Çorap",d:"Fırfırlı.",i:"fa-socks",l:"kadın+fırfırlı+çorap"}, {t:"Broş",d:"Yaka iğnesi.",i:"fa-gem",l:"broş"}], "orta":[{t:"Elbise",d:"Şık.",i:"fa-shirt",l:"kadın+elbise"}, {t:"Çanta",d:"Baget.",i:"fa-bag-shopping",l:"baget+çanta"}, {t:"Gözlük",d:"Güneş.",i:"fa-glasses",l:"kadın+güneş+gözlüğü"}, {t:"Bluz",d:"Saten.",i:"fa-shirt",l:"saten+bluz"}, {t:"Etek",d:"Pileli.",i:"fa-person-dress",l:"pileli+etek"}], "yuksek":[{t:"Çizme",d:"Deri.",i:"fa-shoe-prints",l:"kadın+deri+çizme"}, {t:"Kaban",d:"Kaşe.",i:"fa-user-tie",l:"kadın+kaşe+kaban"}, {t:"Saat",d:"Michael Kors.",i:"fa-clock",l:"michael+kors+saat"}, {t:"Ayakkabı",d:"Topuklu.",i:"fa-shoe-prints",l:"kadın+topuklu+ayakkabı"}], "premium":[{t:"Marka Çanta",d:"Lüks.",i:"fa-bag-shopping",l:"lüks+çanta"}, {t:"Pırlanta",d:"Kolye.",i:"fa-gem",l:"pırlanta+kolye"}, {t:"Kürk",d:"Suni.",i:"fa-user-tie",l:"suni+kürk+kaban"}] },
                 "ev": { "dusuk":[{t:"Mumluk",d:"Dekor.",i:"fa-fire",l:"mumluk"}, {t:"Kupa",d:"Harfli.",i:"fa-mug-hot",l:"harfli+kupa"}, {t:"Çerçeve",d:"Resim.",i:"fa-image",l:"resim+çerçevesi"}, {t:"Tütsü",d:"Set.",i:"fa-fire",l:"tütsü+seti"}], "orta":[{t:"Nevresim",d:"Saten.",i:"fa-bed",l:"nevresim+takımı"}, {t:"Battaniye",d:"Tv.",i:"fa-bed",l:"tv+battaniyesi"}, {t:"Vazo",d:"Cam.",i:"fa-glass-water",l:"vazo"}, {t:"Abajur",d:"Masa.",i:"fa-lightbulb",l:"abajur"}], "yuksek":[{t:"Robot Süpürge",d:"Temizlik.",i:"fa-robot",l:"robot+süpürge"}, {t:"Halı",d:"Salon.",i:"fa-rug",l:"salon+halısı"}, {t:"Airfryer",d:"Mutfak.",i:"fa-fire-burner",l:"airfryer"}], "premium":[{t:"Dyson Süpürge",d:"En iyisi.",i:"fa-broom",l:"dyson+süpürge"}, {t:"Koltuk",d:"Berjer.",i:"fa-chair",l:"berjer"}] },
-                "kamp": { "dusuk":[{t:"Termos Kupa",d:"Sıcak tutar.",i:"fa-mug-hot",l:"termos+kupa"}, {t:"Kafa Lambası",d:"Işık.",i:"fa-lightbulb",l:"kafa+lambası"}], "orta":[{t:"Stanley Termos",d:"Klasik.",i:"fa-bottle-water",l:"stanley+termos"}, {t:"Kamp Sandalyesi",d:"Rahat.",i:"fa-chair",l:"kamp+sandalyesi"}], "yuksek":[{t:"Çadır",d:"2 kişilik.",i:"fa-tent",l:"2+kişilik+çadır"}, {t:"Uyku Tulumu",d:"Kışlık.",i:"fa-bed",l:"uyku+tulumu+kadın"}], "premium":[{t:"North Face Mont",d:"Korumalı.",i:"fa-user-tie",l:"north+face+kadın+mont"}, {t:"Glamping Çadır",d:"Lüks.",i:"fa-tent",l:"glamping+çadır"}] }
+                "kamp": { "dusuk":[{t:"Termos Kupa",d:"Sıcak tutar.",i:"fa-mug-hot",l:"termos+kupa"}, {t:"Kafa Lambası",d:"Işık.",i:"fa-lightbulb",l:"kafa+lambası"}], "orta":[{t:"Stanley Termos",d:"Klasik.",i:"fa-bottle-water",l:"stanley+termos"}, {t:"Kamp Sandalyesi",d:"Rahat.",i:"fa-chair",l:"kamp+sandalyesi"}], "yuksek":[{t:"Çadır",d:"2 kişilik.",i:"fa-tent",l:"2+kişilik+çadır"}, {t:"Uyku Tulumu",d:"Kışlık.",i:"fa-bed",l:"uyku+tulumu+kadın"}], "premium":[{t:"North Face Mont",d:"Korumalı.",i:"fa-user-tie",l:"north+face+kadın+mont"}, {t:"Glamping Çadır",d:"Lüks.",i:"fa-tent",l:"glamping+çadır"}] },
+                // YENİ EKLENEN: Sevgili (Kadın) - Bitki
+                "bitki": { 
+                    "dusuk":[{t:"Kırmızı Gül",d:"Tek dal.",i:"fa-heart",l:"tek+dal+kırmızı+gül"}, {t:"Sukulent",d:"Kalp saksıda.",i:"fa-leaf",l:"kalp+saksı+sukulent"}, {t:"Papatya",d:"Buket.",i:"fa-sun",l:"papatya+buketi"}], 
+                    "orta":[{t:"Orkide",d:"Beyaz zarif.",i:"fa-leaf",l:"canlı+orkide"}, {t:"Teraryum",d:"Sevgili temalı.",i:"fa-heart",l:"sevgili+teraryum"}, {t:"Bonsai",d:"Minyatür ağaç.",i:"fa-tree",l:"bonsai"}], 
+                    "yuksek":[{t:"Solmayan Gül",d:"Cam fanusta.",i:"fa-heart",l:"solmayan+gül"}, {t:"Büyük Buket",d:"Karışık çiçek.",i:"fa-gift",l:"büyük+çiçek+buketi"}, {t:"Limon Ağacı",d:"Saksıda.",i:"fa-lemon",l:"saksıda+limon+ağacı"}], 
+                    "premium":[{t:"1001 Gül",d:"Devasa buket.",i:"fa-heart",l:"100+gül+buketi"}, {t:"Peyzaj",d:"Bahçe düzenleme.",i:"fa-tree",l:"bahçe+peyzaj+hizmeti"}, {t:"Akıllı Bahçe",d:"Click & Grow.",i:"fa-leaf",l:"akıllı+saksı"}] 
+                }
             },
             
             "sevgili_erkek": {
@@ -250,7 +259,14 @@
                 "kamp": { "dusuk":[{t:"Matara",d:"Su.",i:"fa-bottle-water",l:"matara"}, {t:"Kupa",d:"Emaye.",i:"fa-mug-hot",l:"emaye+kupa"}], "orta":[{t:"Hamak",d:"Keyif.",i:"fa-tree",l:"hamak"}, {t:"Sandalye",d:"Kamp.",i:"fa-chair",l:"kamp+sandalyesi"}], "yuksek":[{t:"Çadır",d:"Festival.",i:"fa-tent",l:"çadır"}, {t:"Tulum",d:"Uyku.",i:"fa-bed",l:"uyku+tulumu"}], "premium":[{t:"Bot",d:"Outdoor.",i:"fa-shoe-prints",l:"outdoor+bot"}, {t:"Mont",d:"North Face.",i:"fa-user-tie",l:"north+face"}] },
                 "hobi": { "dusuk":[{t:"Puzzle",d:"1000.",i:"fa-puzzle-piece",l:"puzzle"}, {t:"Manga",d:"Tek.",i:"fa-book",l:"manga"}], "orta":[{t:"Manga Set",d:"Seri.",i:"fa-book",l:"manga+seti"}, {t:"Kutu Oyunu",d:"Tabu.",i:"fa-chess-board",l:"tabu"}], "yuksek":[{t:"Teleskop",d:"Uzay.",i:"fa-star",l:"teleskop"}, {t:"Lego",d:"Set.",i:"fa-car",l:"lego"}], "premium":[{t:"Piyano",d:"Dijital.",i:"fa-music",l:"dijital+piyano"}, {t:"Gitar",d:"Elektro.",i:"fa-music",l:"elektro+gitar"}] },
                 "ev": { "dusuk":[{t:"Kupa",d:"Komik.",i:"fa-mug-hot",l:"kupa"}, {t:"Poster",d:"Duvar.",i:"fa-image",l:"poster"}], "orta":[{t:"Lamba",d:"Masa.",i:"fa-lightbulb",l:"masa+lambası"}, {t:"Neon",d:"Led.",i:"fa-bolt",l:"neon+led"}], "yuksek":[{t:"Puf",d:"Armut.",i:"fa-chair",l:"armut+koltuk"}, {t:"Nevresim",d:"Genç.",i:"fa-bed",l:"genç+nevresim"}], "premium":[{t:"Kahve Mak.",d:"Filtre.",i:"fa-mug-hot",l:"filtre+kahve+makinesi"}, {t:"Projektör",d:"Mini.",i:"fa-film",l:"mini+projeksiyon"}] },
-                "bakim": { "dusuk":[{t:"Maske",d:"Yüz.",i:"fa-mask",l:"maske"}, {t:"Krem",d:"El.",i:"fa-hand-holding-droplet",l:"el+kremi"}], "orta":[{t:"Serum",d:"Cilt.",i:"fa-bottle-droplet",l:"serum"}, {t:"Dudak Balmı",d:"Set.",i:"fa-lips",l:"lip+balm+set"}], "yuksek":[{t:"Parfüm",d:"Günlük.",i:"fa-spray-can",l:"parfüm"}, {t:"Tıraş Mak.",d:"Vücut.",i:"fa-cut",l:"vücut+tıraş+makinesi"}], "premium":[{t:"Set",d:"Makyaj.",i:"fa-paintbrush",l:"makyaj+seti"}, {t:"Cilt Bakım",d:"Cihaz.",i:"fa-scrubber",l:"cilt+bakım+cihazı"}] }
+                "bakim": { "dusuk":[{t:"Maske",d:"Yüz.",i:"fa-mask",l:"maske"}, {t:"Krem",d:"El.",i:"fa-hand-holding-droplet",l:"el+kremi"}], "orta":[{t:"Serum",d:"Cilt.",i:"fa-bottle-droplet",l:"serum"}, {t:"Dudak Balmı",d:"Set.",i:"fa-lips",l:"lip+balm+set"}], "yuksek":[{t:"Parfüm",d:"Günlük.",i:"fa-spray-can",l:"parfüm"}, {t:"Tıraş Mak.",d:"Vücut.",i:"fa-cut",l:"vücut+tıraş+makinesi"}], "premium":[{t:"Set",d:"Makyaj.",i:"fa-paintbrush",l:"makyaj+seti"}, {t:"Cilt Bakım",d:"Cihaz.",i:"fa-scrubber",l:"cilt+bakım+cihazı"}] },
+                // YENİ EKLENEN: Arkadaş - Bitki
+                "bitki": { 
+                    "dusuk":[{t:"Sukulent",d:"Masa süsü.",i:"fa-leaf",l:"sukulent"}, {t:"Kaktüs",d:"Radyasyon emici.",i:"fa-bullseye",l:"kaktüs"}, {t:"Tohum Kalem",d:"Yeşeren kalem.",i:"fa-pen",l:"yeşeren+kalem"}], 
+                    "orta":[{t:"Teraryum",d:"Fanusta bahçe.",i:"fa-earth-americas",l:"teraryum"}, {t:"Bonsai",d:"Masa ağacı.",i:"fa-tree",l:"bonsai"}, {t:"Lego Çiçek",d:"Solmayan.",i:"fa-cubes",l:"lego+botanical"}], 
+                    "yuksek":[{t:"Limon Ağacı",d:"Mis kokulu.",i:"fa-lemon",l:"saksıda+limon"}, {t:"Devetabanı",d:"Trend bitki.",i:"fa-leaf",l:"monstera"}], 
+                    "premium":[{t:"Akıllı Saksı",d:"Kendi sular.",i:"fa-faucet",l:"akıllı+saksı"}, {t:"Dikey Bahçe",d:"Duvar.",i:"fa-layer-group",l:"dikey+bahçe"}] 
+                }
             }
         };
 

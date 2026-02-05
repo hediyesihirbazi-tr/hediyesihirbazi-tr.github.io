@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hediye Sihirbazı | Xenon Country</title>
+    <title>Xenon Country | Hediye Sihirbazı</title>
     
-    <!-- FAVICON -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
     
     <!-- GOOGLE SEARCH CONSOLE -->
@@ -14,7 +13,7 @@
     <!-- GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
     
-    <!-- ANALYTICS (HEDİYE SİHİRBAZI İÇİN DOĞRU KOD: G-ED1JY3KB1C) -->
+    <!-- ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED1JY3KB1C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -28,10 +27,15 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .main-container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); text-align: center; border: 1px solid #f1f5f9; }
-        .logo-icon { font-size: 60px; color: #ff6000; margin-bottom: 15px; }
-        h1 { font-size: 32px; font-weight: 800; margin: 0; color: #0f172a; letter-spacing: -1px; }
-        .subtext { color: #64748b; font-size: 16px; margin-top: 10px; margin-bottom: 35px; }
+        .main-container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); text-align: center; border: 1px solid #f1f5f9; position: relative; overflow: hidden; }
+        
+        /* Xenon Country Marka Başlığı */
+        .brand-header { margin-bottom: 30px; }
+        .brand-title { font-size: 36px; font-weight: 900; margin: 0; background: linear-gradient(135deg, #0f172a 0%, #334155 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1.5px; }
+        .brand-subtitle { font-size: 18px; font-weight: 600; color: #ff6000; margin-top: 5px; display: inline-flex; align-items: center; gap: 8px; background: #fff0e6; padding: 5px 15px; border-radius: 20px; }
+        
+        .subtext { color: #64748b; font-size: 15px; margin-top: 15px; margin-bottom: 35px; line-height: 1.5; }
+        
         .form-group { text-align: left; margin-bottom: 22px; }
         label { font-size: 14px; font-weight: 700; color: #475569; display: block; margin-bottom: 8px; }
         select { width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 14px; font-size: 16px; background-color: #fff; outline: none; transition: 0.3s; font-weight: 600; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
@@ -39,6 +43,10 @@
         .search-btn { width: 100%; padding: 20px; background: linear-gradient(135deg, #ff6000 0%, #ff4500 100%); color: white; border: none; border-radius: 16px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 96, 0, 0.2); margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .search-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 96, 0, 0.3); }
         
+        /* GÜNCELLENMİŞ YATIRIM LİNKİ */
+        .nav-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 25px; color: #64748b; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.2s; padding: 10px 20px; border-radius: 50px; background: #f1f5f9; }
+        .nav-btn:hover { color: #ff6000; background: #fff0e6; }
+
         #results-area { display: none; margin-top: 40px; border-top: 2px dashed #f1f5f9; padding-top: 30px; }
         .product-card { background: #fff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 18px; margin-bottom: 12px; text-align: left; display: flex; align-items: center; gap: 15px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
         .product-card:hover { border-color: #ff6000; transform: translateX(5px); box-shadow: 0 10px 20px rgba(255, 96, 0, 0.08); }
@@ -58,8 +66,11 @@
 <body>
 
     <div class="main-container">
-        <div class="logo-icon"><i class="fa-solid fa-gift"></i></div>
-        <h1>Hediye Sihirbazı</h1>
+        <div class="brand-header">
+            <h1 class="brand-title">Xenon Country</h1>
+            <div class="brand-subtitle"><i class="fa-solid fa-wand-magic-sparkles"></i> Hediye Sihirbazı</div>
+        </div>
+        
         <p class="subtext">Binlerce seçenek arasından nokta atışı yap.</p>
 
         <div class="form-group">
@@ -100,6 +111,11 @@
         <button class="search-btn" onclick="hediyeBul()">
             HEDİYEYİ BUL <i class="fa-solid fa-wand-magic-sparkles"></i>
         </button>
+        
+        <!-- YATIRIM SİTESİNE GİDEN LİNK (GÜNCELLENDİ) -->
+        <a href="/yatirim/" class="nav-btn">
+            <i class="fa-solid fa-chart-line"></i> Yatırım Sihirbazı'na Git
+        </a>
 
         <div class="loading" id="loadingIcon">
             <div class="spinner"></div>
@@ -116,12 +132,6 @@
     </div>
 
     <script>
-        // --- V14.0 TAMAMLANMIŞ VERİTABANI ---
-        // EKLENENLER: 
-        // 1. "Arkadaş - Bitki" (Lego çiçekler, kaktüsler, teraryumlar)
-        // 2. "Sevgili Kadın - Bitki" (Güller, orkideler, tasarım buketler)
-        // 3. Eksik olan tüm çapraz kategoriler kontrol edildi ve dolduruldu.
-        
         const hediyeHavuzu = {
             "sevgili_kadin": {
                 "teknoloji": {
@@ -151,7 +161,6 @@
                 "moda": { "dusuk":[{t:"Şal",d:"Desenli.",i:"fa-user",l:"kadın+şal"}, {t:"Kemer",d:"İnce.",i:"fa-minus",l:"kadın+kemer"}, {t:"Toka",d:"İncili.",i:"fa-star",l:"incili+toka"}, {t:"Çorap",d:"Fırfırlı.",i:"fa-socks",l:"kadın+fırfırlı+çorap"}, {t:"Broş",d:"Yaka iğnesi.",i:"fa-gem",l:"broş"}], "orta":[{t:"Elbise",d:"Şık.",i:"fa-shirt",l:"kadın+elbise"}, {t:"Çanta",d:"Baget.",i:"fa-bag-shopping",l:"baget+çanta"}, {t:"Gözlük",d:"Güneş.",i:"fa-glasses",l:"kadın+güneş+gözlüğü"}, {t:"Bluz",d:"Saten.",i:"fa-shirt",l:"saten+bluz"}, {t:"Etek",d:"Pileli.",i:"fa-person-dress",l:"pileli+etek"}], "yuksek":[{t:"Çizme",d:"Deri.",i:"fa-shoe-prints",l:"kadın+deri+çizme"}, {t:"Kaban",d:"Kaşe.",i:"fa-user-tie",l:"kadın+kaşe+kaban"}, {t:"Saat",d:"Michael Kors.",i:"fa-clock",l:"michael+kors+saat"}, {t:"Ayakkabı",d:"Topuklu.",i:"fa-shoe-prints",l:"kadın+topuklu+ayakkabı"}], "premium":[{t:"Marka Çanta",d:"Lüks.",i:"fa-bag-shopping",l:"lüks+çanta"}, {t:"Pırlanta",d:"Kolye.",i:"fa-gem",l:"pırlanta+kolye"}, {t:"Kürk",d:"Suni.",i:"fa-user-tie",l:"suni+kürk+kaban"}] },
                 "ev": { "dusuk":[{t:"Mumluk",d:"Dekor.",i:"fa-fire",l:"mumluk"}, {t:"Kupa",d:"Harfli.",i:"fa-mug-hot",l:"harfli+kupa"}, {t:"Çerçeve",d:"Resim.",i:"fa-image",l:"resim+çerçevesi"}, {t:"Tütsü",d:"Set.",i:"fa-fire",l:"tütsü+seti"}], "orta":[{t:"Nevresim",d:"Saten.",i:"fa-bed",l:"nevresim+takımı"}, {t:"Battaniye",d:"Tv.",i:"fa-bed",l:"tv+battaniyesi"}, {t:"Vazo",d:"Cam.",i:"fa-glass-water",l:"vazo"}, {t:"Abajur",d:"Masa.",i:"fa-lightbulb",l:"abajur"}], "yuksek":[{t:"Robot Süpürge",d:"Temizlik.",i:"fa-robot",l:"robot+süpürge"}, {t:"Halı",d:"Salon.",i:"fa-rug",l:"salon+halısı"}, {t:"Airfryer",d:"Mutfak.",i:"fa-fire-burner",l:"airfryer"}], "premium":[{t:"Dyson Süpürge",d:"En iyisi.",i:"fa-broom",l:"dyson+süpürge"}, {t:"Koltuk",d:"Berjer.",i:"fa-chair",l:"berjer"}] },
                 "kamp": { "dusuk":[{t:"Termos Kupa",d:"Sıcak tutar.",i:"fa-mug-hot",l:"termos+kupa"}, {t:"Kafa Lambası",d:"Işık.",i:"fa-lightbulb",l:"kafa+lambası"}], "orta":[{t:"Stanley Termos",d:"Klasik.",i:"fa-bottle-water",l:"stanley+termos"}, {t:"Kamp Sandalyesi",d:"Rahat.",i:"fa-chair",l:"kamp+sandalyesi"}], "yuksek":[{t:"Çadır",d:"2 kişilik.",i:"fa-tent",l:"2+kişilik+çadır"}, {t:"Uyku Tulumu",d:"Kışlık.",i:"fa-bed",l:"uyku+tulumu+kadın"}], "premium":[{t:"North Face Mont",d:"Korumalı.",i:"fa-user-tie",l:"north+face+kadın+mont"}, {t:"Glamping Çadır",d:"Lüks.",i:"fa-tent",l:"glamping+çadır"}] },
-                // YENİ EKLENEN: Sevgili (Kadın) - Bitki
                 "bitki": { 
                     "dusuk":[{t:"Kırmızı Gül",d:"Tek dal.",i:"fa-heart",l:"tek+dal+kırmızı+gül"}, {t:"Sukulent",d:"Kalp saksıda.",i:"fa-leaf",l:"kalp+saksı+sukulent"}, {t:"Papatya",d:"Buket.",i:"fa-sun",l:"papatya+buketi"}], 
                     "orta":[{t:"Orkide",d:"Beyaz zarif.",i:"fa-leaf",l:"canlı+orkide"}, {t:"Teraryum",d:"Sevgili temalı.",i:"fa-heart",l:"sevgili+teraryum"}, {t:"Bonsai",d:"Minyatür ağaç.",i:"fa-tree",l:"bonsai"}], 
@@ -208,6 +217,32 @@
                 "bakim": { "dusuk":[{t:"Krem",d:"El.",i:"fa-hand-holding-droplet",l:"el+kremi"}, {t:"Maske",d:"Yüz.",i:"fa-mask",l:"yüz+maskesi"}], "orta":[{t:"Parfüm",d:"Çiçek.",i:"fa-spray-can",l:"kadın+parfüm"}, {t:"Ruj",d:"Kırmızı.",i:"fa-lips",l:"ruj"}], "yuksek":[{t:"Cilt Seti",d:"Yaşlanma karşıtı.",i:"fa-pump-medical",l:"anti+aging+krem"}], "premium":[{t:"Spa",d:"Masaj.",i:"fa-spa",l:"spa+masaj"} ] },
                 "hobi": { "dusuk":[{t:"İp",d:"Örgü.",i:"fa-mitten",l:"örgü+ipi"}, {t:"Şiş",d:"Örgü.",i:"fa-pen",l:"örgü+şişi"}], "orta":[{t:"Kitap",d:"Dini/Roman.",i:"fa-book",l:"kitap"}, {t:"Boyama",d:"Yetişkin.",i:"fa-palette",l:"yetişkin+boyama"}], "yuksek":[{t:"Dikiş Mak.",d:"Singer.",i:"fa-shirt",l:"dikiş+makinesi"}], "premium":[{t:"Kurs",d:"Yemek.",i:"fa-utensils",l:"yemek+kursu"}] },
                 "kamp": { "dusuk":[{t:"Termos",d:"Küçük.",i:"fa-mug-hot",l:"termos"}], "orta":[{t:"Sandalye",d:"Piknik.",i:"fa-chair",l:"piknik+sandalyesi"}], "yuksek":[{t:"Semaver",d:"Çay.",i:"fa-fire",l:"semaver"}], "premium":[{t:"Karavan",d:"Kiralık.",i:"fa-caravan",l:"karavan"}] }
+            },
+
+            "baba": {
+                "bitki": {
+                    "dusuk": [ {t:"Budama Makası",d:"Bahçe.",i:"fa-scissors",l:"budama+makası"}, {t:"Tohum Seti",d:"Sebze.",i:"fa-seedling",l:"sebze+tohumu"}, {t:"Eldiven",d:"Bahçıvan.",i:"fa-hand-holding",l:"bahçıvan+eldiveni"}, {t:"Fide",d:"Domates.",i:"fa-leaf",l:"fide"}, {t:"Saksı",d:"Büyük.",i:"fa-bucket",l:"büyük+saksı"}, {t:"Sulama Kabı",d:"Plastik.",i:"fa-faucet",l:"bahçe+sulama+kabı"} ],
+                    "orta": [ {t:"Aşı Makası",d:"Pro.",i:"fa-scissors",l:"aşı+makası"}, {t:"Limon Ağacı",d:"Saksıda.",i:"fa-lemon",l:"saksıda+limon"}, {t:"Hortum",d:"Set.",i:"fa-water",l:"bahçe+hortum+seti"}, {t:"İlaçlama",d:"Pompa.",i:"fa-spray-can",l:"ilaçlama+pompası"}, {t:"Testere",d:"El.",i:"fa-hammer",l:"budama+testeresi"} ],
+                    "yuksek": [ {t:"Çim Biçme",d:"Misinalı.",i:"fa-fan",l:"misinalı+çim+biçme"}, {t:"Testere",d:"Motorlu.",i:"fa-hammer",l:"ağaç+kesme+motoru"}, {t:"Mangal",d:"Bahçe.",i:"fa-fire",l:"bahçe+mangal"} ],
+                    "premium": [ {t:"Çapa Makinesi",d:"Benzinli.",i:"fa-tractor",l:"çapa+makinesi"}, {t:"Sulama Sistemi",d:"Otomatik.",i:"fa-faucet",l:"otomatik+sulama+sistemi"}, {t:"Traktör",d:"Çim.",i:"fa-tractor",l:"çim+biçme+traktörü"} ]
+                },
+                "teknoloji": {
+                    "dusuk": [ {t:"Telefon Tutucu",d:"Araç.",i:"fa-car",l:"araç+telefon+tutucu"}, {t:"Radyo",d:"Pilli.",i:"fa-radio",l:"pilli+radyo"}, {t:"Fener",d:"El.",i:"fa-lightbulb",l:"el+feneri"}, {t:"USB",d:"Müzik.",i:"fa-usb",l:"usb+bellek"}, {t:"Şarj Kablosu",d:"Uzun.",i:"fa-bolt",l:"3+metre+şarj+kablosu"} ],
+                    "orta": [ {t:"Tıraş Makinesi",d:"Sakal.",i:"fa-cut",l:"tıraş+makinesi"}, {t:"Powerbank",d:"Yedek şarj.",i:"fa-battery-full",l:"powerbank"}, {t:"Hoparlör",d:"Radyolu.",i:"fa-music",l:"radyolu+bluetooth+hoparlör"}, {t:"Şarjlı Matkap",d:"Ev tipi.",i:"fa-toolbox",l:"şarjlı+tornavida"}, {t:"Tansiyon Aleti",d:"Dijital.",i:"fa-heart-pulse",l:"dijital+tansiyon+aleti"} ],
+                    "yuksek": [ {t:"Tablet",d:"Haber.",i:"fa-tablet",l:"tablet"}, {t:"Akıllı Saat",d:"Tansiyon.",i:"fa-clock",l:"akıllı+saat+erkek"}, {t:"Navigasyon",d:"Araç.",i:"fa-map-location",l:"navigasyon+cihazı"}, {t:"Kompresör",d:"Hava.",i:"fa-wind",l:"araç+kompresör"} ],
+                    "premium": [ {t:"TV",d:"Maç keyfi.",i:"fa-tv",l:"büyük+ekran+tv"}, {t:"iPhone",d:"Yenileme.",i:"fa-mobile",l:"iphone"}, {t:"Laptop",d:"İş.",i:"fa-laptop",l:"iş+bilgisayarı"} ]
+                },
+                "genel": {
+                    "dusuk": [ {t:"Tesbih",d:"Kehribar.",i:"fa-hand-holding",l:"tesbih"}, {t:"Çakı",d:"Cep.",i:"fa-screwdriver",l:"çakı"}, {t:"Çorap",d:"Bambu.",i:"fa-socks",l:"bambu+çorap"}, {t:"Kasket",d:"Şapka.",i:"fa-hat-cowboy",l:"kasket"}, {t:"Terlik",d:"Deri.",i:"fa-shoe-prints",l:"erkek+terlik"}, {t:"Mendil",d:"Kumaş.",i:"fa-square",l:"erkek+kumaş+mendil"}, {t:"Tabaka",d:"Sigara.",i:"fa-smoking",l:"sigara+tabakası"}, {t:"Anahtarlık",d:"Deri.",i:"fa-key",l:"deri+anahtarlık"} ],
+                    "orta": [ {t:"Gömlek",d:"Klasik.",i:"fa-shirt",l:"erkek+gömlek"}, {t:"Takım Çantası",d:"Tamir.",i:"fa-toolbox",l:"takım+çantası"}, {t:"Mangal",d:"Keyif.",i:"fa-fire",l:"mangal"}, {t:"Ayakkabı",d:"Rahat.",i:"fa-shoe-prints",l:"erkek+ayakkabı"}, {t:"Yelek",d:"Polar.",i:"fa-vest",l:"erkek+polar+yelek"}, {t:"Pijama",d:"Takım.",i:"fa-shirt",l:"erkek+pijama+takımı"} ],
+                    "yuksek": [ {t:"Mont",d:"Kışlık.",i:"fa-user-tie",l:"erkek+mont"}, {t:"Saat",d:"Klasik.",i:"fa-clock",l:"erkek+kol+saati"}, {t:"Takım Elbise",d:"Tam.",i:"fa-user-tie",l:"takım+elbise"}, {t:"Bot",d:"Deri.",i:"fa-shoe-prints",l:"erkek+deri+bot"} ],
+                    "premium": [ {t:"TV",d:"Dev.",i:"fa-tv",l:"tv"}, {t:"Oto Lastik",d:"Araba.",i:"fa-car-side",l:"oto+lastik"} ]
+                },
+                "hobi": { "dusuk":[{t:"Tavla",d:"Ahşap.",i:"fa-chess-board",l:"tavla"}, {t:"Okey",d:"Set.",i:"fa-layer-group",l:"okey+takımı"}], "orta":[{t:"Olta",d:"Set.",i:"fa-fish",l:"olta+takımı"}, {t:"Radyo",d:"Nostaljik.",i:"fa-radio",l:"nostaljik+radyo"}], "yuksek":[{t:"Teleskop",d:"Gözlem.",i:"fa-star",l:"teleskop"}, {t:"Plakçalar",d:"Retro.",i:"fa-music",l:"pikap"}], "premium":[{t:"Tekne Turu",d:"Gezi.",i:"fa-ship",l:"tekne+turu"}, {t:"Masaj Koltuğu",d:"Konfor.",i:"fa-chair",l:"masaj+koltuğu"}] },
+                "ev": { "dusuk":[{t:"Pilli Radyo",d:"Nostalji.",i:"fa-radio",l:"nostaljik+radyo"}], "orta":[{t:"Matkap",d:"Darbeli.",i:"fa-toolbox",l:"darbeli+matkap"}], "yuksek":[{t:"Koltuk",d:"Baba.",i:"fa-chair",l:"baba+koltuğu"}], "premium":[{t:"Klima",d:"Serinlik.",i:"fa-wind",l:"klima"}] },
+                "kamp": { "dusuk":[{t:"Fener",d:"Işık.",i:"fa-lightbulb",l:"el+feneri"}, {t:"Termos",d:"Çay.",i:"fa-mug-hot",l:"termos"}], "orta":[{t:"Sandalye",d:"Rahat.",i:"fa-chair",l:"kamp+sandalyesi"}, {t:"Mangal",d:"Portatif.",i:"fa-fire",l:"portatif+mangal"}], "yuksek":[{t:"Çadır",d:"Avcı.",i:"fa-tent",l:"avcı+çadırı"}], "premium":[{t:"Bot",d:"Arazi.",i:"fa-shoe-prints",l:"arazi+botu"}, {t:"Jeneratör",d:"Güç.",i:"fa-bolt",l:"jeneratör"}] },
+                "bakim": { "dusuk":[{t:"Arko Set",d:"Klasik.",i:"fa-pump-soap",l:"arko+tıraş+seti"}, {t:"Kolonya",d:"Limon.",i:"fa-bottle-droplet",l:"limon+kolonyası"}], "orta":[{t:"Makine",d:"Tıraş.",i:"fa-cut",l:"tıraş+makinesi"}, {t:"Parfüm",d:"Klasik.",i:"fa-spray-can",l:"erkek+parfüm"}], "yuksek":[{t:"Parfüm",d:"Ağır.",i:"fa-spray-can",l:"erkek+parfüm"}, {t:"Tıraş Seti",d:"Lüks.",i:"fa-cut",l:"lüks+tıraş+seti"}], "premium":[{t:"Diş",d:"İmplant.",i:"fa-tooth",l:"ağız+duşu"}] },
+                "moda": { "dusuk":[{t:"Şapka",d:"Kasket.",i:"fa-hat-cowboy",l:"kasket"}, {t:"Kemer",d:"Deri.",i:"fa-minus",l:"erkek+kemer"}], "orta":[{t:"Yelek",d:"Şişme.",i:"fa-vest",l:"erkek+yelek"}, {t:"Gömlek",d:"Kareli.",i:"fa-shirt",l:"erkek+kareli+gömlek"}], "yuksek":[{t:"Kaban",d:"Kaşe.",i:"fa-user-tie",l:"erkek+kaban"}, {t:"Ayakkabı",d:"Kundura.",i:"fa-shoe-prints",l:"erkek+kundura"}], "premium":[{t:"Saat",d:"İsviçre.",i:"fa-clock",l:"isviçre+saat"}] }
             },
 
             "arkadas": {

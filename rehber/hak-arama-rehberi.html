@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otomatik Tüketici Dilekçesi Oluşturucu | Xenon Country</title>
+    <meta name="description" content="Tüketici Hakem Heyeti veya Banka İtiraz dilekçenizi saniyeler içinde oluşturun. Kanun maddeleri eklenmiş, hazır hukuk formatı.">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- GOOGLE ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --bg: #f1f5f9; --text: #0f172a; --accent: #2563eb; --paper: #fff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        
+        header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        
+        /* MAIN LAYOUT */
+        .app-container { 
+            max-width: 1200px; margin: 40px auto; padding: 0 20px; 
+            display: grid; grid-template-columns: 350px 1fr; gap: 40px;
+        }
+        @media (max-width: 900px) { .app-container { grid-template-columns: 1fr; } }
+
+        /* LEFT: FORM */
+        .form-panel { background: #fff; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; height: fit-content; }
+        .panel-title { font-size: 18px; font-weight: 800; margin-bottom: 20px; color: #1e293b; display: flex; align-items: center; gap: 10px; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px; 
+            font-size: 14px; transition: 0.2s; font-family: 'Inter', sans-serif;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+            border-color: var(--accent); outline: none; background: #f8fafc;
+        }
+
+        .action-btn { 
+            width: 100%; background: var(--accent); color: white; border: none; padding: 12px; 
+            border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; 
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .action-btn:hover { background: #1d4ed8; }
+        .reset-btn { background: #cbd5e1; color: #475569; margin-top: 10px; }
+        .reset-btn:hover { background: #94a3b8; color: #fff; }
+
+        /* RIGHT: PREVIEW (PAPER) */
+        .preview-panel { display: flex; flex-direction: column; gap: 20px; }
+        
+        .paper { 
+            background: var(--paper); padding: 60px; min-height: 800px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-radius: 4px;
+            font-family: 'Noto Serif', serif; color: #000; position: relative;
+        }
+        @media (max-width: 600px) { .paper { padding: 30px; } }
+
+        /* Paper Content */
+        .paper-header { text-align: center; font-weight: 700; margin-bottom: 40px; text-transform: uppercase; font-size: 16px; line-height: 1.5; }
+        .paper-body { font-size: 15px; line-height: 1.8; text-align: justify; }
+        .paper-footer { margin-top: 50px; display: flex; justify-content: flex-end; }
+        .signature-block { text-align: center; width: 200px; }
+        
+        .highlight-placeholder { background: #fef08a; padding: 0 4px; border-radius: 2px; } /* Kullanıcı görsün diye sarı */
+
+        /* TOOLTIPS */
+        .info-tip { font-size: 12px; color: #64748b; margin-top: 5px; line-height: 1.4; }
+
+        footer { text-align: center; margin-top: 60px; font-size: 13px; color: #94a3b8; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-atom"></i> Xenon Country</a>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- SOL PANEL: VERİ GİRİŞİ -->
+        <div class="form-panel">
+            <div class="panel-title"><i class="fa-solid fa-pen-nib"></i> Bilgileri Girin</div>
+            
+            <div class="form-group">
+                <label>Şikayet Türü</label>
+                <select id="typeSelect" onchange="updateTemplate()">
+                    <option value="ayipli_mal">Ayıplı/Bozuk Ürün (İade/Değişim)</option>
+                    <option value="kargo_hasar">Kargo Hasarlı Geldi</option>
+                    <option value="banka_itiraz">Banka Kartı Harcama İtirazı</option>
+                    <option value="abonelik_iptal">İnternet/Abonelik İptali</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Kurum Adı (Şikayet Edilen)</label>
+                <input type="text" id="companyName" placeholder="Örn: X Teknoloji A.Ş." oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+                <label>Tarih (Olay Günü)</label>
+                <input type="date" id="eventDate" oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+                <label>Ürün/Hizmet Bedeli (TL)</label>
+                <input type="number" id="price" placeholder="Örn: 5000" oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+                <label>Kısa Açıklama (Olayı Özetleyin)</label>
+                <textarea id="description" rows="3" placeholder="Örn: Ürünü kutudan çıkardığımda ekranı kırıktı..." oninput="updatePreview()"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Adınız Soyadınız</label>
+                <input type="text" id="userName" placeholder="Ad Soyad" oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+                <label>T.C. Kimlik / Adres</label>
+                <textarea id="userAddress" rows="2" placeholder="Adresiniz..." oninput="updatePreview()"></textarea>
+            </div>
+
+            <button class="action-btn" onclick="copyToClipboard()"><i class="fa-regular fa-copy"></i> Metni Kopyala</button>
+            <p class="info-tip">*Kopyaladığınız metni e-Devlet (TÜBİS) veya CİMER başvuru ekranına yapıştırabilirsiniz.</p>
+        </div>
+
+        <!-- SAĞ PANEL: CANLI ÖNİZLEME -->
+        <div class="preview-panel">
+            <div class="paper" id="paperContent">
+                <div class="paper-header">
+                    <span id="targetAuthority">T.C.<br>TÜKETİCİ HAKEM HEYETİ BAŞKANLIĞINA</span>
+                </div>
+
+                <div class="paper-body">
+                    <p><strong>ŞİKAYET EDEN:</strong> <span id="prevName" class="highlight-placeholder">Adınız Soyadınız</span></p>
+                    <p><strong>ADRES:</strong> <span id="prevAddress" class="highlight-placeholder">Adresiniz</span></p>
+                    <p><strong>ŞİKAYET EDİLEN:</strong> <span id="prevCompany" class="highlight-placeholder">Firma Adı</span></p>
+                    <p><strong>KONU:</strong> <span id="prevSubject">Ayıplı malın bedel iadesi talebidir.</span></p>
+                    <p><strong>UYUŞMAZLIK BEDELİ:</strong> <span id="prevPrice" class="highlight-placeholder">0</span> TL</p>
+                    
+                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #000;">
+
+                    <p><strong>AÇIKLAMALAR:</strong></p>
+                    <p>
+                        <span id="prevDate" class="highlight-placeholder">[Tarih]</span> tarihinde, şikayet edilen firmadan <span id="prevPriceText">[Tutar]</span> bedel karşılığında ürün/hizmet satın aldım.
+                    </p>
+                    <p id="dynamicLegalText">
+                        Ancak ürün elime ulaştığında ayıplı/bozuk olduğu anlaşılmıştır. 6502 Sayılı Tüketicinin Korunması Hakkında Kanun'un 11. maddesi gereğince "Seçimlik Haklarım"dan olan bedel iadesi/değişim talebimi firmaya iletmeme rağmen olumlu sonuç alamadım.
+                    </p>
+                    <p>
+                        Olayın detayı şöyledir: <span id="prevDesc" class="highlight-placeholder">...</span>
+                    </p>
+                    <p>
+                        Yukarıda açıklanan nedenlerle, mağduriyetimin giderilmesini ve ödediğim bedelin tarafıma iadesini saygılarımla arz ederim.
+                    </p>
+                </div>
+
+                <div class="paper-footer">
+                    <div class="signature-block">
+                        <p id="signDate">08.02.2025</p>
+                        <p style="margin-top:20px;"><strong><span id="signName">Ad Soyad</span></strong></p>
+                        <p>İmza</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Xenon Country. Oluşturulan metinler hukuki tavsiye niteliğinde değildir, taslak amaçlıdır.</p>
+    </footer>
+
+    <script>
+        // Sayfa yüklendiğinde bugünün tarihini at
+        document.getElementById('signDate').innerText = new Date().toLocaleDateString('tr-TR');
+
+        const templates = {
+            'ayipli_mal': {
+                header: 'T.C.<br>TÜKETİCİ HAKEM HEYETİ BAŞKANLIĞINA',
+                subject: 'Ayıplı malın bedel iadesi veya misli ile değişimi talebidir.',
+                legal: '6502 Sayılı Tüketicinin Korunması Hakkında Kanun\'un 8. ve 11. maddeleri uyarınca; malın ayıplı olduğunun anlaşılması durumunda tüketici, bedel iadesi hakkına sahiptir. Satıcı, ayıplı maldan sorumludur.'
+            },
+            'kargo_hasar': {
+                header: 'T.C.<br>TÜKETİCİ HAKEM HEYETİ BAŞKANLIĞINA',
+                subject: 'Kargoda hasar gören ürünün tazmini talebidir.',
+                legal: 'Mesafeli Sözleşmeler Yönetmeliği gereği, ürün tüketiciye teslim edilene kadar satıcının sorumluluğundadır. Kargo hasarlı teslim edilmiş olup, satıcı sorumluluğunu yerine getirmemiştir.'
+            },
+            'banka_itiraz': {
+                header: 'TÜRKİYE BANKALAR BİRLİĞİ<br>BİREYSEL MÜŞTERİ HAKEM HEYETİNE',
+                subject: 'Hatalı/İzinsiz kart işleminin iadesi talebidir.',
+                legal: '5464 Sayılı Banka Kartları ve Kredi Kartları Kanunu gereğince, rızam ve bilgim dışında gerçekleşen bu işlemin iptalini ve tutarın tarafıma iadesini talep ediyorum.'
+            },
+            'abonelik_iptal': {
+                header: 'T.C.<br>TÜKETİCİ HAKEM HEYETİ BAŞKANLIĞINA',
+                subject: 'Abonelik feshi ve haksız cayma bedeli iadesi talebidir.',
+                legal: 'Tüketici Kanunu ve Abonelik Sözleşmeleri Yönetmeliği uyarınca; taahhütlü aboneliklerde hizmetin ayıplı olması veya mücbir sebepler durumunda tüketicinin cezai şart ödemeksizin fesih hakkı bulunmaktadır.'
+            }
+        };
+
+        function updateTemplate() {
+            const type = document.getElementById('typeSelect').value;
+            const tpl = templates[type];
+            
+            document.getElementById('targetAuthority').innerHTML = tpl.header;
+            document.getElementById('prevSubject').innerText = tpl.subject;
+            document.getElementById('dynamicLegalText').innerText = tpl.legal;
+            updatePreview();
+        }
+
+        function updatePreview() {
+            // Get Values
+            const company = document.getElementById('companyName').value || 'Firma Adı';
+            const date = document.getElementById('eventDate').value || '[Tarih]';
+            const price = document.getElementById('price').value || '0';
+            const desc = document.getElementById('description').value || '...';
+            const name = document.getElementById('userName').value || 'Adınız Soyadınız';
+            const address = document.getElementById('userAddress').value || 'Adresiniz';
+
+            // Set Values
+            document.getElementById('prevCompany').innerText = company;
+            document.getElementById('prevDate').innerText = date;
+            document.getElementById('prevPrice').innerText = price;
+            document.getElementById('prevPriceText').innerText = price + " TL";
+            document.getElementById('prevDesc').innerText = desc;
+            document.getElementById('prevName').innerText = name;
+            document.getElementById('signName').innerText = name;
+            document.getElementById('prevAddress').innerText = address;
+
+            // Remove placeholders highlights if typed
+            if(document.getElementById('companyName').value) document.getElementById('prevCompany').classList.remove('highlight-placeholder');
+            if(document.getElementById('userName').value) {
+                document.getElementById('prevName').classList.remove('highlight-placeholder');
+                document.getElementById('signName').classList.remove('highlight-placeholder');
+            } 
+        }
+
+        function copyToClipboard() {
+            const paper = document.getElementById('paperContent');
+            const text = paper.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.action-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
+                btn.style.background = '#16a34a';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'var(--accent)';
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>

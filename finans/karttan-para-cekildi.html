@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <title>Karttan Para Çekildi Ama Hesaba Geçmedi (Provizyon Sorunu) | Xenon Country</title>
+    <meta name="description" content="Kredi kartımdan para düştü ama sipariş oluşmadı mı? POS cihazı hata verdi ama para çekildi mi? İade süresi ve çözüm yolları.">
+    <link rel="canonical" href="https://xenoncountry.com/finans/karttan-para-cekildi.html" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- GOOGLE ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* EVRENSEL AYARLAR */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg: #f8fafc; --text: #0f172a; --accent: #dc2626; --border: #e2e8f0; } /* Kırmızı (Acil Durum Teması) */
+        
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; width: 100%; overflow-x: hidden; }
+        
+        /* Header */
+        header { background: #fff; border-bottom: 1px solid var(--border); padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 22px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        
+        .container { max-width: 1100px; margin: 40px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 0 20px; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+
+        /* Article */
+        .article-header h1 { font-size: 32px; font-weight: 900; line-height: 1.3; margin-bottom: 15px; }
+        .meta-info { font-size: 14px; color: #64748b; margin-bottom: 30px; display: flex; gap: 15px; align-items: center; }
+        .back-link { text-decoration: none; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
+        
+        /* YENİ GÖRSEL ALANI (Daha küçük ve resimli) */
+        .featured-img-container { 
+            width: 100%; 
+            height: 250px; /* Yüksekliği azalttım, ekranı kaplamasın */
+            margin-bottom: 30px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .featured-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Resmi kutuya sığdırır */
+            object-position: center;
+        }
+
+        .content-body { font-size: 17px; color: #334155; }
+        .content-body h2 { font-size: 24px; font-weight: 800; color: #0f172a; margin-top: 40px; margin-bottom: 15px; }
+        .content-body p { margin-bottom: 20px; }
+        .content-body li { margin-bottom: 10px; }
+
+        /* Bilgi Kutuları */
+        .info-box { background: #fff; border: 2px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 30px 0; }
+        .info-title { font-weight: 800; color: #0f172a; font-size: 18px; margin-bottom: 10px; display: block; }
+        
+        .alert-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .alert-box strong { color: #b91c1c; }
+
+        .success-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .success-box strong { color: #15803d; }
+
+        /* Sidebar Tools */
+        .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 30px; width: 100%; position: sticky; top: 100px; }
+        .tool-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text); padding: 15px; border-radius: 12px; background: #f8fafc; border: 1px solid transparent; transition: 0.2s; margin-bottom: 10px; }
+        .tool-link:hover { border-color: #ff6000; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .tool-icon { width: 40px; height: 40px; background: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #ff6000; }
+        
+        footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; font-size: 14px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-atom"></i></div>
+                Xenon Country
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- İÇERİK -->
+        <main>
+            <article>
+                <a href="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Ana Sayfa</a>
+                <header class="article-header">
+                    <h1>Karttan Para Çekildi Ama Sipariş Oluşmadı (Provizyon Sorunu)</h1>
+                    <div class="meta-info">
+                        <span><i class="fa-regular fa-calendar"></i> 08 Şubat 2025</span>
+                        <span>• Finans</span>
+                        <span>• 3 dk okuma</span>
+                    </div>
+                </header>
+
+                <!-- YENİ GÖRSEL: Ödeme Sorunu Yaşayan Kişi / POS Cihazı -->
+                <div class="featured-img-container">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Kredi kartı ile online ödeme sorunu"
+                         onerror="this.style.display='none';">
+                </div>
+
+                <div class="content-body">
+                    <p>İnternetten bir şey alırken "Ödeme Başarısız" hatası aldınız, ama banka uygulamanıza girdiğinizde paranın hesabınızdan düştüğünü gördünüz. Panik yapmayın! Bu durum bankacılık sisteminde çok sık yaşanan bir <strong>"Askıda Provizyon"</strong> hatasıdır.</p>
+
+                    <div class="alert-box">
+                        <strong>🚨 Sakın Tekrar Denemeyin!</strong><br>
+                        Hata aldım sanıp tekrar ödeme yapmaya çalışırsanız, kartınızdan aynı tutar ikinci kez çekilebilir. Önce aşağıdaki adımları kontrol edin.
+                    </div>
+
+                    <h2>Neden Olur?</h2>
+                    <p>Siz "Öde" tuşuna bastığınızda paranız anında satıcıya gitmez. Önce bankanızın havuzuna (Provizyon) düşer. Eğer o sırada internet koparsa veya satıcının sistemi yanıt vermezse, banka parayı bloke eder ama satıcı "ben parayı almadım" der.</p>
+
+                    <h2>Param Ne Zaman Geri Gelir?</h2>
+                    <p>Bu durum kartınızın tipine göre değişir:</p>
+                    
+                    <div class="info-box">
+                        <span class="info-title">⏳ Kredi Kartları</span>
+                        <p>Genellikle <strong>24 saat içinde</strong> (gün sonu alındığında) sistem hatayı fark eder ve işlemi otomatik iptal eder. Limitiniz kendiliğinden düzelir.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <span class="info-title">⏳ Banka Kartları (Debit Kart)</span>
+                        <p>Maaş kartlarında süreç biraz daha uzundur. Blokenin kalkması ve paranın vadesiz hesabınıza geri yatması <strong>3 ila 7 iş günü</strong> sürebilir.</p>
+                    </div>
+
+                    <h2>Ne Yapmalıyım?</h2>
+                    <ol>
+                        <li><strong>Bekleyin (İlk 24 Saat):</strong> %90 ihtimalle ertesi gün sabah baktığınızda işlem "İptal" olarak görünecek veya işlem listesinden tamamen silinecektir.</li>
+                        <li><strong>Provizyon Kodunu Alın:</strong> Bankanızı arayıp "Harcama itirazı" yapmak yerine, o işlemin "Provizyon Kodu"nu (Referans No) isteyin.</li>
+                        <li><strong>Satıcıya İletin:</strong> Eğer 48 saat geçtiyse ve para hala dönmediyse, satıcı firmanın müşteri hizmetlerine bu kodu iletin. Onlar paranın kendilerine geçmediğini görüp bankaya iade talimatı verecektir.</li>
+                    </ol>
+
+                    <div class="success-box">
+                        <strong>💡 Özet:</strong> Paranız kaybolmaz. Havada asılı kalmıştır. En kötü ihtimalle 7 gün içinde hesabınıza otomatik olarak geri döner.
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- ARAÇLAR -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3 style="margin-top:0; font-size:16px;">🔥 Popüler Araçlar</h3>
+                
+                <a href="/hediye/" class="tool-link">
+                    <div class="tool-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <div class="tool-info">
+                        <h4>Hediye Sihirbazı</h4>
+                        <p>Yapay zeka ile hediye bul.</p>
+                    </div>
+                </a>
+
+                <a href="/yatirim/" class="tool-link">
+                    <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="tool-info">
+                        <h4>Geçmiş Yatırım</h4>
+                        <p>"Keşke dolar alsaydım" deme.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- ADSENSE -->
+            <div class="sidebar-widget" style="text-align:center; padding:10px; min-height:280px; width:100%; box-sizing:border-box;">
+                <p style="font-size:12px; color:#cbd5e1; margin-bottom:5px;">Reklam</p>
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%;"
+                     data-ad-client="ca-pub-8335171074656428"
+                     data-ad-slot="1234567890"  
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Xenon Country. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>

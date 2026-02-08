@@ -81,9 +81,8 @@
                 justify-content: center; /* Linkleri ortala */
                 gap: 15px;
                 font-size: 13px;
-                flex-wrap: wrap; /* Sığmazsa alt satıra geçsin */
+                flex-wrap: wrap;
             }
-            /* Linklerin mobilde düzgün görünmesi için */
             .nav-links a:not(.lang-btn) {
                 display: block; 
             }
@@ -156,12 +155,38 @@
 
             <h2 class="section-header">Trend Dosyalar</h2>
 
-            <!-- 1. INSTAGRAM (teknoloji/...) -->
+            <!-- 1. ATM PARA YUTTU (YENİ) -->
+            <div class="article-card">
+                <div class="article-thumb" style="background: #dc2626;"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="article-content">
+                    <h3><a href="finans/atm-para-yuttu.html">ATM Para Yuttu veya Eksik Verdi Ne Yapmalıyım?</a></h3>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Elektrik kesildi veya cihaz dondu, paranız içeride mi kaldı? Banka kasası sayım süreci ve paranızı geri alma rehberi.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 4 dk okuma</span>
+                        <span>• Finans</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. KARTTAN PARA ÇEKİLDİ (YENİ) -->
+            <div class="article-card">
+                <div class="article-thumb" style="background: #0f172a;"><i class="fa-regular fa-credit-card"></i></div>
+                <div class="article-content">
+                    <h3><a href="finans/karttan-para-cekildi.html">Karttan Para Çekildi Ama Sipariş Oluşmadı (Provizyon)</a></h3>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Online alışverişte "Hata" aldınız ama para hesabınızdan düştü mü? Panik yapmayın, askıda provizyon çözümü.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 3 dk okuma</span>
+                        <span>• Finans</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. INSTAGRAM -->
             <div class="article-card">
                 <div class="article-thumb" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"><i class="fa-brands fa-instagram"></i></div>
                 <div class="article-content">
                     <h3><a href="teknoloji/instagram-cozumu.html">Instagram Hikayeler Bulanık Yükleniyor Sorunu (2025 Çözüm)</a></h3>
-                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Android telefonlarda kalite düşmesinin asıl sebebi ne? "Yüksek Kalite Yükleme" ayarı neden işe yaramıyor?</p>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Android telefonlarda kalite düşmesinin asıl sebebi ne? "Yüksek Kalite Yükleme" ayarı.</p>
                     <div class="article-meta">
                         <span><i class="fa-regular fa-clock"></i> 4 dk okuma</span>
                         <span>• Sosyal Medya</span>
@@ -169,12 +194,12 @@
                 </div>
             </div>
 
-            <!-- 2. BANKA PROMOSYON (finans/...) -->
+            <!-- 4. BANKA PROMOSYON -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #16a34a;"><i class="fa-solid fa-money-bill-transfer"></i></div>
                 <div class="article-content">
                     <h3><a href="finans/banka-promosyonu-cayma-bedeli.html">Banka Promosyonu Cayma Bedeli Nasıl Hesaplanır?</a></h3>
-                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Maaşınızı başka bankaya taşımak istiyorsunuz ama ceza ödemekten korkuyorsunuz. İşte kuruşu kuruşuna iade formülü.</p>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Maaşınızı başka bankaya taşımak istiyorsunuz ama ceza ödemekten korkuyorsunuz. İade formülü.</p>
                     <div class="article-meta">
                         <span><i class="fa-regular fa-clock"></i> 6 dk okuma</span>
                         <span>• Finans</span>
@@ -182,25 +207,12 @@
                 </div>
             </div>
 
-            <!-- 3. IMEI KAYDI (ekonomi/...) -->
+            <!-- 5. STEAM -->
             <div class="article-card">
-                <div class="article-thumb" style="background: #8b5cf6;"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <div class="article-content">
-                    <h3><a href="ekonomi/yurt-disi-telefon-kaydi.html">Yurt Dışı Telefon Kaydı Hala Mantıklı mı? (2026 Hesaplama)</a></h3>
-                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Kayıt ücreti 45.000 TL'yi aştı. Gürcistan'dan iPhone almak mı yoksa Türkiye garantili cihaz mı? Matematiksel karşılaştırma.</p>
-                    <div class="article-meta">
-                        <span><i class="fa-regular fa-clock"></i> 8 dk okuma</span>
-                        <span>• Ekonomi</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. STEAM (steamhizsorunu/...) -->
-            <div class="article-card">
-                <div class="article-thumb" style="background: #0f172a;"><i class="fa-brands fa-steam"></i></div>
+                <div class="article-thumb" style="background: #171a21;"><i class="fa-brands fa-steam"></i></div>
                 <div class="article-content">
                     <h3><a href="steamhizsorunu/steam-hiz-sorunu.html">İnternet Hızlı Ama Steam İndirmesi Yavaş (Kesin Çözüm)</a></h3>
-                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Speedtest 100 Mbps gösteriyor ama Steam 5 MB/s ile indiriyor. Sorun modemde değil, "İndirme Bölgesi" ayarında.</p>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Speedtest 100 Mbps gösteriyor ama Steam yavaş indiriyor. Sorun "İndirme Bölgesi" ayarında.</p>
                     <div class="article-meta">
                         <span><i class="fa-regular fa-clock"></i> 3 dk okuma</span>
                         <span>• Teknoloji</span>
@@ -208,7 +220,7 @@
                 </div>
             </div>
 
-            <!-- 5. KOMBİ (evyasam/...) -->
+            <!-- 6. KOMBİ (GERİ EKLENDİ) -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #f97316;"><i class="fa-solid fa-fire-burner"></i></div>
                 <div class="article-content">
@@ -248,10 +260,6 @@
 
             <div class="sidebar-widget" style="text-align:center; min-height:250px; display:flex; align-items:center; justify-content:center; background:#f1f5f9; border:2px dashed #cbd5e1;">
                 <span style="color:#94a3b8; font-weight:600;">Reklam Alanı</span>
-                
-                <!-- ADSENSE KODU (Burası Ana Sayfa İçin) -->
-                <!-- Şu an boş. Panelden alacağın "sidebar" reklamı buraya gelecek -->
-                
             </div>
         </aside>
 

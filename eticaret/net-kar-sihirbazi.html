@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Ticaret Net Kar ve Satış Fiyatı Hesaplama (PRO) | Xenon Country</title>
+    <meta name="description" content="Trendyol, Hepsiburada ve Amazon için profesyonel kar hesaplama. KDV mahsuplaşması, vade farkı maliyeti ve kargo barem hesaplayıcı.">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- GOOGLE ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --bg: #f8fafc; --text: #0f172a; --accent: #7c3aed; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        
+        header { background: #fff; border-bottom: 1px solid var(--border); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; } }
+
+        /* INPUT CARD */
+        .card { background: #fff; padding: 30px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative; }
+        .card-title { font-size: 20px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: #4c1d95; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 5px; }
+        .form-group input, .form-group select { 
+            width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; font-weight: 600; 
+            transition: 0.2s; box-sizing: border-box; 
+        }
+        .form-group input:focus, .form-group select:focus { border-color: var(--accent); outline: none; background: #f5f3ff; }
+
+        /* CHECKBOXES & OPTIONS */
+        .options-box { background: #f1f5f9; padding: 15px; border-radius: 8px; margin-top: 10px; }
+        .options-title { font-size:12px; font-weight:700; color:#64748b; margin-bottom:10px; display:block; text-transform: uppercase; }
+        
+        .checkbox-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; cursor: pointer; }
+        .checkbox-item input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+        .checkbox-item span { font-size: 14px; font-weight: 600; color: #334155; }
+        .checkbox-item small { color: #64748b; font-size: 12px; margin-left: auto; }
+
+        .calc-btn { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; margin-top: 20px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .calc-btn:hover { background: #6d28d9; transform: translateY(-2px); }
+
+        /* RESULTS SIDE */
+        .result-box { display: none; }
+        .final-price-box { text-align: center; background: #4c1d95; color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; position: relative; overflow: hidden; }
+        .final-price-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%); transform: rotate(45deg); pointer-events: none; }
+        
+        .final-label { font-size: 14px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+        .final-value { font-size: 42px; font-weight: 900; margin: 10px 0; }
+        .final-desc { font-size: 13px; opacity: 0.9; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; display: inline-block; }
+
+        .breakdown-list { list-style: none; padding: 0; }
+        .breakdown-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 15px; }
+        .breakdown-item:last-child { border: none; }
+        .b-label { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .b-val { font-weight: 700; color: #0f172a; }
+        
+        .color-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+        /* ALERTS */
+        .warning-msg { background: #fef2f2; color: #991b1b; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 14px; display: none; border-left: 4px solid #ef4444; }
+        .cargo-alert { background: #fff7ed; color: #9a3412; font-size: 13px; padding: 10px; border-radius: 6px; margin-top: 10px; display: none; border: 1px solid #ffedd5; }
+
+        /* SHARE BUTTON */
+        .share-btn { 
+            width: 100%; background: #25d366; color: #fff; padding: 12px; border-radius: 8px; 
+            margin-top: 20px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; 
+        }
+        .share-btn:hover { background: #128c7e; }
+
+        footer { text-align: center; margin-top: 60px; font-size: 13px; color: #94a3b8; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-atom"></i> Xenon Country</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- SOL: GİRDİLER -->
+        <div class="card">
+            <div class="card-title"><i class="fa-solid fa-calculator"></i> Gider Verileri</div>
+            
+            <div class="form-group">
+                <label>Ürün Alış Fiyatı (KDV Dahil)</label>
+                <div style="position:relative;">
+                    <span style="position:absolute; left:12px; top:12px; color:#94a3b8;">₺</span>
+                    <input type="number" id="cost" placeholder="100" style="padding-left:35px;">
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Hedef Net Kar (TL)</label>
+                    <input type="number" id="targetProfit" placeholder="50">
+                </div>
+                <div class="form-group">
+                    <label>Kargo Maliyeti</label>
+                    <input type="number" id="shipping" placeholder="40">
+                    <div id="cargoAlert" class="cargo-alert"><i class="fa-solid fa-triangle-exclamation"></i> Dikkat: Fiyat 200 TL'yi geçtiği için barem değişebilir!</div>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Reklam (Birim Başı)</label>
+                    <input type="number" id="ads" placeholder="10">
+                </div>
+                <div class="form-group">
+                    <label>Paketleme/Diğer</label>
+                    <input type="number" id="packing" placeholder="5">
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Pazaryeri Komisyonu (%)</label>
+                    <input type="number" id="commission" placeholder="20">
+                </div>
+                <div class="form-group">
+                    <label>KDV Oranı (%)</label>
+                    <select id="vat">
+                        <option value="20" selected>%20 (Standart)</option>
+                        <option value="10">%10 (Gıda/Tekstil)</option>
+                        <option value="1">%1 (Temel Gıda)</option>
+                        <option value="0">%0</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Para Kaç Gün Sonra Yatacak? (Vade)</label>
+                <select id="maturity">
+                    <option value="0">Peşin / Ertesi Gün</option>
+                    <option value="14">14 Gün Sonra</option>
+                    <option value="21">21 Gün Sonra</option>
+                    <option value="28" selected>28 Gün Sonra (Standart)</option>
+                    <option value="45">45 Gün Sonra</option>
+                </select>
+            </div>
+
+            <div class="options-box">
+                <span class="options-title">GİZLİ GİDERLER (Profesyonel)</span>
+                
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkReturn">
+                    <span>İade Riski Ekle</span>
+                    <small>+%3 Marj</small>
+                </label>
+                
+                <label class="checkbox-item">
+                    <input type="checkbox" id="checkService" checked>
+                    <span>Hizmet/Operasyon Bedeli</span>
+                    <small>+5 TL</small>
+                </label>
+            </div>
+
+            <button class="calc-btn" onclick="calculatePrice()"><i class="fa-solid fa-bolt"></i> HESAPLA</button>
+            <div id="errorBox" class="warning-msg"></div>
+        </div>
+
+        <!-- SAĞ: SONUÇLAR -->
+        <div class="card result-box" id="resultBox">
+            <div class="card-title" style="color:#16a34a;"><i class="fa-solid fa-chart-pie"></i> Analiz Sonucu</div>
+
+            <div class="final-price-box">
+                <div class="final-label">Satman Gereken Fiyat</div>
+                <div class="final-value" id="finalPrice">₺0,00</div>
+                <div class="final-desc">Bu fiyata satarsan cebine net <span id="profitDisplay" style="font-weight:800; color:#fbbf24;">0</span> TL kalır.</div>
+            </div>
+
+            <ul class="breakdown-list">
+                <li class="breakdown-item">
+                    <span class="b-label"><span class="color-dot" style="background:#ef4444;"></span> Pazaryeri Komisyonu</span>
+                    <span class="b-val" id="resComm">₺0</span>
+                </li>
+                
+                <!-- KDV DETAYI -->
+                <li class="breakdown-item" style="background:#f0fdf4; padding-left:5px; padding-right:5px; border-radius:4px;">
+                    <span class="b-label"><span class="color-dot" style="background:#16a34a;"></span> Devlete Ödenecek KDV</span>
+                    <span class="b-val" id="resNetVat" style="color:#15803d;">₺0</span>
+                </li>
+                <li class="breakdown-item" style="font-size:12px; color:#64748b;">
+                    <span class="b-label" style="margin-left:18px;">↳ (Çıkan KDV: <span id="outVat">0</span> - İnen KDV: <span id="inVat">0</span>)</span>
+                </li>
+                <!-- KDV SON -->
+
+                <li class="breakdown-item">
+                    <span class="b-label"><span class="color-dot" style="background:#3b82f6;"></span> Kargo + Lojistik</span>
+                    <span class="b-val" id="resShip">₺0</span>
+                </li>
+                <li class="breakdown-item">
+                    <span class="b-label"><span class="color-dot" style="background:#8b5cf6;"></span> Reklam + Paketleme</span>
+                    <span class="b-val" id="resAdPack">₺0</span>
+                </li>
+                
+                <li class="breakdown-item" id="rowReturn" style="display:none;">
+                    <span class="b-label"><span class="color-dot" style="background:#eab308;"></span> İade Risk Fonu</span>
+                    <span class="b-val" id="resReturn">₺0</span>
+                </li>
+                 <li class="breakdown-item" id="rowService" style="display:none;">
+                    <span class="b-label"><span class="color-dot" style="background:#64748b;"></span> Hizmet Bedeli</span>
+                    <span class="b-val" id="resService">₺0</span>
+                </li>
+                
+                <!-- VADE MALİYETİ -->
+                <li class="breakdown-item" id="rowTimeCost" style="border-top: 2px solid #e2e8f0; margin-top:5px;">
+                    <span class="b-label"><i class="fa-regular fa-clock" style="color:#dc2626;"></i> Vade/Enflasyon Kaybı</span>
+                    <span class="b-val" id="resTimeCost" style="color:#dc2626;">-₺0</span>
+                </li>
+            </ul>
+
+            <button class="share-btn" onclick="shareResult()">
+                <i class="fa-brands fa-whatsapp"></i> Analizi Paylaş (WhatsApp)
+            </button>
+
+            <div style="margin-top:20px; font-size:11px; color:#94a3b8; text-align:center;">
+                *Enflasyon kaybı aylık %4 ticari faiz baz alınarak hesaplanmıştır.<br>
+                *Ödenecek KDV = (Satış KDV - Alış KDV) mahsuplaşmasıdır.
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Xenon Country.</p>
+    </footer>
+
+    <script>
+        function calculatePrice() {
+            // 1. GİRDİLERİ AL
+            const cost = parseFloat(document.getElementById('cost').value) || 0;
+            const targetProfit = parseFloat(document.getElementById('targetProfit').value) || 0;
+            const shipping = parseFloat(document.getElementById('shipping').value) || 0;
+            const ads = parseFloat(document.getElementById('ads').value) || 0;
+            const packing = parseFloat(document.getElementById('packing').value) || 0;
+            
+            const commRate = parseFloat(document.getElementById('commission').value) || 0;
+            const vatRate = parseFloat(document.getElementById('vat').value) || 0;
+            const maturityDays = parseInt(document.getElementById('maturity').value) || 0;
+
+            const hasReturnRisk = document.getElementById('checkReturn').checked;
+            const hasServiceFee = document.getElementById('checkService').checked;
+
+            // 2. GİZLİ GİDERLER & ORANLAR
+            const returnRate = hasReturnRisk ? 3 : 0; // %3 İade riski
+            const serviceFee = hasServiceFee ? 5 : 0; // 5 TL Hizmet Bedeli
+
+            // 3. MATEMATİKSEL HESAPLAMA (Ters İşlem)
+            // Satış Fiyatı = (Maliyetler + Kar) / (1 - Kesintiler)
+            // Not: Kullanıcı "Hedef Kar"ı cebine giren net para olarak istiyor.
+            
+            // Sabit Giderler Toplamı
+            const totalFixedCosts = cost + shipping + packing + ads + serviceFee + targetProfit;
+            
+            // Kesinti Oranları Toplamı (Komisyon + İade Riski)
+            // KDV'yi formüle dahil etme şeklimiz: Satış Fiyatı * (1 + KDV) mantığı değil, içinden düşülen KDV.
+            // Türkiye'de pazaryeri fiyatları KDV Dahildir. Yani 100 TL'lik satışın içinde %20 KDV varsa, devletin payı ~16.6 TL'dir.
+            // Matematiksel KDV Çarpanı: 1 - (1 / (1 + vatRate/100)) 
+            const vatFactor = 1 - (1 / (1 + vatRate/100)); // Örn: %20 KDV için ~0.166
+            
+            // Toplam Kesinti Payı
+            const totalDeductionRate = (commRate / 100) + vatFactor + (returnRate / 100);
+
+            // Güvenlik: Payda 0 olmasın
+            if (totalDeductionRate >= 0.95) {
+                showError("Kesintiler %95'i aşıyor, bu ticaret yapılamaz.");
+                return;
+            } else {
+                document.getElementById('errorBox').style.display = 'none';
+            }
+
+            // --- SATIŞ FİYATI ---
+            const sellingPrice = totalFixedCosts / (1 - totalDeductionRate);
+
+            // 4. DETAYLI KIRILIMLAR
+            const commissionAmount = sellingPrice * (commRate / 100);
+            const salesVAT = sellingPrice * vatFactor; // Çıkan KDV
+            const returnAmount = sellingPrice * (returnRate / 100);
+            
+            // KDV MAHSUPLAŞMASI (Professional Touch)
+            // Alış Fiyatı KDV Dahil olduğu için içindeki KDV'yi buluyoruz.
+            const purchaseVAT = cost * vatFactor; // İnen KDV
+            const netPayableVAT = salesVAT - purchaseVAT; // Devlete ödenecek fark
+
+            // VADE / ENFLASYON KAYBI (Time Value of Money)
+            // Aylık %4 Enflasyon/Faiz varsayalım. (Yıllık %60 basit faiz mantığı)
+            const monthlyInterest = 0.04;
+            const timeCost = sellingPrice * (monthlyInterest / 30) * maturityDays;
+
+            // KARGO BAREM UYARISI
+            const cargoAlert = document.getElementById('cargoAlert');
+            // Genelde baremler: 200 TL altı satıcı dostu, 200 TL üstü tam kargo.
+            // Kullanıcı düşük kargo girdiyse (örn 30 TL) ama fiyat 500 TL çıktıysa uyaralım.
+            if (sellingPrice > 200 && shipping < 50) {
+                cargoAlert.style.display = 'block';
+                cargoAlert.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <strong>Dikkat:</strong> Satış fiyatı ${sellingPrice.toFixed(0)} TL oldu. Kargo baremi değişebilir, 200 TL üstü kargo fiyatını girdiğinizden emin olun.`;
+            } else {
+                cargoAlert.style.display = 'none';
+            }
+
+            // 5. EKRANA YAZDIR
+            document.getElementById('resultBox').style.display = 'block';
+            
+            document.getElementById('finalPrice').innerText = formatMoney(sellingPrice);
+            
+            // Gerçek Cepte Kalan (Vade kaybını da düşersek daha acı gerçek olur, ama şimdilik hedef karı gösterelim)
+            document.getElementById('profitDisplay').innerText = targetProfit.toFixed(0); 
+
+            document.getElementById('resComm').innerText = formatMoney(commissionAmount);
+            
+            // KDV Alanı
+            document.getElementById('resNetVat').innerText = formatMoney(netPayableVAT);
+            document.getElementById('outVat').innerText = formatMoney(salesVAT);
+            document.getElementById('inVat').innerText = formatMoney(purchaseVAT);
+
+            document.getElementById('resShip').innerText = formatMoney(shipping);
+            document.getElementById('resAdPack').innerText = formatMoney(ads + packing);
+
+            // Opsiyonel Satırlar
+            toggleRow('rowReturn', hasReturnRisk, 'resReturn', returnAmount);
+            toggleRow('rowService', hasServiceFee, 'resService', serviceFee);
+
+            // Vade Kaybı Gösterimi
+            if (maturityDays > 0) {
+                document.getElementById('rowTimeCost').style.display = 'flex';
+                document.getElementById('resTimeCost').innerText = "-" + formatMoney(timeCost);
+            } else {
+                document.getElementById('rowTimeCost').style.display = 'none';
+            }
+        }
+
+        function toggleRow(rowId, condition, valId, val) {
+            const row = document.getElementById(rowId);
+            if(condition) {
+                row.style.display = 'flex';
+                document.getElementById(valId).innerText = formatMoney(val);
+            } else {
+                row.style.display = 'none';
+            }
+        }
+
+        function formatMoney(num) {
+            return "₺" + num.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function showError(msg) {
+            const box = document.getElementById('errorBox');
+            box.style.display = 'block';
+            box.innerText = msg;
+            document.getElementById('resultBox').style.display = 'none';
+        }
+
+        function shareResult() {
+            const price = document.getElementById('finalPrice').innerText;
+            const profit = document.getElementById('profitDisplay').innerText;
+            const text = `Xenon Country ile hesapladım: Bu ürünü ${price} fiyatına satarsam cebime net ${profit} TL kalıyor. Sen de hesapla: https://xenoncountry.com/eticaret/net-kar-sihirbazi.html`;
+            
+            // Mobil uyumlu paylaşım
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xenon Country | Sıkça Sorulan Sorular</title>
-    <meta name="description" content="Teknik sorunlar, finansal hesaplamalar ve modern yaşamın merak edilen soruları için net çözümler.">
+    
+    <!-- SEO & GOOGLE ARAMA SONUÇLARI -->
+    <title>Xenon Country | Profesyonel Teknoloji Çözümleri & Pratik Bilgiler</title>
+    <meta name="description" content="Teknik sorunlar, finansal hesaplamalar ve modern yaşamın merak edilen soruları için net çözümler. Cevapsız soruların nihai arşivi.">
+    <meta name="author" content="Xenon Country">
+    <link rel="canonical" href="https://xenoncountry.com/" />
+
+    <!-- OPEN GRAPH (Sosyal Medya & İndeksleme) -->
+    <meta property="og:title" content="Xenon Country | Teknoloji & Yaşam Çözümleri">
+    <meta property="og:description" content="Modern ikilemler için akıllı çözümler arşivi. Teknoloji, para ve yaşam rehberleri.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xenoncountry.com/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:locale" content="tr_TR">
 
     <!-- FAVICON -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
 
-    <!-- GOOGLE ANALYTICS -->
+    <!-- GOOGLE ANALYTICS (G-5N5SDYX95K) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,39 +37,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --bg-color: #f8fafc; --text-main: #0f172a; --text-light: #64748b; --accent: #ff6000; --border: #e2e8f0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        :root { --bg-color:#f8fafc; --text-main:#0f172a; --text-light:#64748b; --accent:#ff6000; --border:#e2e8f0; }
+        body { font-family:'Inter',sans-serif; background:var(--bg-color); color:var(--text-main); margin:0; line-height:1.6; overflow-x: hidden; } /* Yatay taşmayı engeller */
         
-        header { background: #fff; border-bottom: 1px solid var(--border); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo { font-size: 22px; font-weight: 900; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-light); transition: 0.2s; }
-        .lang-btn { display: flex; align-items: center; gap: 6px; background: #f1f5f9; padding: 8px 14px; border-radius: 20px; color: var(--text-main) !important; font-size: 13px; border: 1px solid var(--border); }
+        header { background:#fff; border-bottom:1px solid var(--border); padding:15px 0; position:sticky; top:0; z-index:100; }
         
-        .container { max-width: 1100px; margin: 40px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 0 20px; }
+        .nav-container { 
+            max-width:1100px; 
+            margin:0 auto; 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            padding:0 20px; 
+        }
+
+        .logo { font-size:22px; font-weight:900; color:var(--text-main); text-decoration:none; display:flex; align-items:center; gap:12px; }
+        .logo-icon { width:40px; height:40px; background:linear-gradient(135deg,#0f172a,#334155); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink: 0; }
+        
+        .nav-links { display:flex; gap:20px; font-weight:600; font-size:14px; align-items:center; }
+        .nav-links a { text-decoration:none; color:var(--text-light); transition:0.2s; white-space: nowrap; }
+        .nav-links a:hover { color:var(--accent); }
+        .lang-btn { display:flex; align-items:center; gap:6px; background:#f1f5f9; padding:8px 14px; border-radius:20px; color:var(--text-main) !important; font-size:13px; border:1px solid var(--border); }
+
+        /* --- MOBİL UYUMLULUK DÜZELTMESİ --- */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column; /* Alt alta sırala */
+                gap: 15px;
+                padding: 0 15px;
+            }
+            .logo {
+                width: 100%;
+                justify-content: center; /* Logoyu ortala */
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center; /* Linkleri ortala */
+                gap: 15px;
+                font-size: 13px;
+            }
+            /* Linklerin mobilde düzgün görünmesi için */
+            .nav-links a:not(.lang-btn) {
+                display: block; 
+            }
+        }
+        /* --------------------------------- */
+
+        .container { max-width:1100px; margin:40px auto; display:grid; grid-template-columns:2fr 1fr; gap:40px; padding:0 20px; }
         @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
 
-        /* YENİ HERO ALANI (Kısa & Resimli) */
-        .hero-section { margin-bottom: 40px; position: relative; }
+        .hero-section { margin-bottom: 40px; }
         .hero-img { 
-            width: 100%; 
-            height: 220px; /* Daha kısa */
-            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80'); /* Kitap/Bilgi görseli */
-            background-size: cover; 
-            background-position: center;
-            border-radius: 20px; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
-            color: #fff;
-            padding: 20px;
+            width:100%; height:220px; 
+            background-image: linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)), url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80'); 
+            background-size:cover; background-position:center; border-radius:20px; 
+            display:flex; flex-direction:column; align-items:center; justify-content:center; 
+            text-align:center; color:#fff; padding:20px;
         }
-        .hero-title { font-size: 32px; font-weight: 900; margin: 0 0 10px 0; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero-desc { font-size: 16px; color: #cbd5e1; margin: 0; max-width: 600px; }
+        .hero-title { font-size:32px; font-weight:900; margin:0 0 10px 0; letter-spacing: -1px; }
+        .hero-desc { font-size:16px; color:#cbd5e1; max-width:600px; margin: 0; }
+
+        .section-header { font-size: 22px; font-weight: 800; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        .article-card { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; }
+        .article-thumb { width: 120px; height: 90px; background: #cbd5e1; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+        .article-content h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+        .article-content h3 a { text-decoration: none; color: var(--text-main); transition: 0.2s; }
+        .article-content h3 a:hover { color: var(--accent); }
+        .article-meta { font-size: 13px; color: var(--text-light); display: flex; gap: 10px; }
 
         .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 30px; }
         .widget-title { font-size: 16px; font-weight: 800; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
@@ -67,14 +113,6 @@
         .tool-info h4 { margin: 0; font-size: 15px; font-weight: 700; }
         .tool-info p { margin: 2px 0 0; font-size: 12px; color: var(--text-light); }
 
-        .article-card { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; }
-        .article-thumb { width: 120px; height: 90px; background: #cbd5e1; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
-        .article-content h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
-        .article-content h3 a { text-decoration: none; color: var(--text-main); transition: 0.2s; }
-        .article-content h3 a:hover { color: var(--accent); }
-        .article-meta { font-size: 13px; color: var(--text-light); display: flex; gap: 10px; }
-        
-        .section-header { font-size: 22px; font-weight: 800; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px; }
         footer { background: #fff; border-top: 1px solid var(--border); padding: 40px 0; text-align: center; font-size: 14px; color: var(--text-light); margin-top: 60px; }
     </style>
 </head>
@@ -82,6 +120,7 @@
 
     <header>
         <div class="nav-container">
+            <!-- LOGO -->
             <a href="/" class="logo">
                 <div class="logo-icon"><i class="fa-solid fa-atom fa-spin-pulse" style="--fa-animation-duration: 3s;"></i></div>
                 Xenon Country
@@ -90,84 +129,131 @@
                 <a href="#">Teknoloji</a>
                 <a href="#">Para</a>
                 <a href="#">Yaşam</a>
-                <a href="/en/" class="lang-btn">🇺🇸 EN</a>
+                <a href="/en/" class="lang-btn">
+                    🇺🇸 EN
+                </a>
             </div>
         </div>
     </header>
 
     <div class="container">
+        
+        <!-- SOL TARAF (İÇERİK) -->
         <main>
             <div class="hero-section">
                 <div class="hero-img">
                     <h1 class="hero-title">Sıkça Sorulan Sorular</h1>
-                    <p class="hero-desc">Google'ın bile bazen kafasının karıştığı, forumların çöplüğe döndüğü konular için net ve kesin çözümler.</p>
+                    <p class="hero-desc">Google'ın bile bazen kafasının karıştığı, forumların çöplüğe döndüğü konular için net, sade ve kesin çözümler.</p>
                 </div>
             </div>
 
             <h2 class="section-header">Trend Dosyalar</h2>
 
+            <!-- 1. INSTAGRAM (teknoloji/...) -->
             <div class="article-card">
-                <div class="article-thumb" style="background: linear-gradient(45deg, #f09433, #bc1888);"><i class="fa-brands fa-instagram"></i></div>
+                <div class="article-thumb" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"><i class="fa-brands fa-instagram"></i></div>
                 <div class="article-content">
                     <h3><a href="teknoloji/instagram-cozumu.html">Instagram Hikayeler Bulanık Yükleniyor Sorunu (2025 Çözüm)</a></h3>
-                    <div class="article-meta"><span><i class="fa-regular fa-clock"></i> 4 dk okuma</span><span>• Sosyal Medya</span></div>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Android telefonlarda kalite düşmesinin asıl sebebi ne? "Yüksek Kalite Yükleme" ayarı neden işe yaramıyor?</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 4 dk okuma</span>
+                        <span>• Sosyal Medya</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- 2. BANKA PROMOSYON (finans/...) -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #16a34a;"><i class="fa-solid fa-money-bill-transfer"></i></div>
                 <div class="article-content">
                     <h3><a href="finans/banka-promosyonu-cayma-bedeli.html">Banka Promosyonu Cayma Bedeli Nasıl Hesaplanır?</a></h3>
-                    <div class="article-meta"><span><i class="fa-regular fa-clock"></i> 6 dk okuma</span><span>• Finans</span></div>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Maaşınızı başka bankaya taşımak istiyorsunuz ama ceza ödemekten korkuyorsunuz. İşte kuruşu kuruşuna iade formülü.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 6 dk okuma</span>
+                        <span>• Finans</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- 3. IMEI KAYDI (ekonomi/...) -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #8b5cf6;"><i class="fa-solid fa-mobile-screen-button"></i></div>
                 <div class="article-content">
                     <h3><a href="ekonomi/yurt-disi-telefon-kaydi.html">Yurt Dışı Telefon Kaydı Hala Mantıklı mı? (2026 Hesaplama)</a></h3>
-                    <div class="article-meta"><span><i class="fa-regular fa-clock"></i> 8 dk okuma</span><span>• Ekonomi</span></div>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Kayıt ücreti 45.000 TL'yi aştı. Gürcistan'dan iPhone almak mı yoksa Türkiye garantili cihaz mı? Matematiksel karşılaştırma.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 8 dk okuma</span>
+                        <span>• Ekonomi</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- 4. STEAM (steamhizsorunu/...) -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #0f172a;"><i class="fa-brands fa-steam"></i></div>
                 <div class="article-content">
                     <h3><a href="steamhizsorunu/steam-hiz-sorunu.html">İnternet Hızlı Ama Steam İndirmesi Yavaş (Kesin Çözüm)</a></h3>
-                    <div class="article-meta"><span><i class="fa-regular fa-clock"></i> 3 dk okuma</span><span>• Teknoloji</span></div>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Speedtest 100 Mbps gösteriyor ama Steam 5 MB/s ile indiriyor. Sorun modemde değil, "İndirme Bölgesi" ayarında.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 3 dk okuma</span>
+                        <span>• Teknoloji</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- 5. KOMBİ (evyasam/...) -->
             <div class="article-card">
                 <div class="article-thumb" style="background: #f97316;"><i class="fa-solid fa-fire-burner"></i></div>
                 <div class="article-content">
                     <h3><a href="evyasam/kombi-basinci.html">Kombi Basıncı Neden Sürekli Düşüyor? (1.5 Bar Altı)</a></h3>
-                    <div class="article-meta"><span><i class="fa-regular fa-clock"></i> 5 dk okuma</span><span>• Ev & Yaşam</span></div>
+                    <p style="font-size:14px; color:#64748b; margin:5px 0;">Her gün su basmak zorunda mısınız? Sorun tesisat kaçağı mı yoksa genleşme tankı mı? Basit teşhis yöntemi.</p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> 5 dk okuma</span>
+                        <span>• Ev & Yaşam</span>
+                    </div>
                 </div>
             </div>
+
         </main>
 
+        <!-- SAĞ TARAF (ARAÇLAR) -->
         <aside>
             <div class="sidebar-widget">
                 <h3 class="widget-title"><i class="fa-solid fa-toolbox"></i> Popüler Araçlar</h3>
+                
                 <a href="hediye/" class="tool-link">
                     <div class="tool-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <div class="tool-info"><h4>Hediye Sihirbazı</h4><p>Yapay zeka ile hediye bul.</p></div>
+                    <div class="tool-info">
+                        <h4>Hediye Sihirbazı</h4>
+                        <p>Yapay zeka ile nokta atışı hediye bul.</p>
+                    </div>
                 </a>
+
                 <a href="yatirim/" class="tool-link">
                     <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <div class="tool-info"><h4>Geçmiş Yatırım</h4><p>Keşke alsaydım deme.</p></div>
+                    <div class="tool-info">
+                        <h4>Geçmiş Yatırım</h4>
+                        <p>Keşke alsaydım dediğin her şeyi hesapla.</p>
+                    </div>
                 </a>
+
             </div>
+
             <div class="sidebar-widget" style="text-align:center; min-height:250px; display:flex; align-items:center; justify-content:center; background:#f1f5f9; border:2px dashed #cbd5e1;">
                 <span style="color:#94a3b8; font-weight:600;">Reklam Alanı</span>
+                
+                <!-- ADSENSE KODU (Burası Ana Sayfa İçin) -->
+                <!-- Şu an boş. Panelden alacağın "sidebar" reklamı buraya gelecek -->
+                
             </div>
         </aside>
+
     </div>
 
     <footer>
         <p>&copy; 2025 Xenon Country. Tüm hakları saklıdır.</p>
         <p style="font-size:12px; margin-top:10px;">İzmir, Türkiye'de geliştirildi 🇹🇷</p>
     </footer>
+
 </body>
 </html>

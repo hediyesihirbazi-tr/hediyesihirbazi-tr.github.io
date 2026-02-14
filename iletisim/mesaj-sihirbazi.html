@@ -1,1 +1,451 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesyonel Mesaj ve E-Posta Oluşturucu | Xenon Country</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Patrona zam maili, öğretmene mesaj, ev sahibine bildirim veya sevgiliye özür mesajı... Mesaj Sihirbazı ile saniyeler içinde profesyonel metinler oluşturun.">
+    <meta name="keywords" content="hazır mesaj şablonları, veli mesajı örneği, komşu şikayet mesajı, kurumsal mail yazma, whatsapp mesaj düzenleyici, yapay zeka mesaj">
 
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --bg: #f3f4f6; --text: #1f2937; --primary: #7c3aed; --card: #ffffff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+
+        header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 15px 0; position: sticky; top: 0; z-index: 50; }
+        .nav-container { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+
+        /* HERO */
+        .hero-box { text-align: center; margin-bottom: 40px; }
+        .hero-box h1 { font-size: 32px; font-weight: 900; color: #111827; margin-bottom: 10px; }
+        .hero-box p { color: #6b7280; font-size: 18px; }
+
+        /* MAIN CARD */
+        .wizard-card { background: var(--card); border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); padding: 30px; border: 1px solid #e5e7eb; position: relative; }
+
+        .step-label { display: block; font-size: 14px; font-weight: 700; color: #4b5563; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* SCENARIO GRID */
+        .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px; }
+        @media (max-width: 600px) { .scenario-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .scenario-btn { 
+            background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: 0.2s; 
+            display: flex; flex-direction: column; align-items: center; gap: 6px; color: #6b7280;
+        }
+        .scenario-btn:hover { border-color: var(--primary); background: #f5f3ff; }
+        .scenario-btn.active { border-color: var(--primary); background: #7c3aed; color: white; box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3); }
+        .scenario-btn i { font-size: 20px; }
+        .scenario-btn span { font-weight: 600; font-size: 13px; }
+
+        /* INPUT AREA */
+        .input-group { margin-bottom: 25px; }
+        .input-box { width: 100%; padding: 15px; border: 2px solid #e5e7eb; border-radius: 12px; font-size: 16px; font-family: inherit; transition: 0.2s; box-sizing: border-box; }
+        .input-box:focus { border-color: var(--primary); outline: none; background: #f5f3ff; }
+
+        /* TONE SLIDER */
+        .tone-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; gap: 15px; }
+        .tone-selector { display: flex; background: #f3f4f6; padding: 4px; border-radius: 12px; flex: 1; }
+        .tone-opt { flex: 1; text-align: center; padding: 10px; font-size: 13px; font-weight: 600; color: #6b7280; cursor: pointer; border-radius: 8px; transition: 0.2s; }
+        .tone-opt.active { background: white; color: var(--primary); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        
+        /* EMOJI TOGGLE */
+        .emoji-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+        .emoji-switch { position: relative; width: 44px; height: 24px; background: #e5e7eb; border-radius: 20px; transition: 0.3s; }
+        .emoji-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        input[type="checkbox"]:checked + .emoji-switch { background: #10b981; }
+        input[type="checkbox"]:checked + .emoji-switch::after { transform: translateX(20px); }
+
+        /* GENERATE BUTTON */
+        .magic-btn { 
+            width: 100%; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; border: none; padding: 18px; 
+            border-radius: 16px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; 
+            display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.4);
+        }
+        .magic-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.5); }
+
+        /* RESULT AREA */
+        .result-area { margin-top: 40px; display: none; animation: slideUp 0.5s ease; }
+        .message-bubble { 
+            background: #d1fae5; border: 2px solid #34d399; padding: 0; border-radius: 12px; position: relative; overflow: hidden;
+        }
+        /* Editable Textarea */
+        .result-text {
+            width: 100%; min-height: 150px; padding: 20px; border: none; background: transparent; 
+            font-family: inherit; font-size: 16px; color: #064e3b; line-height: 1.7; resize: vertical; outline: none;
+        }
+
+        .action-bar {
+            display: flex; justify-content: space-between; padding: 10px 15px; background: rgba(52, 211, 153, 0.2); border-top: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        .copy-btn { 
+            background: white; border: 1px solid #34d399; padding: 8px 15px; 
+            border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700; color: #059669; transition: 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .copy-btn:hover { background: #ecfdf5; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { text-align: center; margin-top: 60px; font-size: 13px; color: #9ca3af; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-atom"></i> Xenon Country</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero-box">
+            <h1>Siz Düşünün, Biz Yazalım. ✍️</h1>
+            <p>"Bunu nasıl söylesem?" derdine son. Mesajınızı oluşturun, <b>düzenleyin</b> ve gönderin.</p>
+        </div>
+
+        <div class="wizard-card">
+            
+            <label class="step-label">1. Kime Yazıyorsunuz?</label>
+            <div class="scenario-grid">
+                <div class="scenario-btn active" onclick="setScenario('is', this)"><i class="fa-solid fa-briefcase"></i> <span>İş / Patron</span></div>
+                <div class="scenario-btn" onclick="setScenario('ev', this)"><i class="fa-solid fa-house-chimney"></i> <span>Ev Sahibi</span></div>
+                <div class="scenario-btn" onclick="setScenario('ask', this)"><i class="fa-solid fa-heart"></i> <span>İlişki</span></div>
+                <div class="scenario-btn" onclick="setScenario('okul', this)"><i class="fa-solid fa-graduation-cap"></i> <span>Okul / Veli</span></div>
+                <div class="scenario-btn" onclick="setScenario('komsu', this)"><i class="fa-solid fa-people-roof"></i> <span>Komşu</span></div>
+                <div class="scenario-btn" onclick="setScenario('satici', this)"><i class="fa-solid fa-shop"></i> <span>Alıcı/Satıcı</span></div>
+            </div>
+
+            <label class="step-label">2. Konu Nedir?</label>
+            <div class="input-group">
+                <select id="topicSelect" class="input-box" onchange="toggleCustomInput()">
+                    <!-- JS ile dolacak -->
+                </select>
+            </div>
+            
+            <div class="input-group" id="customInputGroup" style="display:none;">
+                <label style="font-size:13px; color:#6b7280; margin-bottom:5px; display:block;">Detay (Opsiyonel):</label>
+                <input type="text" id="customDetail" class="input-box" placeholder="Örn: Param yok, haftaya ödicem">
+            </div>
+            <div class="input-group" id="nameInputGroup">
+                <label style="font-size:13px; color:#6b7280; margin-bottom:5px; display:block;">Muhatap Adı (Opsiyonel):</label>
+                <input type="text" id="recipientName" class="input-box" placeholder="Örn: Ahmet Bey">
+            </div>
+
+            <label class="step-label">3. Üslup & Emoji</label>
+            <div class="tone-container">
+                <div class="tone-selector">
+                    <div class="tone-opt active" onclick="setTone('resmi', this)">👔 Resmi</div>
+                    <div class="tone-opt" onclick="setTone('net', this)">⚡ Net</div>
+                    <div class="tone-opt" onclick="setTone('duygusal', this)">🥺 Ilımlı</div>
+                </div>
+                <label class="emoji-toggle">
+                    <input type="checkbox" id="emojiCheck" style="display:none;">
+                    <div class="emoji-switch"></div>
+                    <span style="font-size:13px; font-weight:600; color:#4b5563;">Emoji</span>
+                </label>
+            </div>
+
+            <button class="magic-btn" onclick="generateMessage()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> SİHİRLİ METNİ YAZ
+            </button>
+
+            <!-- SONUÇ -->
+            <div class="result-area" id="resultArea">
+                <label class="step-label" style="color:#059669; display:flex; justify-content:space-between;">
+                    ✨ Taslak Hazır (Düzenleyebilirsin)
+                </label>
+                
+                <div class="message-bubble">
+                    <textarea id="outputText" class="result-text"></textarea>
+                    
+                    <div class="action-bar">
+                         <button class="copy-btn" onclick="copyText()"><i class="fa-regular fa-copy"></i> Kopyala</button>
+                         <button class="copy-btn" style="border-color:#25D366; color:#15803d;" onclick="shareWhatsapp()"><i class="fa-brands fa-whatsapp"></i> Gönder</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- REKLAM -->
+        <div style="margin-top:40px; text-align:center;">
+             <p style="font-size:12px; color:#cbd5e1; margin-bottom:5px;">Sponsorlu</p>
+             <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8335171074656428"
+                 data-ad-slot="1234567890" 
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+             <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             </script>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Xenon Country.</p>
+    </footer>
+
+    <script>
+        // VERİ SETİ (SENARYOLAR - GELİŞMİŞ)
+        const scenarios = {
+            'is': [
+                {val: 'zam', text: 'Maaş Zammı İsteği'},
+                {val: 'izin', text: 'Yıllık İzin İsteği'},
+                {val: 'hasta', text: 'Hasta Oldum / Rapor'},
+                {val: 'istifa', text: 'İstifa Bildirimi'},
+                {val: 'gec', text: 'İşe Geç Kalacağım'}
+            ],
+            'ev': [
+                {val: 'kira_gec', text: 'Kira Gecikecek'},
+                {val: 'tamir', text: 'Evde Arıza Var (Tamirat)'},
+                {val: 'cikma', text: 'Evden Çıkıyorum (Tahliye)'},
+                {val: 'zam_itiraz', text: 'Kira Zammına İtiraz'}
+            ],
+            'ask': [
+                {val: 'ozur', text: 'Özür Dileme (Hatalıyım)'},
+                {val: 'bulusma', text: 'Buluşma Teklifi'},
+                {val: 'ayrilik', text: 'Ayrılık Konuşması'},
+                {val: 'ozlem', text: 'Özledim Mesajı'}
+            ],
+            'okul': [
+                {val: 'devamsiz', text: 'Çocuğum Gelemeyecek'},
+                {val: 'gorusme', text: 'Öğretmenle Görüşme Talebi'},
+                {val: 'odev', text: 'Ödev/Proje Sorma'},
+                {val: 'whatsapp', text: 'Veli Grubuna Mesaj'}
+            ],
+            'komsu': [
+                {val: 'gurultu', text: 'Gürültü Şikayeti'},
+                {val: 'aidat', text: 'Aidat/Para Konusu'},
+                {val: 'kargo', text: 'Kargomu Alır mısın?'}
+            ],
+            'satici': [
+                {val: 'pazarlik', text: 'Son Fiyat Sorma'},
+                {val: 'takas', text: 'Takas Teklifi'},
+                {val: 'kargo', text: 'Kargo Durumu Sorma'}
+            ]
+        };
+
+        // ŞABLONLAR (GELİŞMİŞ)
+        const templates = {
+            // İŞ
+            'is_zam': {
+                resmi: "Sayın [AD],\n\nŞirketimizdeki görevim süresince üstlendiğim sorumluluklar ve gösterdiğim performans doğrultusunda, maaşımda bir iyileştirme yapılmasını arz ederim. Uygun gördüğünüz bir zamanda konuyu detaylı görüşmek isterim.\n\nSaygılarımla.",
+                net: "Merhaba [AD] Bey/Hanım,\n\nArtan piyasa koşulları ve şirket içi performansım göz önüne alındığında maaş düzenlemesi talep ediyorum. Müsaitliğinizde 5 dakika görüşebilir miyiz?",
+                duygusal: "Merhaba [AD] Bey/Hanım,\n\nŞirketime olan bağlılığım ve çabam malumunuz. Ancak ekonomik koşullar beni zorlamaya başladı. Maaşım konusunda desteğinizi ve anlayışınızı rica ediyorum."
+            },
+            'is_hasta': {
+                resmi: "Sayın [AD],\n\nBugün yaşadığım ani sağlık problemi nedeniyle mesaiye katılamayacağımı bilgilerinize sunarım. Gerekli raporu/belgeyi tarafınıza en kısa sürede ileteceğim.",
+                net: "Merhaba, bugün rahatsızlığım nedeniyle işe gelemeyeceğim. Doktora gidiyorum, rapor alıp ileteceğim. Bilginize.",
+                duygusal: "Merhaba [AD] Bey/Hanım, sabah çok kötü uyandım, sanırım ciddi bir rahatsızlık geçiriyorum. Bugün izninizle dinlenip toparlanmaya çalışacağım. Anlayışınız için teşekkürler."
+            },
+
+            // EV
+            'ev_kira_gec': {
+                resmi: "Sayın Ev Sahibi,\n\nBu ay nakit akışımda yaşanan beklenmedik bir aksaklık nedeniyle kira ödemesini [DETAY] tarihinde gerçekleştirebileceğim. Anlayışınız için teşekkür ederim.",
+                net: "Merhaba, bu ayki kirayı maaş günüm olan [DETAY] tarihinde hesabınıza göndereceğim. Bilginiz olsun.",
+                duygusal: "Merhaba [AD] Abi/Abla,\n\nBu ay elimde olmayan sebeplerle biraz sıkıştım. Kirayı [DETAY] gibi yatırsam beni idare edebilir misin? Kusura bakma, seni de zora sokmak istemem."
+            },
+            'ev_tamir': {
+                resmi: "Sayın Ev Sahibi,\n\nDairede [DETAY] ile ilgili bir arıza meydana gelmiştir. Demirbaş eşya statüsünde olduğu için onarımın tarafınızca yapılmasını veya bedelinin kiradan düşülmesini rica ederim.",
+                net: "Selamlar, evde [DETAY] bozuldu. Usta çağırmam gerekiyor, ücreti kiradan düşebilir miyiz?",
+                duygusal: "Merhaba [AD] Abi/Abla, maalesef evde [DETAY] sorunu çıktı. Bizi bayağı zorluyor. Müsait olunca bir bakabilir misin veya usta mı çağıralım?"
+            },
+
+            // İLİŞKİ
+            'ask_ayrilik': {
+                resmi: "Merhaba [AD],\n\nUzun süredir düşündüğüm ve zorlandığım bazı konular var. İlişkimizin artık ikimize de iyi gelmediğini hissediyorum. Yüz yüze konuşarak medeni bir şekilde noktalamak isterim.",
+                net: "Selam [AD], dürüst olmam gerekirse artık yürümüyor. Birbirimizi daha fazla üzmeden bitirmemiz en doğrusu.",
+                duygusal: "Canım, bunu söylemek benim için çok zor ama artık duygularımın eskisi gibi olmadığını hissediyorum. Seni kırmak asla istemem ama dürüst olmalıyım. Biraz konuşabilir miyiz?"
+            },
+            'ask_ozur': {
+                resmi: "Merhaba [AD],\n\nSon yaşanan olaydaki tutumum nedeniyle üzgünüm. Seni kırmak istemezdim. Telafi etmek için konuşmak isterim.",
+                net: "Selam, son yaptığım hataydı, kabul ediyorum. Özür dilerim. Barışalım mı?",
+                duygusal: "Bir tanem, seni üzdüğüm için kendimi çok kötü hissediyorum. O an öyle demek istememiştim. Lütfen beni affet, sensiz olmak istemiyorum."
+            },
+
+            // OKUL
+            'okul_devamsiz': {
+                resmi: "Sayın Öğretmenim,\n\nVelisi bulunduğum [AD]'ın bugün sağlık nedenleriyle (veya [DETAY]) okula devam edemeyeceğini bilgilerinize sunarım.",
+                net: "Hocam merhaba, [AD] bugün rahatsız olduğu için okula gelemeyecek. Bilginiz olsun.",
+                duygusal: "Merhaba öğretmenim, [AD] bugün biraz halsiz, okula gönderip diğer çocukları da riske atmak istemedim. Bugün evde dinlenecek, anlayışınız için teşekkürler."
+            },
+            'okul_gorusme': {
+                resmi: "Sayın Öğretmenim,\n\nÖğrencimin ders durumu ve genel gidişatı hakkında görüşmek üzere, sizin uygun göreceğiniz bir zaman diliminde randevu talep ediyorum.",
+                net: "Hocam selamlar, [AD]'ın durumuyla ilgili ne zaman görüşebiliriz? Kısa bir vaktinizi almak isterim.",
+                duygusal: "Hocam merhaba, [AD] son zamanlarda biraz [DETAY] gibi. Sizin gözlemleriniz çok değerli, müsait bir zamanda konuşabilirsek çok sevinirim."
+            },
+
+            // KOMŞU
+            'komsu_gurultu': {
+                resmi: "Merhaba Komşum,\n\nDairenizden gelen sesler (özellikle [DETAY] saatlerinde) evimize çok yansıyor. Konuyla ilgili biraz daha hassasiyet göstermenizi rica edebilir miyim?",
+                net: "Selamlar, üst kattan çok ses geliyor. [DETAY] konusunda biraz daha dikkat edebilirsek sevinirim.",
+                duygusal: "Merhaba komşum, rahatsız etmek istemem ama evde hastamız/bebeğimiz var. Gürültü konusunda birazcık daha sessiz olabilirsek bize çok büyük iyilik yapmış olursunuz."
+            },
+
+            // SATICI
+            'satici_pazarlik': {
+                resmi: "Merhaba,\n\nİlanınızdaki ürünle ilgileniyorum. Ciddi alıcıyım, bütçem doğrultusunda son oluru nedir öğrenebilir miyim?",
+                net: "Selamlar, ürün için son fiyat ne olur? Hemen gelip alabilirim.",
+                duygusal: "Merhaba, ürünü çok beğendim ancak bütçem biraz kısıtlı. Öğrenciyim/yeni evliyim, fiyatta bir güzellik yaparsanız hemen almak isterim."
+            },
+            
+            // Fallback
+            'default': {
+                resmi: "Sayın [AD],\n\n[DETAY] konusundaki talebimi/durumumu bilgilerinize arz ederim. Gereğini saygılarımla rica ederim.",
+                net: "Merhaba [AD],\n\n[DETAY] hakkında bilgi vermek istedim. Dönüşünüzü bekliyorum.",
+                duygusal: "Merhaba [AD],\n\n[DETAY] konusunda beni anlayacağını umuyorum. Yardımın ve desteğin benim için çok önemli."
+            }
+        };
+
+        const emojis = {
+            resmi: { start: "", end: "" }, // Resmi dilde genelde emoji olmaz
+            net: { start: "👋 ", end: " 👍" },
+            duygusal: { start: "", end: " 🙏🌸" }
+        };
+
+        let currentScenario = 'is';
+        let currentTone = 'resmi';
+
+        // Başlangıç
+        updateTopics();
+
+        function setScenario(type, btn) {
+            currentScenario = type;
+            document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateTopics();
+        }
+
+        function setTone(type, btn) {
+            currentTone = type;
+            document.querySelectorAll('.tone-opt').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function updateTopics() {
+            const select = document.getElementById('topicSelect');
+            select.innerHTML = '';
+            scenarios[currentScenario].forEach(opt => {
+                select.innerHTML += `<option value="${opt.val}">${opt.text}</option>`;
+            });
+            select.innerHTML += `<option value="diger">Diğer / Özel Durum</option>`;
+            toggleCustomInput();
+        }
+
+        function toggleCustomInput() {
+            const val = document.getElementById('topicSelect').value;
+            const customGroup = document.getElementById('customInputGroup');
+            const placeholderMap = {
+                'kira_gec': "Örn: Ayın 15'inde",
+                'gec': "Örn: 30 dakika",
+                'ev_tamir': "Örn: Musluk su kaçırıyor",
+                'gurultu': "Örn: Gece geç saatte",
+                'okul_devamsiz': "Örn: Grip olduğu için"
+            };
+
+            // Her zaman gösterelim mi? Hayır, bazı konularda detay şart değil.
+            // Ama kullanıcı özelleştirmek isteyebilir. Şimdilik 'diger' ve spesifiklerde açalım.
+            const alwaysOpen = ['diger', 'kira_gec', 'gec', 'ev_tamir', 'gurultu', 'okul_devamsiz', 'okul_gorusme'];
+            
+            if(alwaysOpen.includes(val)) {
+                customGroup.style.display = 'block';
+                document.getElementById('customDetail').placeholder = placeholderMap[val] || "Detay girin...";
+            } else {
+                customGroup.style.display = 'none';
+            }
+        }
+
+        function generateMessage() {
+            const topic = document.getElementById('topicSelect').value;
+            const detail = document.getElementById('customDetail').value || "bu konuda";
+            let name = document.getElementById('recipientName').value;
+            const useEmoji = document.getElementById('emojiCheck').checked;
+            
+            // İsim boşsa genel hitap
+            if(!name) {
+                if(currentScenario === 'is') name = "Yetkili";
+                else if(currentScenario === 'ev') name = "Ev Sahibi";
+                else if(currentScenario === 'okul') name = "Öğretmenim";
+                else if(currentScenario === 'komsu') name = "Komşum";
+                else name = ""; 
+            }
+
+            let key = `${currentScenario}_${topic}`;
+            
+            // Şablonu çek
+            let text = "";
+            if(templates[key] && templates[key][currentTone]) {
+                text = templates[key][currentTone];
+            } else {
+                text = templates['default'][currentTone];
+            }
+
+            // Değişkenleri yerleştir
+            text = text.replace(/\[AD\]/g, name).replace(/\[DETAY\]/g, detail);
+            text = text.replace("Sayın ,", "Sayın Yetkili,").replace("Merhaba ,", "Merhaba,");
+
+            // Emoji Ekleme
+            if (useEmoji) {
+                const emo = emojis[currentTone];
+                // Resmi dilde bile emoji istenirse minimal bir şey ekleyelim
+                if (currentTone === 'resmi') {
+                    text += " Saygılarımla 🙏";
+                } else {
+                    text = emo.start + text + emo.end;
+                }
+            }
+
+            // Göster
+            const output = document.getElementById('outputText');
+            output.value = text;
+            document.getElementById('resultArea').style.display = 'block';
+            
+            // Mobilde ekrana kaydır
+            if(window.innerWidth < 600) {
+                document.getElementById('resultArea').scrollIntoView({behavior: "smooth"});
+            }
+        }
+
+        function copyText() {
+            const text = document.getElementById('outputText').value;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı';
+                setTimeout(() => btn.innerHTML = originalHtml, 2000);
+            });
+        }
+
+        function shareWhatsapp() {
+            const text = document.getElementById('outputText').value;
+            const wpUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            window.open(wpUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

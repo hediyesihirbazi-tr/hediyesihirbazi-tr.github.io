@@ -1,118 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <!-- Ana Sayfalar -->
-   <url>
-      <loc>https://xenoncountry.com/</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/en/</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-   </url>
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://xenoncountry.com/</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-   <!-- Araçlar (Tools) -->
-   <url>
-      <loc>https://xenoncountry.com/eticaret/net-kar-sihirbazi.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/rehber/hak-arama-rehberi.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/yatirim/</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/hediye/</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
+  <!-- Araçlar -->
+  <url>
+    <loc>https://xenoncountry.com/otomotiv/yakit-hesaplama.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-   <!-- Türkçe İçerikler -->
-   <url>
-      <loc>https://xenoncountry.com/finans/atm-para-yuttu.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/finans/karttan-para-cekildi.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/teknoloji/instagram-cozumu.html</loc>
-      <lastmod>2025-02-07</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/finans/banka-promosyonu-cayma-bedeli.html</loc>
-      <lastmod>2025-02-07</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/ekonomi/yurt-disi-telefon-kaydi.html</loc>
-      <lastmod>2025-02-07</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/steamhizsorunu/steam-hiz-sorunu.html</loc>
-      <lastmod>2025-02-07</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/evyasam/kombi-basinci.html</loc>
-      <lastmod>2025-02-07</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
+  <url>
+    <loc>https://xenoncountry.com/rehber/hak-arama-rehberi.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-   <!-- İngilizce İçerikler -->
-   <url>
-      <loc>https://xenoncountry.com/en/instablurryproblem/instagram-blur-fix.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/en/money/50-30-20-rule.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/en/tech/iphone-background-apps.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/en/gaming/steam-slow-download.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
-      <loc>https://xenoncountry.com/en/life/air-fryer-cleaning.html</loc>
-      <lastmod>2025-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
+  <url>
+    <loc>https://xenoncountry.com/eticaret/net-kar-sihirbazi.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://xenoncountry.com/yatirim/index.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://xenoncountry.com/hediye/index.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog & Rehberler -->
+  <url>
+    <loc>https://xenoncountry.com/evyasam/kombi-basinci.html</loc>
+    <lastmod>2025-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

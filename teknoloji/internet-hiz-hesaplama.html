@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İndirme Süresi ve Kota Hesaplayıcı | Xenon Country</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Dosya kaç saatte iner? 100 GB oyun ne zaman biter? Netflix, YouTube ne kadar internet yer? İndirme süresi ve kota hesaplama aracı.">
+    <meta name="keywords" content="indirme süresi hesaplama, download time calculator, kaç saatte iner, internet kota hesaplama, netflix ne kadar internet yer, mbps hesaplama">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --bg: #0f172a; --text: #f8fafc; --accent: #38bdf8; --card: #1e293b; --success: #22c55e; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+
+        header { background: #1e293b; border-bottom: 1px solid #334155; padding: 15px 0; position: sticky; top: 0; z-index: 50; }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 900; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+
+        /* HERO */
+        .hero-section { text-align: center; margin-bottom: 40px; }
+        .hero-section h1 { font-size: 36px; font-weight: 900; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .hero-section p { color: #94a3b8; font-size: 18px; }
+
+        /* TABS */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .tab-btn { background: #334155; color: #94a3b8; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: 700; transition: 0.3s; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { background: #475569; color: white; }
+        .tab-btn.active { background: var(--accent); color: #0f172a; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+
+        /* CARD */
+        .calculator-card { background: var(--card); border-radius: 24px; padding: 40px; border: 1px solid #334155; display: none; animation: fadeIn 0.4s ease; }
+        .calculator-card.active { display: block; }
+
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        @media (max-width: 600px) { .input-grid { grid-template-columns: 1fr; } }
+
+        .form-group label { display: block; font-size: 14px; font-weight: 700; color: #94a3b8; margin-bottom: 10px; }
+        .input-wrapper { position: relative; }
+        .input-box { width: 100%; background: #0f172a; border: 2px solid #334155; color: white; padding: 16px; border-radius: 12px; font-size: 18px; font-weight: 700; box-sizing: border-box; transition: 0.3s; }
+        .input-box:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1); }
+        .unit { position: absolute; right: 16px; top: 18px; color: #64748b; font-weight: 700; font-size: 14px; }
+
+        /* PRESETS */
+        .preset-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+        .tag { background: #334155; color: #cbd5e1; padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.2s; font-weight: 600; }
+        .tag:hover { background: #475569; color: white; }
+
+        /* RESULT BOX */
+        .result-box { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 16px; padding: 30px; text-align: center; margin-top: 30px; }
+        .result-time { font-size: 48px; font-weight: 900; color: var(--accent); line-height: 1.2; margin-bottom: 10px; text-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+        .result-desc { font-size: 16px; color: #cbd5e1; }
+        
+        /* PROGRESS BAR */
+        .progress-container { margin-top: 25px; background: #0f172a; height: 10px; border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-bar { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent), #818cf8); animation: loading 2s infinite ease-in-out; }
+        @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+        /* QUOTA MODE STYLES */
+        .quota-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+        .quota-item { background: #0f172a; border: 2px solid #334155; border-radius: 16px; padding: 15px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .quota-item:hover { border-color: #f43f5e; }
+        .quota-item.active { border-color: #f43f5e; background: rgba(244, 63, 94, 0.1); }
+        .quota-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+        .quota-name { font-size: 13px; font-weight: 700; color: #cbd5e1; }
+
+        .calc-btn { width: 100%; background: var(--accent); color: #0f172a; border: none; padding: 18px; border-radius: 14px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; margin-top: 20px; }
+        .calc-btn:hover { background: #7dd3fc; transform: translateY(-2px); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { text-align: center; margin-top: 60px; font-size: 13px; color: #64748b; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-atom"></i> Xenon Country</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero-section">
+            <h1>İnternet Hız ve Kota Sihirbazı ⚡</h1>
+            <p>Sabırsızlar için indirme süresi, kısıtlı paketi olanlar için kota hesaplayıcı.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('quota')"><i class="fa-solid fa-chart-pie"></i> Kotam Biter Mi?</button>
+            <button class="tab-btn" onclick="switchTab('download')"><i class="fa-solid fa-download"></i> Kaç Saatte İner?</button>
+        </div>
+
+        <!-- MOD 2: KOTA HESAPLAMA (ÖN PLANDA) -->
+        <div id="tab-quota" class="calculator-card active">
+            <div class="form-group">
+                <label>Ne Yapacaksın?</label>
+                <div class="quota-grid">
+                    <div class="quota-item active" onclick="selectActivity(this, 3.0, 'Netflix HD')">
+                        <span class="quota-icon" style="color:#e50914;"><i class="fa-brands fa-youtube"></i></span>
+                        <span class="quota-name">Video/Dizi (HD)</span>
+                    </div>
+                    <div class="quota-item" onclick="selectActivity(this, 7.0, 'Netflix 4K')">
+                        <span class="quota-icon" style="color:#e50914;"><i class="fa-solid fa-tv"></i></span>
+                        <span class="quota-name">Video/Dizi (4K)</span>
+                    </div>
+                    <div class="quota-item" onclick="selectActivity(this, 0.15, 'Spotify')">
+                        <span class="quota-icon" style="color:#1db954;"><i class="fa-brands fa-spotify"></i></span>
+                        <span class="quota-name">Müzik (Yüksek)</span>
+                    </div>
+                    <div class="quota-item" onclick="selectActivity(this, 0.05, 'Instagram')">
+                        <span class="quota-icon" style="color:#c13584;"><i class="fa-brands fa-instagram"></i></span>
+                        <span class="quota-name">Sosyal Medya</span>
+                    </div>
+                    <div class="quota-item" onclick="selectActivity(this, 0.2, 'Online Oyun')">
+                        <span class="quota-icon" style="color:#f59e0b;"><i class="fa-solid fa-gamepad"></i></span>
+                        <span class="quota-name">Online Oyun</span>
+                    </div>
+                    <div class="quota-item" onclick="selectActivity(this, 0.5, 'Zoom')">
+                        <span class="quota-icon" style="color:#3b82f6;"><i class="fa-solid fa-video"></i></span>
+                        <span class="quota-name">Görüntülü Arama</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:30px;">
+                <label>Ne Kadar Süre? (Saat)</label>
+                <div class="input-wrapper">
+                    <input type="number" id="duration" class="input-box" value="1">
+                    <span class="unit">Saat</span>
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calcQuota()" style="background:#f43f5e; color:white;">HARCAMAYI GÖR</button>
+
+            <div id="quotaResult" class="result-box" style="display:none; border-color:rgba(244, 63, 94, 0.3); background:rgba(244, 63, 94, 0.1);">
+                <div class="result-time" id="dataUsed" style="color:#f43f5e;">0 MB</div>
+                <div class="result-desc" id="quotaDesc">...</div>
+            </div>
+        </div>
+
+        <!-- MOD 1: İNDİRME SÜRESİ -->
+        <div id="tab-download" class="calculator-card">
+            <div class="input-grid">
+                <div class="form-group">
+                    <label>Dosya Boyutu</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="fileSize" class="input-box" placeholder="Örn: 50">
+                        <span class="unit">GB</span>
+                    </div>
+                    <div class="preset-tags">
+                        <div class="tag" onclick="setVal('fileSize', 110)">GTA V (110GB)</div>
+                        <div class="tag" onclick="setVal('fileSize', 230)">Call of Duty (230GB)</div>
+                        <div class="tag" onclick="setVal('fileSize', 10)">4K Film (10GB)</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>İnternet Hızın (Download)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="speed" class="input-box" placeholder="Örn: 35">
+                        <span class="unit">Mbps</span>
+                    </div>
+                    <div class="preset-tags">
+                        <div class="tag" onclick="setVal('speed', 16)">ADSL (16)</div>
+                        <div class="tag" onclick="setVal('speed', 35)">VDSL (35)</div>
+                        <div class="tag" onclick="setVal('speed', 100)">Fiber (100)</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calcDownload()">HESAPLA</button>
+
+            <div id="dlResult" class="result-box" style="display:none;">
+                <div class="result-time" id="timeResult">00:00:00</div>
+                <div class="result-desc">Bu hızla indirme yaklaşık bu kadar sürecek.</div>
+                <div class="progress-container"><div class="progress-bar"></div></div>
+                <p style="font-size:12px; color:#64748b; margin-top:15px;">
+                    *Teorik hız + %10 sistem gecikmesi (disk yazma, sunucu yanıtı) eklenerek hesaplanmıştır.
+                </p>
+            </div>
+        </div>
+
+        <!-- REKLAM -->
+        <div style="margin-top:40px; text-align:center;">
+             <p style="font-size:12px; color:#475569; margin-bottom:5px;">Sponsorlu</p>
+             <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8335171074656428"
+                 data-ad-slot="1234567890" 
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+             <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             </script>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Xenon Country.</p>
+    </footer>
+
+    <script>
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.calculator-card').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // SET INPUT VALUE
+        function setVal(id, val) {
+            document.getElementById(id).value = val;
+        }
+
+        // CALC DOWNLOAD TIME
+        function calcDownload() {
+            const sizeGB = parseFloat(document.getElementById('fileSize').value);
+            const speedMbps = parseFloat(document.getElementById('speed').value);
+
+            if (!sizeGB || !speedMbps) return alert("Lütfen değerleri girin!");
+
+            // Formül: Boyut (MB) / (Hız (Mbps) / 8) = Saniye
+            const sizeMB = sizeGB * 1024;
+            const speedMBps = speedMbps / 8; // Bit to Byte
+            
+            // %10 OVERHEAD (Disk yazma, protokol gecikmesi, kayıplar)
+            const theoreticalSeconds = sizeMB / speedMBps;
+            const totalSeconds = theoreticalSeconds * 1.10; 
+
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+
+            // Formatlama
+            let timeString = "";
+            if(hours > 0) timeString += `${hours} Saat `;
+            if(minutes > 0) timeString += `${minutes} Dakika `;
+            timeString += `${seconds} Saniye`;
+            
+            document.getElementById('timeResult').innerText = timeString;
+            document.getElementById('dlResult').style.display = 'block';
+        }
+
+        // QUOTA CALCULATION VARS
+        let selectedRate = 3.0; // GB per hour
+        let selectedName = "Netflix HD";
+
+        function selectActivity(el, rate, name) {
+            document.querySelectorAll('.quota-item').forEach(item => item.classList.remove('active'));
+            el.classList.add('active');
+            selectedRate = rate;
+            selectedName = name;
+        }
+
+        function calcQuota() {
+            const hours = parseFloat(document.getElementById('duration').value) || 1;
+            
+            const totalGB = selectedRate * hours;
+            
+            let resultText = "";
+            if (totalGB < 1) {
+                resultText = (totalGB * 1024).toFixed(0) + " MB";
+            } else {
+                resultText = totalGB.toFixed(2) + " GB";
+            }
+
+            document.getElementById('dataUsed').innerText = resultText;
+            document.getElementById('quotaDesc').innerText = `${hours} saat boyunca ${selectedName} kullanımı yaklaşık bu kadar internet harcar.`;
+            document.getElementById('quotaResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

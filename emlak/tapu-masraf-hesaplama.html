@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Alım-Satım Masraf Robotu (Ev & Araç) | Xenon Country</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="2026 Güncel Tapu Harcı ve Araç Noter Satış Ücreti Hesaplama. Ekspertiz, plaka değişikliği ve emlakçı komisyonu dahil detaylı maliyet analizi.">
+    <meta name="keywords" content="2026 tapu harcı, araç noter ücreti 2026, ekspertiz ücreti, ev alım satım masrafları, araba satış masrafı">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5N5SDYX95K');
+    </script>
+    
+    <!-- ADSENSE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --bg: #f8fafc; --text: #0f172a; --primary: #059669; --secondary: #3b82f6; --accent-car: #f59e0b; --card: #ffffff; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+
+        header { background: #fff; border-bottom: 1px solid var(--border); padding: 15px 0; position: sticky; top: 0; z-index: 50; }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 30px; }
+        @media (max-width: 800px) { .container { grid-template-columns: 1fr; } }
+
+        /* MODE TABS */
+        .mode-tabs { display: flex; gap: 15px; margin-bottom: 25px; }
+        .mode-btn { 
+            flex: 1; border: none; padding: 15px; border-radius: 16px; cursor: pointer; 
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s; opacity: 0.7; background: #e2e8f0; color: #64748b;
+        }
+        .mode-btn.active.real-estate { background: var(--primary); color: white; opacity: 1; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2); }
+        .mode-btn.active.vehicle { background: var(--accent-car); color: white; opacity: 1; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2); }
+
+        /* CALCULATOR CARD */
+        .calc-card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card-title { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .input-wrapper { position: relative; }
+        .input-box { width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-size: 18px; font-weight: 700; transition: 0.2s; box-sizing: border-box; }
+        .input-box:focus { border-color: var(--primary); outline: none; background: #ecfdf5; }
+        .currency { position: absolute; right: 16px; top: 18px; color: #94a3b8; font-weight: 600; }
+
+        /* TOGGLES & RADIOS */
+        .radio-group { display: flex; gap: 5px; background: #f1f5f9; padding: 5px; border-radius: 12px; margin-bottom: 20px; }
+        .radio-opt { flex: 1; text-align: center; padding: 12px; cursor: pointer; border-radius: 8px; font-weight: 600; color: #64748b; transition: 0.2s; font-size: 14px; }
+        .radio-opt.active { background: #fff; color: var(--text); box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .radio-opt.active.buyer { color: var(--primary); border-color: var(--primary); }
+        .radio-opt.active.seller { color: var(--secondary); border-color: var(--secondary); }
+
+        .checkbox-wrapper { display: flex; align-items: center; gap: 12px; margin-top: 10px; cursor: pointer; padding: 15px; border: 2px solid var(--border); border-radius: 12px; transition: 0.2s; background: #fff; }
+        .checkbox-wrapper:hover { border-color: #94a3b8; background: #f8fafc; }
+        .checkbox-wrapper input { width: 20px; height: 20px; cursor: pointer; }
+        .checkbox-text { font-size: 15px; font-weight: 600; color: #334155; }
+
+        .calc-btn { width: 100%; background: #0f172a; color: white; border: none; padding: 18px; border-radius: 14px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .calc-btn:hover { background: #000; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* RESULT AREA */
+        .result-box { display: none; margin-top: 0; animation: slideIn 0.5s ease; position: sticky; top: 100px; }
+        .receipt { background: #fff; border: 1px solid #e2e8f0; padding: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        
+        .receipt-header { background: #1e293b; color: white; padding: 25px; text-align: center; transition: 0.3s; }
+        .receipt-header.vehicle { background: #f59e0b; color: #fff; }
+        
+        .receipt-title { font-size: 12px; opacity: 0.9; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
+        .receipt-total { font-size: 38px; font-weight: 900; }
+        
+        .receipt-body { padding: 25px; }
+        .line-item { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #475569; align-items: center; }
+        .line-item.strong { color: #0f172a; font-weight: 700; font-size: 15px; border-top: 1px dashed #e2e8f0; padding-top: 12px; margin-top: 12px; }
+        .val { font-weight: 600; color: #0f172a; }
+        .val.highlight { color: var(--primary); }
+
+        /* SIDEBAR INFO */
+        .info-card { background: #eff6ff; padding: 20px; border-radius: 16px; border: 1px solid #dbeafe; margin-top: 20px; }
+        .info-title { font-weight: 800; color: #1e40af; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .info-text { font-size: 13px; color: #1e3a8a; line-height: 1.5; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* Dynamic Visibility */
+        .real-estate-only { display: block; }
+        .vehicle-only { display: none; }
+
+        footer { text-align: center; margin-top: 60px; font-size: 13px; color: #94a3b8; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-atom"></i> Xenon Country</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- SOL: GİRİŞ FORMU -->
+        <main>
+            <div class="mode-tabs">
+                <button class="mode-btn active real-estate" onclick="switchMode('real_estate')">
+                    <i class="fa-solid fa-house"></i> Konut / Arsa
+                </button>
+                <button class="mode-btn vehicle" onclick="switchMode('vehicle')">
+                    <i class="fa-solid fa-car"></i> Araç
+                </button>
+            </div>
+
+            <div class="calc-card">
+                <div class="card-title" id="cardTitle"><i class="fa-solid fa-calculator"></i> Masraf Robotu</div>
+                
+                <div class="form-group">
+                    <label>İşlem Türü</label>
+                    <div class="radio-group">
+                        <div class="radio-opt active buyer" onclick="setRole('alici', this)">Alıcıyım</div>
+                        <div class="radio-opt seller" onclick="setRole('satici', this)">Satıcıyım</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="priceLabel">Tapu Satış Bedeli</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="price" class="input-box" placeholder="Örn: 3000000">
+                        <span class="currency">₺</span>
+                    </div>
+                    <small id="priceHint" style="color:#64748b; font-size:12px; display:block; margin-top:5px;"><i class="fa-solid fa-circle-info"></i> Güncel rayiç bedelin altında olmamalıdır.</small>
+                </div>
+
+                <!-- GAYRİMENKUL SEÇENEKLERİ -->
+                <div class="real-estate-only">
+                    <div class="form-group" id="loanSection">
+                        <label>Banka & Finans</label>
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="useLoan">
+                            <span class="checkbox-text">Konut Kredisi Kullanacağım</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hizmet Bedeli</label>
+                        <label class="checkbox-wrapper" style="border-color:#e2e8f0;">
+                            <input type="checkbox" id="hasAgent" checked>
+                            <span class="checkbox-text">Emlakçı Var (%2 + KDV)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="tapuWhoGroup">
+                        <label>Tapu Harcı Ödeme Şekli</label>
+                        <div class="radio-group" style="background:#fff; border:1px solid #e2e8f0;">
+                            <div class="radio-opt active" onclick="setShare('both', this)">Yasal (%50-%50)</div>
+                            <div class="radio-opt" onclick="setShare('buyer', this)">Alıcı Öder (Tümü)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARAÇ SEÇENEKLERİ -->
+                <div class="vehicle-only">
+                    <div class="form-group">
+                        <label>Ek Hizmetler</label>
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="carExpert" checked>
+                            <span class="checkbox-text">Oto Ekspertiz Yapılacak</span>
+                        </label>
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="plateChange">
+                            <span class="checkbox-text">Plaka Değişimi Var</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="calc-btn" onclick="calculate()">
+                    HESAPLA <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+             <!-- REKLAM -->
+             <div style="margin-top:20px; text-align:center; padding:15px; border:1px dashed #cbd5e1; border-radius:12px; background:#fff;">
+                 <p style="font-size:11px; color:#94a3b8; margin-bottom:5px;">Sponsorlu</p>
+                 <ins class="adsbygoogle"
+                     style="display:block; width:100%;"
+                     data-ad-client="ca-pub-8335171074656428"
+                     data-ad-slot="1234567890" 
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                 <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                 </script>
+            </div>
+        </main>
+
+        <!-- SAĞ: SONUÇ FİŞİ -->
+        <aside>
+            <div id="resultBox" class="result-box">
+                <div class="receipt">
+                    <div class="receipt-header" id="receiptHeader">
+                        <div class="receipt-title">TOPLAM MALİYET</div>
+                        <div class="receipt-total" id="grandTotal">₺0</div>
+                        <div style="font-size:12px; opacity:0.8; margin-top:5px;">(Satış Bedeli Hariç)</div>
+                    </div>
+                    
+                    <div class="receipt-body" id="receiptBody">
+                        <!-- Burası JS ile dolacak -->
+                    </div>
+
+                    <!-- Alt Bilgi -->
+                    <div style="background:#f8fafc; padding:15px; font-size:11px; color:#64748b; text-align:center; border-top:1px solid #e2e8f0;">
+                        *2026 yılı tahmini resmi ücretler baz alınmıştır.
+                    </div>
+                </div>
+
+                <div class="info-card" id="infoCard">
+                    <!-- Dinamik Bilgi -->
+                </div>
+            </div>
+
+             <!-- Placeholder -->
+             <div id="placeholderSide" style="text-align:center; padding:40px; color:#94a3b8; border:2px dashed #e2e8f0; border-radius:20px;">
+                <i class="fa-solid fa-calculator fa-3x" style="margin-bottom:15px; opacity:0.3;"></i>
+                <p>Verileri girip hesapla butonuna basın.</p>
+             </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Xenon Country. Veriler bilgi amaçlıdır.</p>
+    </footer>
+
+    <script>
+        let currentMode = 'real_estate';
+        let currentRole = 'alici';
+        let currentShare = 'both';
+
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            // Tab Görseli
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.mode-btn.${mode === 'real_estate' ? 'real-estate' : 'vehicle'}`).classList.add('active');
+
+            // Form Alanları
+            if(mode === 'real_estate') {
+                document.querySelector('.real-estate-only').style.display = 'block';
+                document.querySelector('.vehicle-only').style.display = 'none';
+                document.getElementById('priceLabel').innerText = "Tapu Satış Bedeli";
+                document.getElementById('priceHint').style.display = 'block';
+                document.getElementById('cardTitle').innerHTML = '<i class="fa-solid fa-house"></i> Konut Masrafı';
+            } else {
+                document.querySelector('.real-estate-only').style.display = 'none';
+                document.querySelector('.vehicle-only').style.display = 'block';
+                document.getElementById('priceLabel').innerText = "Araç Satış Bedeli (Opsiyonel)";
+                document.getElementById('priceHint').style.display = 'none';
+                document.getElementById('cardTitle').innerHTML = '<i class="fa-solid fa-car"></i> Araç Masrafı';
+            }
+
+            // Reset UI
+            document.getElementById('resultBox').style.display = 'none';
+            document.getElementById('placeholderSide').style.display = 'block';
+        }
+
+        function setRole(role, el) {
+            currentRole = role;
+            el.parentElement.querySelectorAll('.radio-opt').forEach(opt => opt.classList.remove('active'));
+            el.classList.add('active');
+
+            if(currentMode === 'real_estate') {
+                const loanSec = document.getElementById('loanSection');
+                const loanCheck = document.getElementById('useLoan');
+                if(role === 'satici') {
+                    loanSec.style.opacity = '0.5';
+                    loanSec.style.pointerEvents = 'none';
+                    loanCheck.checked = false;
+                } else {
+                    loanSec.style.opacity = '1';
+                    loanSec.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
+        function setShare(type, el) {
+            currentShare = type;
+            el.parentElement.querySelectorAll('.radio-opt').forEach(opt => opt.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function calculate() {
+            const price = parseFloat(document.getElementById('price').value) || 0;
+            
+            if (currentMode === 'real_estate') {
+                if (price === 0) return alert("Lütfen satış bedelini girin.");
+                calcRealEstate(price);
+            } else {
+                calcVehicle(price);
+            }
+        }
+
+        function calcRealEstate(price) {
+            const hasAgent = document.getElementById('hasAgent').checked;
+            const useLoan = document.getElementById('useLoan').checked;
+
+            const donerSermaye = 4250; 
+            const ekspertizUcreti = 18500; 
+            const ipotekUcreti = 3250;
+            const agentFeePerSide = price * 0.024; // %2 + KDV
+            const legalFeePerSide = price * 0.02;
+
+            let myTotal = 0, myTapu = 0, myAgent = 0, myDoner = 0, myBank = 0;
+            let tapuNote = "";
+
+            if (currentRole === 'alici') {
+                if (currentShare === 'both') {
+                    myTapu = legalFeePerSide;
+                    tapuNote = "(Senin payın: %2)";
+                } else {
+                    myTapu = legalFeePerSide * 2;
+                    tapuNote = "(Tüm harç alıcıda %4)";
+                }
+                myDoner = donerSermaye;
+                if (hasAgent) myAgent = agentFeePerSide;
+                if (useLoan) myBank = ekspertizUcreti + ipotekUcreti;
+            } else {
+                if (currentShare === 'both') {
+                    myTapu = legalFeePerSide;
+                    tapuNote = "(Senin payın: %2)";
+                } else {
+                    myTapu = 0;
+                    tapuNote = "(Alıcı ödüyor)";
+                }
+                myDoner = 0;
+                if (hasAgent) myAgent = agentFeePerSide;
+            }
+
+            myTotal = myTapu + myDoner + myAgent + myBank;
+            
+            // FİŞ OLUŞTUR
+            const header = document.getElementById('receiptHeader');
+            header.className = 'receipt-header'; // Reset color
+            
+            let html = `
+                <div class="line-item"><span>📜 Tapu Harcı (%4)</span><span class="val">${formatMoney(myTapu)}</span></div>
+                <div style="font-size:11px; color:#94a3b8; text-align:right; margin-top:-8px; margin-bottom:12px;">${tapuNote}</div>
+                <div class="line-item"><span>🔄 Döner Sermaye</span><span class="val">${formatMoney(myDoner)}</span></div>
+            `;
+            
+            if(myBank > 0) {
+                html += `
+                    <div class="line-item"><span>🏦 Ekspertiz</span><span class="val">${formatMoney(ekspertizUcreti)}</span></div>
+                    <div class="line-item"><span>📝 İpotek Tesisi</span><span class="val">${formatMoney(ipotekUcreti)}</span></div>
+                `;
+            }
+            
+            html += `
+                <div class="line-item strong"><span>💼 Emlak Komisyonu</span><span class="val highlight">${formatMoney(myAgent)}</span></div>
+            `;
+
+            renderResult(myTotal, html);
+            
+            // Info Update
+            document.getElementById('infoCard').innerHTML = `
+                <div class="info-title"><i class="fa-solid fa-house-circle-check"></i> Emlak Notu</div>
+                <p class="info-text">2026 yılı için ortalama döner sermaye ücreti 4.250 TL olarak hesaplanmıştır. Tapu harcı yasal olarak %2 alıcı, %2 satıcı şeklinde ödenmelidir.</p>
+            `;
+        }
+
+        function calcVehicle(price) {
+            const hasExpert = document.getElementById('carExpert').checked;
+            const hasPlate = document.getElementById('plateChange').checked;
+
+            // 2026 Tahmini Araç Giderleri
+            const noterUcreti = 2850; // Standart satış
+            const plakaUcreti = 650;  // Plaka basım
+            const expertizUcreti = 4500; // Ortalama paket
+
+            let myTotal = 0;
+            let myNoter = 0, myExpert = 0, myPlate = 0;
+
+            if (currentRole === 'alici') {
+                myNoter = noterUcreti;
+                if(hasPlate) {
+                    // Plaka değişimi varsa noter ücreti biraz artar + basım ücreti
+                    myNoter += 200; // İşlem farkı
+                    myPlate = plakaUcreti;
+                }
+                if(hasExpert) myExpert = expertizUcreti;
+                
+                myTotal = myNoter + myPlate + myExpert;
+            } else {
+                // Satıcı genelde MTV borcu vs yoksa masrafsızdır.
+                myTotal = 0;
+            }
+
+            // FİŞ OLUŞTUR
+            const header = document.getElementById('receiptHeader');
+            header.className = 'receipt-header vehicle'; 
+
+            let html = `
+                <div class="line-item"><span>⚖️ Noter Satış Ücreti</span><span class="val">${formatMoney(myNoter)}</span></div>
+            `;
+            
+            if(hasPlate && currentRole === 'alici') {
+                html += `<div class="line-item"><span>🔢 Plaka Basım</span><span class="val">${formatMoney(myPlate)}</span></div>`;
+            }
+            
+            if(hasExpert && currentRole === 'alici') {
+                html += `<div class="line-item"><span>🔍 Oto Ekspertiz</span><span class="val">${formatMoney(myExpert)}</span></div>`;
+            }
+
+            if(currentRole === 'satici') {
+                html = `<div style="text-align:center; color:#166534; font-weight:700; padding:20px;">Satıcıya noter masrafı çıkmaz.<br><small style="font-weight:400; color:#64748b;">(MTV ve trafik cezaları hariç)</small></div>`;
+            }
+
+            renderResult(myTotal, html);
+
+            // Info Update
+            document.getElementById('infoCard').innerHTML = `
+                <div class="info-title" style="color:#b45309;"><i class="fa-solid fa-car-on"></i> Araç Notu</div>
+                <p class="info-text" style="color:#92400e;">2026 yılı araç satışlarında noter ücreti standarttır, araç bedeline göre değişmez. Ekspertiz ücreti firmaya göre değişiklik gösterebilir.</p>
+            `;
+        }
+
+        function renderResult(total, html) {
+            document.getElementById('grandTotal').innerText = formatMoney(total);
+            document.getElementById('receiptBody').innerHTML = html;
+            
+            document.getElementById('placeholderSide').style.display = 'none';
+            document.getElementById('resultBox').style.display = 'block';
+        }
+
+        function formatMoney(num) {
+            return "₺" + num.toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+    </script>
+</body>
+</html>

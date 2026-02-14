@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xenon Country | Hayatınızı Kolaylaştıran Dijital İsviçre Çakısı</title>
     
-    <!-- SEO OPTİMİZASYONU (Genişletilmiş) -->
+    <!-- SEO OPTİMİZASYONU -->
     <meta name="description" content="Dilekçe oluşturucu, tapu harcı hesaplama, araç noter ücreti, mesaj sihirbazı ve internet hız testi. Günlük sorunlarınıza anında, reklamsız ve pratik çözümler.">
-    <!-- Kullanıcıların arayabileceği basit kombinasyonlar eklendi -->
     <meta name="keywords" content="tapu, noter, dilekçe, mesaj, internet hızı, kota, yakıt, kombi, hediye, yatırım, 2026 masraf, tapu harcı hesaplama, araç satış ücreti, dilekçe örneği, istifa dilekçesi, kira itirazı, netflix ne kadar yer, gta 5 kaç gb, kombi su basma, atm para yuttu, imei kayıt ücreti">
 
     <!-- FAVICON -->
@@ -45,19 +44,33 @@
         .logo { font-size: 22px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
         
-        /* Hero Section (Compact) */
+        /* Language Button */
+        .lang-btn {
+            background: #0f172a;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+        .lang-btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+        /* Hero Section (Compact & Clean) */
         .hero { 
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             color: #fff; 
-            padding: 30px 20px; 
+            padding: 40px 20px; 
             margin-bottom: 30px; 
             border-bottom: 1px solid #334155;
         }
-        .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-        .hero-text h1 { font-size: 24px; font-weight: 800; margin-bottom: 5px; color: #fff; }
-        .hero-text p { font-size: 14px; color: #94a3b8; margin: 0; }
-        .hero-icon { font-size: 32px; color: var(--accent); opacity: 0.8; }
-        @media (max-width: 768px) { .hero-inner { flex-direction: column; text-align: center; } }
+        .hero-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .hero p { font-size: 15px; color: #94a3b8; margin: 0 auto; max-width: 600px; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; display: grid; grid-template-columns: 2.5fr 1fr; gap: 40px; }
         @media (max-width: 950px) { .container { grid-template-columns: 1fr; } }
@@ -74,13 +87,13 @@
         .tool-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
         .tool-card p { font-size: 13px; color: #64748b; line-height: 1.4; flex-grow: 1; }
 
-        /* Blog List (Expanded) */
-        .blog-list { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        /* Blog List */
+        .blog-list { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 700px) { .blog-list { grid-template-columns: repeat(2, 1fr); } }
 
         .blog-item { display: flex; flex-direction: column; background: #fff; border-radius: 16px; border: 1px solid var(--border); text-decoration: none; color: inherit; transition: 0.2s; overflow: hidden; height: 100%; }
         .blog-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
-        .blog-thumb { width: 100%; height: 160px; object-fit: cover; }
+        .blog-thumb { width: 100%; height: 180px; object-fit: cover; }
         .blog-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
         .blog-content h4 { font-size: 16px; font-weight: 800; margin-bottom: 8px; color: #0f172a; line-height: 1.4; }
         .blog-content p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 10px; flex-grow: 1; }
@@ -104,22 +117,15 @@
                 <div class="logo-icon"><i class="fa-solid fa-atom"></i></div>
                 Xenon Country
             </a>
-            <div style="font-size: 13px; font-weight: 600; color: #64748b; display:none; @media(min-width:600px){display:block;}">
-                Dijital İsviçre Çakınız
-            </div>
+            <a href="index-en.html" class="lang-btn"><i class="fa-solid fa-globe"></i> EN</a>
         </div>
     </header>
 
     <!-- Compact Hero Section -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-text">
-                <h1>Karmaşaya Son, Çözüme Hoş Geldiniz.</h1>
-                <p>İnternette kaybolmadan; hesaplama araçlarına, resmi dilekçelere ve net cevaplara ulaşın.</p>
-            </div>
-            <div class="hero-icon">
-                <i class="fa-solid fa-compass-drafting"></i>
-            </div>
+            <h1>Çözüme Hoş Geldiniz.</h1>
+            <p>İnternette kaybolmadan; hesaplama araçlarına, resmi dilekçelere ve net cevaplara ulaşın.</p>
         </div>
     </section>
 
@@ -134,49 +140,49 @@
                 <a href="emlak/tapu-masraf-hesaplama.html" class="tool-card" style="border-color:#059669;">
                     <div class="icon" style="color:#059669; background:#ecfdf5;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                     <h3>Tapu & Araç Masrafı <span class="badge badge-new">2026</span></h3>
-                    <p>Ev veya araba alırken sürpriz yok. Tapu harcı, noter, döner sermaye ve ekspertiz giderlerini kuruşu kuruşuna gör.</p>
+                    <p>Ev veya araba alırken sürpriz yok. Tapu harcı, noter, döner sermaye masraflarını hesapla.</p>
                 </a>
 
                 <!-- Mesaj Sihirbazı -->
                 <a href="iletisim/mesaj-sihirbazi.html" class="tool-card" style="border-color:#7c3aed;">
                     <div class="icon" style="color:#7c3aed; background:#f5f3ff;"><i class="fa-solid fa-comment-dots"></i></div>
                     <h3>Mesaj Sihirbazı <span class="badge badge-hot">VİRAL</span></h3>
-                    <p>Patrona zam maili, ev sahibine bahane veya sevgiliye özür mesajı... Sen ne diyeceğini seç, biz profesyonelce yazalım.</p>
+                    <p>Patrona zam maili veya ev sahibine mesaj... Sen ne diyeceğini seç, biz profesyonelce yazalım.</p>
                 </a>
 
                 <!-- İnternet & Kota Hesaplayıcı -->
                 <a href="teknoloji/internet-hiz-hesaplama.html" class="tool-card">
                     <div class="icon" style="color:#0ea5e9; background:#e0f2fe;"><i class="fa-solid fa-wifi"></i></div>
                     <h3>İnternet Kota & Hız</h3>
-                    <p>GTA 5 kaç saatte iner? Netflix kotamı bitirir mi? İndirme süresini ve harcanan veriyi hesapla.</p>
+                    <p>GTA 5 kaç saatte iner? Netflix kotamı bitirir mi? İndirme süresini hesapla.</p>
                 </a>
 
                 <!-- Dilekçe Sihirbazı -->
                 <a href="rehber/hak-arama-rehberi.html" class="tool-card">
                     <div class="icon"><i class="fa-solid fa-file-pen"></i></div>
                     <h3>Dilekçe Sihirbazı</h3>
-                    <p>Tüketici Hakem Heyeti, Trafik Cezası veya İstifa dilekçenizi saniyeler içinde, resmi formatta oluşturun.</p>
+                    <p>Tüketici Hakem Heyeti veya İstifa dilekçenizi saniyeler içinde, resmi formatta oluşturun.</p>
                 </a>
 
                 <!-- Net Kar Sihirbazı -->
                 <a href="eticaret/net-kar-sihirbazi.html" class="tool-card">
                     <div class="icon"><i class="fa-solid fa-calculator"></i></div>
                     <h3>Net Kar Hesapla</h3>
-                    <p>Trendyol, Hepsiburada komisyonları, KDV ve kargo düşünce cebine gerçekten ne kalıyor?</p>
+                    <p>Trendyol, Hepsiburada komisyonları ve kargo düşünce cebine ne kalıyor?</p>
                 </a>
 
                 <!-- Yakıtmatik -->
                 <a href="otomotiv/yakit-hesaplama.html" class="tool-card">
                     <div class="icon"><i class="fa-solid fa-gas-pump"></i></div>
                     <h3>Yakıtmatik</h3>
-                    <p>Şehir içi/dışı farkıyla km maliyetini ve kişi başı yolculuk tutarını anında hesapla.</p>
+                    <p>Şehir içi/dışı farkıyla km maliyetini ve kişi başı tutarı anında hesapla.</p>
                 </a>
 
                 <!-- Zaman Makinesi -->
                 <a href="yatirim/index.html" class="tool-card">
                     <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
                     <h3>Geçmiş Yatırım</h3>
-                    <p>"Keşke o zaman dolar/altın alsaydım" dediğin paranın bugünkü değerini gör ve üzül.</p>
+                    <p>"Keşke o zaman dolar alsaydım" dediğin paranın bugünkü değerini gör.</p>
                 </a>
 
                 <!-- Hediye Sihirbazı -->
@@ -192,9 +198,9 @@
             <h2 class="section-title"><i class="fa-solid fa-book-open"></i> "Nasıl Çözülür?" Rehberleri</h2>
             <div class="blog-list">
                 
-                <!-- 1. Kombi Rehberi -->
+                <!-- 1. Kombi Rehberi (Manometre/Basınç Saati) -->
                 <a href="evyasam/kombi-basinci.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=600&q=80" alt="Kombi Basınç Göstergesi" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1581094794329-cd1096d7a43f?auto=format&fit=crop&w=600&q=80" alt="Kombi Basınç Göstergesi" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Kombi Basıncı Neden Düşüyor? (Hızlı Teşhis)</h4>
                         <p>Usta çağırmadan önce genleşme tankını ve sızıntıları kontrol etme rehberi.</p>
@@ -202,9 +208,9 @@
                     </div>
                 </a>
 
-                <!-- 2. Kart Sorunu -->
+                <!-- 2. Kart Sorunu (Kredi Kartı/POS) -->
                 <a href="finans/karttan-para-cekildi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=600&q=80" alt="Pos Cihazı Ödeme" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=600&q=80" alt="Kredi Kartı Pos Cihazı" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Karttan Para Çekildi Ama Sipariş Oluşmadı?</h4>
                         <p>Askıda kalan provizyon ödemelerinin iade süreci ve bankayla iletişim yolları.</p>
@@ -212,9 +218,9 @@
                     </div>
                 </a>
 
-                <!-- 3. ATM Sorunu (YENİ) -->
+                <!-- 3. ATM Sorunu (ATM) -->
                 <a href="finans/atm-para-yuttu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1533605415707-c1cb496ec2b3?auto=format&fit=crop&w=600&q=80" alt="ATM Bankamatik" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cd4?auto=format&fit=crop&w=600&q=80" alt="ATM Bankamatik" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>ATM Paranızı Yuttuysa Panik Yapmayın!</h4>
                         <p>Kasa mutabakatı süreci ve paranızı bankadan en hızlı nasıl geri alırsınız?</p>
@@ -222,9 +228,9 @@
                     </div>
                 </a>
 
-                <!-- 4. Instagram Kalite (YENİ) -->
+                <!-- 4. Instagram Kalite (Telefon/Sosyal Medya) -->
                 <a href="teknoloji/instagram-cozumu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1579309401389-a241dd49d977?auto=format&fit=crop&w=600&q=80" alt="Bulanık Telefon Ekranı" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=600&q=80" alt="Instagram Uygulaması" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Instagram Hikayeler Neden Bulanık? (2025)</h4>
                         <p>Android telefonlarda yaşanan kalite kaybını önleyen gizli ayar ve yükleme taktikleri.</p>
@@ -232,9 +238,9 @@
                     </div>
                 </a>
 
-                <!-- 5. Steam İndirme Hızı (YENİ) -->
+                <!-- 5. Steam İndirme Hızı (Oyun Setup) -->
                 <a href="teknoloji/steam-hiz-sorunu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Oyun Bilgisayarı Setup" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Oyun Bilgisayarı Klavye" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Steam İndirme Hızı Neden Düşük?</h4>
                         <p>İnternetiniz hızlı olsa bile Steam'de yavaş indirme sorununun sunucu bazlı çözümü.</p>
@@ -242,9 +248,9 @@
                     </div>
                 </a>
 
-                <!-- 6. Yurt Dışı Telefon (YENİ) -->
+                <!-- 6. Yurt Dışı Telefon (Pasaport & Telefon) -->
                 <a href="ekonomi/yurt-disi-telefon-kaydi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?auto=format&fit=crop&w=600&q=80" alt="Pasaport ve Teknoloji" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Pasaport ve Telefon" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Yurt Dışı Telefon Kaydı (IMEI) Değer mi?</h4>
                         <p>2025 IMEI kayıt ücretleri ile yurt içi fiyatları karşılaştırması. Kâr mı, zarar mı?</p>

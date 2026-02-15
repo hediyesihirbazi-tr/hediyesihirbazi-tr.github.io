@@ -91,18 +91,47 @@
         .tool-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
         .tool-card p { font-size: 13px; color: #64748b; line-height: 1.4; flex-grow: 1; }
 
-        /* BLOG LIST */
-        .blog-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 700px) { .blog-list { grid-template-columns: 1fr; } }
+        /* YENİ LİSTE TASARIMI (Rehberler İçin) */
+        .guide-list { display: flex; flex-direction: column; gap: 15px; }
+        
+        .guide-item { 
+            display: flex; 
+            align-items: center; 
+            background: #fff; 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 15px 20px; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: 0.2s; 
+        }
+        
+        .guide-item:hover { 
+            border-color: var(--accent); 
+            transform: translateX(5px); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+        }
+        
+        .guide-icon-box { 
+            width: 42px; 
+            height: 42px; 
+            background: #f1f5f9; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 20px; 
+            color: var(--text); 
+            margin-right: 15px; 
+            flex-shrink: 0;
+        }
 
-        .blog-item { display: flex; flex-direction: column; background: #fff; border-radius: 16px; border: 1px solid var(--border); text-decoration: none; color: inherit; transition: 0.2s; overflow: hidden; height: 100%; }
-        .blog-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
-        /* GÖRSEL DÜZELTMESİ: height ve object-fit sabitlendi */
-        .blog-thumb { width: 100%; height: 200px; object-fit: cover; }
-        .blog-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-        .blog-content h4 { font-size: 16px; font-weight: 800; margin-bottom: 8px; color: #0f172a; line-height: 1.4; }
-        .blog-content p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 10px; flex-grow: 1; }
-        .read-more { font-size: 12px; font-weight: 700; color: var(--accent); margin-top: auto; display: flex; align-items: center; gap: 5px; }
+        .guide-content { flex-grow: 1; }
+        .guide-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; color: #0f172a; }
+        .guide-content p { font-size: 13px; color: #64748b; margin: 0; }
+        
+        .arrow-icon { color: #cbd5e1; font-size: 14px; transition: 0.2s; }
+        .guide-item:hover .arrow-icon { color: var(--accent); transform: translateX(3px); }
 
         /* SIDEBAR */
         .sidebar-widget { background: #fff; border: 1px solid var(--border); padding: 25px; border-radius: 24px; margin-bottom: 30px; }
@@ -122,8 +151,8 @@
                 <div class="logo-icon"><i class="fa-solid fa-atom"></i></div>
                 Xenon Country
             </a>
-            <!-- İNGİLİZCE SAYFA LİNKİ DÜZELTİLDİ -->
-            <a href="en.html" class="lang-btn"><i class="fa-solid fa-globe"></i> EN</a>
+            <!-- İNGİLİZCE SAYFA LİNKİ -->
+            <a href="en/index.html" class="lang-btn"><i class="fa-solid fa-globe"></i> EN</a>
         </div>
     </header>
 
@@ -199,58 +228,80 @@
 
             </div>
 
-            <!-- REHBERLER BÖLÜMÜ -->
+            <!-- REHBERLER BÖLÜMÜ (YENİ LİSTE TASARIMI) -->
             <h2 class="section-title"><i class="fa-solid fa-book-open"></i> "Nasıl Çözülür?" Rehberleri</h2>
-            <div class="blog-list">
+            <div class="guide-list">
                 
-                <!-- 1. Kombi Rehberi (Görsel: Kombi/Kazan) -->
-                <a href="evyasam/kombi-basinci.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1585129777179-734fb4419b6e?auto=format&fit=crop&w=600&q=80" alt="Kombi Basınç Göstergesi" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
+                <!-- 1. Kombi Rehberi -->
+                <a href="evyasam/kombi-basinci.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#ef4444; background:#fef2f2;">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <div class="guide-content">
                         <h4>Kombi Basıncı Neden Düşüyor? (Hızlı Teşhis)</h4>
                         <p>Usta çağırmadan önce genleşme tankını ve sızıntıları kontrol etme rehberi.</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
                 </a>
 
-                <!-- 2. ATM/Kart Sorunu (DÜZELTİLDİ: Link karttan-para-cekildi.html) -->
-                <a href="finans/karttan-para-cekildi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cd4?auto=format&fit=crop&w=600&q=80" alt="ATM Bankamatik" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
+                <!-- 2. Kart Sorunu -->
+                <a href="finans/karttan-para-cekildi.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#3b82f6; background:#eff6ff;">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <div class="guide-content">
+                        <h4>Karttan Para Çekildi Ama Sipariş Oluşmadı?</h4>
+                        <p>Askıda kalan provizyon ödemelerinin iade süreci ve bankayla iletişim yolları.</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                </a>
+
+                <!-- 3. ATM Sorunu -->
+                <a href="finans/atm-para-yuttu.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#10b981; background:#ecfdf5;">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                    <div class="guide-content">
                         <h4>ATM Paranızı Yuttuysa Panik Yapmayın!</h4>
                         <p>Kasa mutabakatı süreci ve paranızı bankadan en hızlı nasıl geri alırsınız?</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
                 </a>
 
-                <!-- 3. Instagram Kalite (Görsel: Telefon Ekranı) -->
-                <a href="teknoloji/instagram-cozumu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80" alt="Instagram Ekranı" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
+                <!-- 4. Instagram Kalite -->
+                <a href="teknoloji/instagram-cozumu.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#d946ef; background:#fdf4ff;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="guide-content">
                         <h4>Instagram Hikayeler Neden Bulanık? (2025)</h4>
                         <p>Android telefonlarda yaşanan kalite kaybını önleyen gizli ayar ve yükleme taktikleri.</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
                 </a>
 
-                <!-- 4. Steam İndirme Hızı (DÜZELTİLDİ: Link steam-hiz-sorunu.html) -->
-                <a href="teknoloji/steam-hiz-sorunu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1605901309584-818e25960b8f?auto=format&fit=crop&w=600&q=80" alt="Steam Oyun İndirme" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
+                <!-- 5. Steam İndirme Hızı -->
+                <a href="teknoloji/steam-hiz-sorunu.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#1e293b; background:#f1f5f9;">
+                        <i class="fa-brands fa-steam"></i>
+                    </div>
+                    <div class="guide-content">
                         <h4>Steam İndirme Hızı Neden Düşük?</h4>
                         <p>İnternetiniz hızlı olsa bile Steam'de yavaş indirme sorununun sunucu bazlı çözümü.</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
                 </a>
 
-                <!-- 5. Yurt Dışı Telefon (Görsel: Pasaport) -->
-                <a href="ekonomi/yurt-disi-telefon-kaydi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Pasaport ve Seyahat" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
+                <!-- 6. Yurt Dışı Telefon -->
+                <a href="ekonomi/yurt-disi-telefon-kaydi.html" class="guide-item">
+                    <div class="guide-icon-box" style="color:#f59e0b; background:#fffbeb;">
+                        <i class="fa-solid fa-passport"></i>
+                    </div>
+                    <div class="guide-content">
                         <h4>Yurt Dışı Telefon Kaydı (IMEI) Değer mi?</h4>
                         <p>2025 IMEI kayıt ücretleri ile yurt içi fiyatları karşılaştırması. Kâr mı, zarar mı?</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
                 </a>
 
             </div>

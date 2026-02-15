@@ -97,7 +97,8 @@
 
         .blog-item { display: flex; flex-direction: column; background: #fff; border-radius: 16px; border: 1px solid var(--border); text-decoration: none; color: inherit; transition: 0.2s; overflow: hidden; height: 100%; }
         .blog-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
-        .blog-thumb { width: 100%; height: 180px; object-fit: cover; }
+        /* GÖRSEL DÜZELTMESİ: height ve object-fit sabitlendi */
+        .blog-thumb { width: 100%; height: 200px; object-fit: cover; }
         .blog-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
         .blog-content h4 { font-size: 16px; font-weight: 800; margin-bottom: 8px; color: #0f172a; line-height: 1.4; }
         .blog-content p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 10px; flex-grow: 1; }
@@ -121,8 +122,8 @@
                 <div class="logo-icon"><i class="fa-solid fa-atom"></i></div>
                 Xenon Country
             </a>
-            <!-- İNGİLİZCE SAYFA LİNKİ -->
-            <a href="index-en.html" class="lang-btn"><i class="fa-solid fa-globe"></i> EN</a>
+            <!-- İNGİLİZCE SAYFA LİNKİ DÜZELTİLDİ -->
+            <a href="en.html" class="lang-btn"><i class="fa-solid fa-globe"></i> EN</a>
         </div>
     </header>
 
@@ -204,7 +205,7 @@
                 
                 <!-- 1. Kombi Rehberi (Görsel: Kombi/Kazan) -->
                 <a href="evyasam/kombi-basinci.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1585129777179-734fb4419b6e?w=600&q=80" alt="Kombi Basınç Göstergesi" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1585129777179-734fb4419b6e?auto=format&fit=crop&w=600&q=80" alt="Kombi Basınç Göstergesi" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Kombi Basıncı Neden Düşüyor? (Hızlı Teşhis)</h4>
                         <p>Usta çağırmadan önce genleşme tankını ve sızıntıları kontrol etme rehberi.</p>
@@ -212,19 +213,9 @@
                     </div>
                 </a>
 
-                <!-- 2. Kart Sorunu (Görsel: POS Cihazı ile Ödeme) -->
+                <!-- 2. ATM/Kart Sorunu (DÜZELTİLDİ: Link karttan-para-cekildi.html) -->
                 <a href="finans/karttan-para-cekildi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=600&q=80" alt="Kredi Kartı Pos Cihazı" class="blog-thumb" loading="lazy">
-                    <div class="blog-content">
-                        <h4>Karttan Para Çekildi Ama Sipariş Oluşmadı?</h4>
-                        <p>Askıda kalan provizyon ödemelerinin iade süreci ve bankayla iletişim yolları.</p>
-                        <span class="read-more">Devamını Oku <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <!-- 3. ATM Sorunu (Görsel: ATM) -->
-                <a href="finans/atm-para-yuttu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cd4?w=600&q=80" alt="ATM Bankamatik" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cd4?auto=format&fit=crop&w=600&q=80" alt="ATM Bankamatik" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>ATM Paranızı Yuttuysa Panik Yapmayın!</h4>
                         <p>Kasa mutabakatı süreci ve paranızı bankadan en hızlı nasıl geri alırsınız?</p>
@@ -232,9 +223,9 @@
                     </div>
                 </a>
 
-                <!-- 4. Instagram Kalite (Görsel: Telefon Tutan Kişi - Logo Değil) -->
+                <!-- 3. Instagram Kalite (Görsel: Telefon Ekranı) -->
                 <a href="teknoloji/instagram-cozumu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1516251193000-18e65b607155?w=600&q=80" alt="Telefonda Fotoğraf Çeken Kişi" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80" alt="Instagram Ekranı" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Instagram Hikayeler Neden Bulanık? (2025)</h4>
                         <p>Android telefonlarda yaşanan kalite kaybını önleyen gizli ayar ve yükleme taktikleri.</p>
@@ -242,9 +233,9 @@
                     </div>
                 </a>
 
-                <!-- 5. Steam İndirme Hızı (Görsel: Oyuncu Ekipmanı) -->
+                <!-- 4. Steam İndirme Hızı (DÜZELTİLDİ: Link steam-hiz-sorunu.html) -->
                 <a href="teknoloji/steam-hiz-sorunu.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80" alt="Oyun Bilgisayarı Klavye" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1605901309584-818e25960b8f?auto=format&fit=crop&w=600&q=80" alt="Steam Oyun İndirme" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Steam İndirme Hızı Neden Düşük?</h4>
                         <p>İnternetiniz hızlı olsa bile Steam'de yavaş indirme sorununun sunucu bazlı çözümü.</p>
@@ -252,9 +243,9 @@
                     </div>
                 </a>
 
-                <!-- 6. Yurt Dışı Telefon (Görsel: Pasaport ve Seyahat) -->
+                <!-- 5. Yurt Dışı Telefon (Görsel: Pasaport) -->
                 <a href="ekonomi/yurt-disi-telefon-kaydi.html" class="blog-item">
-                    <img src="https://images.unsplash.com/photo-1527866959252-de38538ee365?w=600&q=80" alt="Pasaport ve Telefon" class="blog-thumb" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Pasaport ve Seyahat" class="blog-thumb" loading="lazy">
                     <div class="blog-content">
                         <h4>Yurt Dışı Telefon Kaydı (IMEI) Değer mi?</h4>
                         <p>2025 IMEI kayıt ücretleri ile yurt içi fiyatları karşılaştırması. Kâr mı, zarar mı?</p>

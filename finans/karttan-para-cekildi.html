@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO -->
-    <title>ATM Para Yuttu veya Eksik Verdi Ne Yapmalıyım? | Xenon Country</title>
-    <meta name="description" content="ATM paranızı yuttuysa veya eksik verdiyse panik yapmayın. ATM kasa sayımı süreci ve para iadesi için izlemeniz gereken 3 kritik adım.">
-    <link rel="canonical" href="https://xenoncountry.com/finans/atm-para-yuttu.html" />
-
+    <title>ATM Paramı Yuttu Ne Yapmalıyım? (2026 Çözüm) | Xenon Country</title>
+    <meta name="description" content="ATM paranızı yuttuysa panik yapmayın. İade süreci ne kadar sürer? ATM kasa fazlası nasıl tespit edilir? Bankaya verilecek dilekçe örneği.">
+    
     <!-- FAVICON -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏧</text></svg>">
 
     <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
@@ -20,69 +18,43 @@
       gtag('config', 'G-5N5SDYX95K');
     </script>
     
-    <!-- GOOGLE ADSENSE -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* EVRENSEL AYARLAR */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg: #f8fafc; --text: #0f172a; --accent: #dc2626; --border: #e2e8f0; } /* Kırmızı (Acil Durum Teması) */
+        :root { --bg: #f8fafc; --text: #0f172a; --accent: #2563eb; --border: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.7; }
         
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; width: 100%; overflow-x: hidden; }
-        
-        /* Header */
-        header { background: #fff; border-bottom: 1px solid var(--border); padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        /* Header & Nav */
+        header { background: #fff; border-bottom: 1px solid var(--border); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
         .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo { font-size: 22px; font-weight: 900; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .logo { font-size: 22px; font-weight: 900; color: #0f172a; text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0f172a, #334155); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
         
         .container { max-width: 1100px; margin: 40px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 0 20px; }
         @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
 
-        /* Article */
+        /* Makale İçeriği */
         .article-header h1 { font-size: 32px; font-weight: 900; line-height: 1.3; margin-bottom: 15px; }
         .meta-info { font-size: 14px; color: #64748b; margin-bottom: 30px; display: flex; gap: 15px; align-items: center; }
-        .back-link { text-decoration: none; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
         
-        /* GÖRSEL ALANI (Kısıtlı yükseklik) */
-        .featured-img-container { 
-            width: 100%; 
-            height: 250px; 
-            margin-bottom: 30px; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background: #cbd5e1;
-        }
-        
-        .featured-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
         .content-body { font-size: 17px; color: #334155; }
         .content-body h2 { font-size: 24px; font-weight: 800; color: #0f172a; margin-top: 40px; margin-bottom: 15px; }
-        .content-body h3 { font-size: 19px; font-weight: 700; color: #0f172a; margin-top: 30px; margin-bottom: 10px; }
         .content-body p { margin-bottom: 20px; }
+        .content-body ul, .content-body ol { margin-bottom: 20px; padding-left: 20px; }
         .content-body li { margin-bottom: 10px; }
-
-        /* Bilgi Kutuları */
-        .step-box { background: #fff; border: 2px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-bottom: 20px; display: flex; gap: 15px; }
-        .step-num { font-size: 40px; font-weight: 900; color: #cbd5e1; line-height: 1; flex-shrink: 0; }
         
-        .alert-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; border-radius: 8px; margin: 30px 0; font-size: 15px; }
-        .mini-info { font-size: 14px; color: #64748b; background: #f1f5f9; padding: 15px; border-radius: 8px; border-left: 3px solid #64748b; margin-top: 30px; }
+        /* Uyarı Kutuları */
+        .alert-box { background: #fee2e2; border-left: 5px solid #ef4444; padding: 25px; border-radius: 12px; margin: 30px 0; color: #991b1b; }
+        .success-box { background: #dcfce7; border-left: 5px solid #22c55e; padding: 25px; border-radius: 12px; margin: 30px 0; color: #166534; }
+        
+        .petition { background: #f1f5f9; padding: 25px; border-radius: 12px; font-family: monospace; font-size: 14px; border: 2px dashed #cbd5e1; margin-top: 20px; white-space: pre-wrap; color: #334155; }
 
-        /* Sidebar Tools */
-        .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 30px; width: 100%; position: sticky; top: 100px; }
+        /* Sidebar Araçlar */
+        .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 30px; position: sticky; top: 100px; }
         .tool-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text); padding: 15px; border-radius: 12px; background: #f8fafc; border: 1px solid transparent; transition: 0.2s; margin-bottom: 10px; }
-        .tool-link:hover { border-color: #ff6000; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .tool-icon { width: 40px; height: 40px; background: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #ff6000; }
+        .tool-link:hover { border-color: #2563eb; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .tool-icon { width: 40px; height: 40px; background: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #2563eb; }
         
         footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 60px; font-size: 14px; color: #64748b; }
     </style>
@@ -91,7 +63,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="/" class="logo">
+            <a href="../index.html" class="logo">
                 <div class="logo-icon"><i class="fa-solid fa-atom"></i></div>
                 Xenon Country
             </a>
@@ -100,115 +72,88 @@
 
     <div class="container">
         
-        <!-- İÇERİK -->
+        <!-- SOL: MAKALE -->
         <main>
             <article>
-                <a href="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Ana Sayfa</a>
                 <header class="article-header">
-                    <h1>ATM Para Yuttu veya Eksik Verdi Ne Yapmalıyım?</h1>
+                    <h1>ATM Paranızı Yuttuysa Panik Yapmayın! (Adım Adım Çözüm)</h1>
                     <div class="meta-info">
-                        <span><i class="fa-regular fa-calendar"></i> 08 Şubat 2025</span>
+                        <span><i class="fa-regular fa-calendar"></i> 08 Şubat 2026</span>
                         <span>• Finans</span>
-                        <span>• 4 dk okuma</span>
+                        <span>• 3 dk okuma</span>
                     </div>
                 </header>
 
-                <!-- GÖRSEL: ATM / Para Çekme -->
-                <div class="featured-img-container">
-                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cd4?auto=format&fit=crop&w=1200&q=80" 
-                         alt="ATM para çekme işlemi"
-                         onerror="this.style.display='none';">
-                </div>
-
                 <div class="content-body">
-                    <p>Tam parayı çekecekken elektrik kesildi, ekran dondu veya kapak açılmadı ve paranız içeride kaldı. Ya da 2000 TL çekmek istediniz ama cihaz size 1800 TL verdi. Bu durumda yapmanız gereken en önemli kural şudur: <strong>ATM başından hemen ayrılmayın.</strong></p>
-
-                    <h2>Adım Adım Kurtarma Planı</h2>
-
-                    <div class="step-box">
-                        <div class="step-num">1</div>
-                        <div>
-                            <strong>1-2 Dakika Bekleyin</strong><br>
-                            Bazen ATM kendini "resetler" ve parayı geç de olsa geri kusar. Eğer hemen giderseniz, arkanızdaki kişi paranızı alabilir.
-                        </div>
-                    </div>
-
-                    <div class="step-box">
-                        <div class="step-num">2</div>
-                        <div>
-                            <strong>Bankayı Arayın (ATM Başındayken)</strong><br>
-                            Müşteri hizmetlerini arayın ve "Harcama İtirazı" kaydı oluşturun. ATM üzerindeki <strong>ATM ID / Kodu</strong>'nu (genelde ekranın köşesinde veya cihazın üstünde yazar) mutlaka not edin.
-                        </div>
-                    </div>
-
-                    <div class="step-box">
-                        <div class="step-num">3</div>
-                        <div>
-                            <strong>Başka ATM ise Kendi Bankanızı Arayın</strong><br>
-                            Örneğin A bankasının kartıyla B bankasının ATM'sini kullandıysanız, muhatabınız <strong>kendi bankanızdır</strong> (A Bankası). İtirazı kendi bankanıza yaparsınız, onlar karşı bankayla iletişime geçer.
-                        </div>
-                    </div>
-
+                    <p>Kartınızı taktınız, şifrenizi girdiniz, parayı hazneye koydunuz... Gırrç gırrç sesleri geldi ama o da ne? <strong>Ekranda "İşleminiz şu anda gerçekleştirilemiyor" yazdı ve kapak açılmadı.</strong></p>
+                    <p>Bu, en korkutucu anlardan biridir ama paranız kaybolmadı. Sadece bankanın güvenli kasasında "fazla bakiye" olarak duruyor. İşte paranızı kurtarmak için yapmanız gerekenler.</p>
+                    
                     <div class="alert-box">
-                        <strong>Param Ne Zaman Yatar?</strong><br>
-                        Bankalar her gün (veya haftada birkaç kez) ATM kasasını açıp fiziksel parayı sayarlar. Eğer kayıtlarda "2000 TL çıktı" yazıyor ama kasada "2000 TL fazla" para varsa, bu fazlalık size aittir. Süreç genelde <strong>1 ila 7 iş günü</strong> sürer.
+                        <strong>🚨 İLK KURAL:</strong> ATM başından ayrılmadan önce mutlaka bankayı arayıp kayıt oluşturun. Eğer ayrılmanız gerekiyorsa, saati ve ATM üzerindeki <strong>ID numarasını</strong> (genelde ekranın köşesinde yazar) not edin.
                     </div>
 
-                    <h3>Merak Edilen: ATM Parayı Yanlış Sayabilir mi?</h3>
-                    <div class="mini-info">
-                        <p><strong>Çok nadir de olsa evet.</strong> ATM'ler hassas sensörlerle parayı tek tek sayar. Ancak bazen:</p>
-                        <ul style="margin-bottom:0;">
-                            <li>Eski veya yıpranmış paralar birbirine yapışabilir.</li>
-                            <li>Sensör tozlanmışsa parayı 2 kez sayabilir veya görmeyebilir.</li>
-                        </ul>
-                        <p style="margin-top:10px;">Fakat içiniz rahat olsun; gün sonunda yapılan <strong>"Kasa Mutabakatı"</strong> işleminde, giren para ile çıkan para kuruşu kuruşuna tutmak zorundadır. Fiziksel sayımda ortaya çıkan eksik veya fazla para mutlaka raporlanır ve hakkınız yenmez.</p>
+                    <h2>Ne Yapmalısınız?</h2>
+                    <ul>
+                        <li><strong>1. Bekleyin:</strong> Bazen ATM sistemi kendini resetler ve parayı 1-2 dakika sonra geri verir veya karta iade eder. Hemen gitmeyin.</li>
+                        <li><strong>2. Müşteri Hizmetlerini Arayın:</strong> Hangi bankanın ATM'siyse o bankayı arayın. Ortak ATM kullandıysanız (Örn: X kartıyla Y bankamatik), <strong>kendi bankanızı (X)</strong> aramanız gerekir.</li>
+                    </ul>
+
+                    <h2>Para Ne Zaman Yatar?</h2>
+                    <div class="success-box">
+                        <i class="fa-solid fa-check-circle"></i> <strong>Kendi Bankanızsa:</strong> Genelde gün sonunda kasa sayımı yapılır. Para <strong>1 ila 3 iş günü</strong> içinde hesabınıza geçer.
+                        <br><br>
+                        <i class="fa-solid fa-clock"></i> <strong>Ortak ATM ise:</strong> Süreç uzayabilir. Bankalar arası yazışma gerektiği için <strong>15 ila 30 günü</strong> bulabilir.
                     </div>
 
+                    <h3>Dilekçe Örneği (Şube İçin)</h3>
+                    <p>Eğer müşteri hizmetleri sorunu çözmezse veya süreci hızlandırmak isterseniz, en yakın şubeye bu dilekçeyi verin:</p>
+                    
+                    <div class="petition">
+[BANKA ADI] ŞUBE MÜDÜRLÜĞÜNE,
+
+.../.../2026 tarihinde saat ...:... sularında, ... adresindeki ... numaralı ATM'nizden para yatırma/çekme işlemi yaparken cihaz paramı alıkoymuştur. 
+
+İşlem tutarı yaklaşık ... TL'dir. (Hatırlıyorsanız banknot detaylarını yazın: 2 adet 200 TL vb.)
+
+ATM kasa sayımında ortaya çıkacak kasa fazlasının tespit edilerek aşağıda belirttiğim hesabıma/IBAN numarama iadesini talep ederim.
+
+Ad Soyad:
+TC Kimlik No:
+Telefon:
+Hesap No / IBAN:
+İmza:
+                    </div>
                 </div>
             </article>
         </main>
 
-        <!-- ARAÇLAR -->
+        <!-- SAĞ: ARAÇLAR (SADE) -->
         <aside>
             <div class="sidebar-widget">
-                <h3 style="margin-top:0; font-size:16px;">🔥 Popüler Araçlar</h3>
+                <h3 style="margin-top:0; font-size:16px;">🔥 Hazır Beklerken...</h3>
                 
-                <a href="/hediye/" class="tool-link">
+                <a href="../hediye/index.html" class="tool-link">
                     <div class="tool-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                     <div class="tool-info">
                         <h4>Hediye Sihirbazı</h4>
-                        <p>Yapay zeka ile hediye bul.</p>
+                        <p>Paran iade olunca sevdiklerini şımart.</p>
                     </div>
                 </a>
 
-                <a href="/yatirim/" class="tool-link">
+                <a href="../yatirim/index.html" class="tool-link">
                     <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <div class="tool-info">
                         <h4>Geçmiş Yatırım</h4>
-                        <p>"Keşke dolar alsaydım" deme.</p>
+                        <p>"Keşke dolar alsaydım" dediğin parayı hesapla.</p>
                     </div>
                 </a>
-            </div>
-
-            <!-- ADSENSE -->
-            <div class="sidebar-widget" style="text-align:center; padding:10px; min-height:280px; width:100%; box-sizing:border-box;">
-                <p style="font-size:12px; color:#cbd5e1; margin-bottom:5px;">Reklam</p>
-                <ins class="adsbygoogle"
-                     style="display:block; width:100%;"
-                     data-ad-client="ca-pub-8335171074656428"
-                     data-ad-slot="1234567890"  
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
         </aside>
 
     </div>
 
     <footer>
-        <p>&copy; 2025 Xenon Country. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Xenon Country. Tüm hakları saklıdır.</p>
     </footer>
 
 </body>

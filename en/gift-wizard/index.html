@@ -7,7 +7,7 @@
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
     
-    <!-- GOOGLE ANALYTICS (G-5N5SDYX95K) -->
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5N5SDYX95K"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,12 +16,8 @@
       gtag('config', 'G-5N5SDYX95K');
     </script>
     
-    <!-- GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8335171074656428" crossorigin="anonymous"></script>
-
-    <!-- Canonical for English Version -->
     <link rel="canonical" href="https://xenoncountry.com/en/gift-wizard/" />
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -29,7 +25,6 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
         .main-container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); text-align: center; border: 1px solid #f1f5f9; position: relative; overflow: hidden; }
         
-        /* Back Button */
         .back-home { position: absolute; top: 20px; left: 20px; text-decoration: none; color: #64748b; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 5px; transition: 0.2s; }
         .back-home:hover { color: #ff6000; }
 
@@ -47,8 +42,10 @@
         .search-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 96, 0, 0.3); }
         
         #results-area { display: none; margin-top: 40px; border-top: 2px dashed #f1f5f9; padding-top: 30px; }
-        .product-card { background: #fff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 18px; margin-bottom: 12px; text-align: left; display: flex; align-items: center; gap: 15px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
-        .product-card:hover { border-color: #ff6000; transform: translateX(5px); box-shadow: 0 10px 20px rgba(255, 96, 0, 0.08); }
+        .product-card { background: #fff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 18px; margin-bottom: 12px; text-align: left; display: flex; align-items: center; gap: 15px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.01); animation: slideIn 0.3s ease-out forwards; opacity: 0; transform: translateY(10px); }
+        .product-card:hover { border-color: #ff6000; transform: translateX(5px) !important; box-shadow: 0 10px 20px rgba(255, 96, 0, 0.08); }
+        @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
+        
         .icon-box { width: 48px; height: 48px; background: #fff0e6; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #ff6000; flex-shrink: 0; }
         .product-info { flex-grow: 1; }
         .product-title { font-weight: 700; font-size: 15px; margin-bottom: 3px; color: #0f172a; }
@@ -60,6 +57,9 @@
         .spinner { width: 35px; height: 35px; border: 4px solid #f1f5f9; border-top-color: #ff6000; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .fallback-msg { font-size: 14px; color: #b45309; background: #fffbeb; padding: 15px; border-radius: 12px; margin-bottom: 20px; display: none; border: 1px solid #fcd34d; text-align: left; }
+        
+        .more-btn { font-size:14px; color:#ff6000; margin-top:25px; cursor:pointer; font-weight:700; background: #fff0e6; border: 1px solid #ffd8c2; padding: 12px 20px; border-radius: 12px; display: inline-block; transition: 0.2s; }
+        .more-btn:hover { background: #ff6000; color: white; }
     </style>
 </head>
 <body>
@@ -109,7 +109,8 @@
             </select>
         </div>
 
-        <button class="search-btn" onclick="hediyeBul()">
+        <!-- Ana buton sistemi baştan başlatır -->
+        <button class="search-btn" onclick="initSearch()">
             FIND THE GIFT <i class="fa-solid fa-wand-magic-sparkles"></i>
         </button>
         
@@ -120,58 +121,78 @@
 
         <div id="results-area">
             <div id="fallback-alert" class="fallback-msg">
-                <i class="fa-solid fa-circle-exclamation"></i> No exact matches for these criteria, but here are some great alternatives.
+                <i class="fa-solid fa-circle-exclamation"></i> We expanded the pool with brilliant alternatives to give you more options!
             </div>
             <div id="cards-container"></div>
-            <p style="font-size:14px; color:#ff6000; margin-top:25px; cursor:pointer; font-weight:700; text-decoration:underline;" onclick="hediyeBul()">🔄 SHOW MORE OPTIONS</p>
+            <!-- Pagination butonu sadece hafızadaki listeyi kaydırır -->
+            <div class="more-btn" onclick="renderNextItems()"><i class="fa-solid fa-rotate"></i> SHOW DIFFERENT OPTIONS</div>
         </div>
     </div>
 
     <script>
-        // Data translated and queries adjusted for Amazon global search
         const hediyeHavuzu = {
             "sevgili_kadin": {
                 "teknoloji": {
-                    "dusuk": [ {t:"Colorful Case",d:"Silicone cover.",i:"fa-mobile",l:"silicone+phone+case"}, {t:"Ring Light",d:"Selfie light.",i:"fa-circle-notch",l:"selfie+ring+light"}, {t:"AirTag",d:"Key finder.",i:"fa-map-pin",l:"apple+airtag"}, {t:"Smart Band",d:"Mi Band.",i:"fa-watch",l:"xiaomi+mi+band"}, {t:"Phone Charm",d:"Beaded strap.",i:"fa-mobile",l:"beaded+phone+charm"}, {t:"Airpods Case",d:"Cute cover.",i:"fa-headphones",l:"cute+airpods+case"}, {t:"Powerbank",d:"Mini portable charger.",i:"fa-battery-full",l:"mini+portable+charger"}, {t:"Bluetooth Speaker",d:"Waterproof.",i:"fa-music",l:"jbl+go+3"} ],
-                    "orta": [ {t:"Instax Camera",d:"Instant photos (Pink).",i:"fa-camera",l:"fujifilm+instax+mini"}, {t:"Bluetooth Earbuds",d:"JBL/Sony.",i:"fa-headphones",l:"jbl+wireless+earbuds"}, {t:"Smart Watch",d:"Fitness tracker.",i:"fa-clock",l:"fitbit+versa"}, {t:"Powerbank",d:"High capacity.",i:"fa-battery-full",l:"anker+powerbank"}, {t:"Smart Scale",d:"Body fat monitor.",i:"fa-weight-scale",l:"smart+scale"}, {t:"Hair Straightening Brush",d:"Quick styling.",i:"fa-wind",l:"hair+straightening+brush"}, {t:"Digital Frame",d:"For memories.",i:"fa-image",l:"digital+photo+frame"}, {t:"Waffle Maker",d:"Mini size.",i:"fa-stroopwafel",l:"mini+waffle+maker"} ],
-                    "yuksek": [ {t:"Apple Watch SE",d:"Daily assistant.",i:"fa-clock",l:"apple+watch+se"}, {t:"iPad",d:"Tablet.",i:"fa-tablet",l:"apple+ipad"}, {t:"AirPods Pro",d:"Noise cancelling.",i:"fa-headphones",l:"airpods+pro"}, {t:"Robot Vacuum",d:"Smart cleaning.",i:"fa-robot",l:"robot+vacuum"}, {t:"Mini Projector",d:"Home cinema.",i:"fa-film",l:"smart+mini+projector"}, {t:"GoPro",d:"Action camera.",i:"fa-video",l:"gopro+hero"}, {t:"Ionic Hair Dryer",d:"Professional.",i:"fa-wind",l:"ionic+hair+dryer"}, {t:"E-Reader",d:"Kindle.",i:"fa-book-open",l:"amazon+kindle"} ],
-                    "premium": [ {t:"iPhone 16",d:"Latest model.",i:"fa-mobile",l:"iphone+16"}, {t:"Dyson Airwrap",d:"Hair styling.",i:"fa-wind",l:"dyson+airwrap"}, {t:"MacBook Air",d:"Lightweight laptop.",i:"fa-laptop",l:"macbook+air"}, {t:"Dyson V15",d:"Vacuum.",i:"fa-broom",l:"dyson+v15"}, {t:"Sony Vlog Camera",d:"Professional.",i:"fa-camera",l:"sony+zv-e10"}, {t:"iMac",d:"M3 Chip.",i:"fa-desktop",l:"apple+imac"}, {t:"iPad Pro",d:"For drawing.",i:"fa-tablet",l:"ipad+pro"} ]
+                    "dusuk": [ {t:"Colorful Case",d:"Silicone cover.",i:"fa-mobile",l:"silicone+phone+case"}, {t:"Ring Light",d:"Selfie light.",i:"fa-circle-notch",l:"selfie+ring+light"}, {t:"AirTag",d:"Key finder.",i:"fa-map-pin",l:"apple+airtag"}, {t:"Smart Band",d:"Fitness tracker.",i:"fa-watch",l:"xiaomi+mi+band"}, {t:"Phone Charm",d:"Beaded strap.",i:"fa-mobile",l:"beaded+phone+charm"}, {t:"Airpods Case",d:"Cute cover.",i:"fa-headphones",l:"cute+airpods+case"}, {t:"Mini Powerbank",d:"Lipstick size charger.",i:"fa-battery-full",l:"mini+portable+charger"}, {t:"Bluetooth Speaker",d:"Waterproof.",i:"fa-music",l:"jbl+go+3"}, {t:"Cable Protectors",d:"Cute animal bites.",i:"fa-plug",l:"cable+protector+cute"}, {t:"Laptop Sleeve",d:"Padded pouch.",i:"fa-laptop",l:"laptop+sleeve+floral"} ],
+                    "orta": [ {t:"Instax Camera",d:"Instant photos.",i:"fa-camera",l:"fujifilm+instax+mini"}, {t:"Bluetooth Earbuds",d:"JBL/Sony.",i:"fa-headphones",l:"jbl+wireless+earbuds"}, {t:"Smart Watch",d:"Fitness tracker.",i:"fa-clock",l:"fitbit+versa"}, {t:"Powerbank",d:"High capacity.",i:"fa-battery-full",l:"anker+powerbank"}, {t:"Smart Scale",d:"Body fat monitor.",i:"fa-weight-scale",l:"smart+scale+bluetooth"}, {t:"Hair Brush",d:"Straightening.",i:"fa-wind",l:"hair+straightening+brush"}, {t:"Digital Frame",d:"For memories.",i:"fa-image",l:"digital+photo+frame"}, {t:"Waffle Maker",d:"Mini size.",i:"fa-stroopwafel",l:"dash+mini+waffle+maker"}, {t:"Polaroid Printer",d:"Print from phone.",i:"fa-print",l:"polaroid+hi+print"}, {t:"Kindle Case",d:"Leather cover.",i:"fa-book",l:"kindle+paperwhite+leather+cover"} ],
+                    "yuksek": [ {t:"Apple Watch SE",d:"Daily assistant.",i:"fa-clock",l:"apple+watch+se"}, {t:"iPad",d:"Tablet.",i:"fa-tablet",l:"apple+ipad"}, {t:"AirPods Pro",d:"Noise cancelling.",i:"fa-headphones",l:"apple+airpods+pro"}, {t:"Robot Vacuum",d:"Smart cleaning.",i:"fa-robot",l:"roomba+robot+vacuum"}, {t:"Mini Projector",d:"Home cinema.",i:"fa-film",l:"smart+mini+projector+wifi"}, {t:"GoPro",d:"Action camera.",i:"fa-video",l:"gopro+hero"}, {t:"Ionic Dryer",d:"Professional.",i:"fa-wind",l:"ionic+hair+dryer+professional"}, {t:"E-Reader",d:"Kindle Paperwhite.",i:"fa-book-open",l:"amazon+kindle+paperwhite"}, {t:"Nintendo Switch",d:"Lite Gaming.",i:"fa-gamepad",l:"nintendo+switch+lite+coral"} ],
+                    "premium": [ {t:"iPhone 16",d:"Latest model.",i:"fa-mobile",l:"iphone+16+pro"}, {t:"Dyson Airwrap",d:"Hair styling.",i:"fa-wind",l:"dyson+airwrap+multi+styler"}, {t:"MacBook Air",d:"Lightweight.",i:"fa-laptop",l:"macbook+air+m3"}, {t:"Dyson V15",d:"Vacuum.",i:"fa-broom",l:"dyson+v15+detect"}, {t:"Sony Camera",d:"Vlog Pro.",i:"fa-camera",l:"sony+zv-e10"}, {t:"iMac",d:"M3 Chip.",i:"fa-desktop",l:"apple+imac"}, {t:"iPad Pro",d:"For drawing.",i:"fa-tablet",l:"apple+ipad+pro+m4"} ]
                 },
                 "bakim": {
-                    "dusuk": [ {t:"Sheet Masks",d:"10-pack set.",i:"fa-mask",l:"korean+sheet+mask+set"}, {t:"Lip Balm",d:"Moisturizing.",i:"fa-lips",l:"tinted+lip+balm"}, {t:"Gua Sha",d:"Massage stone.",i:"fa-gem",l:"gua+sha+set"}, {t:"Bath Bombs",d:"Relaxing.",i:"fa-bath",l:"bath+bomb+set"}, {t:"Nail Polish Set",d:"Colorful.",i:"fa-paint-brush",l:"nail+polish+set"}, {t:"Headband",d:"For makeup.",i:"fa-ribbon",l:"spa+headband"}, {t:"Silk Exfoliating Glove",d:"Skincare.",i:"fa-leaf",l:"silk+exfoliating+glove"}, {t:"Brow Soap",d:"Styling wax.",i:"fa-eye",l:"brow+styling+soap"} ],
-                    "orta": [ {t:"Face Serum",d:"Vitamin C.",i:"fa-bottle-droplet",l:"vitamin+c+serum"}, {t:"Facial Cleansing Brush",d:"Silicone.",i:"fa-scrubber",l:"facial+cleansing+brush"}, {t:"Makeup Brushes",d:"Pro set.",i:"fa-paintbrush",l:"professional+makeup+brush+set"}, {t:"Hair Oil",d:"Keratin/Argan.",i:"fa-pump-soap",l:"argan+hair+oil"}, {t:"Facial Steamer",d:"Spa at home.",i:"fa-cloud",l:"facial+steamer"}, {t:"Manicure Set",d:"Electric.",i:"fa-hand-sparkles",l:"electric+manicure+set"}, {t:"Sunscreen",d:"SPF 50.",i:"fa-sun",l:"facial+sunscreen+spf+50"} ],
-                    "yuksek": [ {t:"Designer Perfume",d:"Long-lasting.",i:"fa-spray-can",l:"designer+perfume+women"}, {t:"Blow Dryer",d:"Professional.",i:"fa-wind",l:"professional+blow+dryer"}, {t:"IPL Laser",d:"Hair removal.",i:"fa-bolt",l:"ipl+hair+removal"}, {t:"Waver Iron",d:"Beach waves.",i:"fa-water",l:"hair+waver"}, {t:"Hair Straightener",d:"Ceramic.",i:"fa-wind",l:"ceramic+hair+straightener"}, {t:"Skincare Set",d:"Estee Lauder.",i:"fa-pump-medical",l:"estee+lauder+skincare+set"} ],
-                    "premium": [ {t:"Dyson Supersonic",d:"Fast drying.",i:"fa-wind",l:"dyson+supersonic"}, {t:"Niche Perfume",d:"Luxury scent.",i:"fa-spray-can",l:"creed+perfume+women"}, {t:"Dyson Airstrait",d:"Wet to dry.",i:"fa-wind",l:"dyson+airstrait"}, {t:"La Mer Cream",d:"Luxury skincare.",i:"fa-pump-medical",l:"la+mer+moisturizing+cream"} ]
-                },
-                "hobi": {
-                    "dusuk": [ {t:"Puzzle",d:"1000 Pieces.",i:"fa-puzzle-piece",l:"1000+piece+puzzle"}, {t:"Coloring Book",d:"Adult mandala.",i:"fa-palette",l:"adult+coloring+book"}, {t:"Book",d:"Bestseller.",i:"fa-book",l:"bestseller+fiction+books"}, {t:"Tarot Cards",d:"Divination.",i:"fa-star",l:"tarot+deck"}, {t:"Kalimba",d:"Thumb piano.",i:"fa-music",l:"kalimba"}, {t:"Diary",d:"With lock.",i:"fa-book",l:"diary+with+lock"}, {t:"Sketchbook",d:"For drawing.",i:"fa-pen",l:"sketchbook"}, {t:"Embroidery Kit",d:"Beginner.",i:"fa-mitten",l:"beginner+embroidery+kit"} ],
-                    "orta": [ {t:"Canvas Set",d:"Easel and paint.",i:"fa-palette",l:"canvas+and+acrylic+paint+set"}, {t:"Ukulele",d:"Instrument.",i:"fa-guitar",l:"ukulele+starter+kit"}, {t:"Vinyl Record",d:"Classic music.",i:"fa-record-vinyl",l:"vinyl+records"}, {t:"Harry Potter Box Set",d:"Book series.",i:"fa-book",l:"harry+potter+box+set"}, {t:"Yoga Mat",d:"Exercise.",i:"fa-person-praying",l:"yoga+mat"}, {t:"Amigurumi Kit",d:"Crochet.",i:"fa-mitten",l:"crochet+animal+kit"}, {t:"Ceramic Clay",d:"Air dry.",i:"fa-hand-sparkles",l:"air+dry+clay"}, {t:"Board Game",d:"Catan/Dixit.",i:"fa-chess-board",l:"board+games+for+adults"} ],
-                    "yuksek": [ {t:"Record Player",d:"Suitcase style.",i:"fa-record-vinyl",l:"suitcase+record+player"}, {t:"Instax",d:"Camera.",i:"fa-camera",l:"fujifilm+instax"}, {t:"Sewing Machine",d:"Singer.",i:"fa-shirt",l:"singer+sewing+machine"}, {t:"Telescope",d:"Stargazing.",i:"fa-star",l:"telescope"}, {t:"Violin",d:"Beginner.",i:"fa-music",l:"beginner+violin"}, {t:"Cricut",d:"Cutting machine.",i:"fa-scissors",l:"cricut+maker"} ],
-                    "premium": [ {t:"iPad",d:"For digital art.",i:"fa-tablet",l:"apple+ipad"}, {t:"Digital Piano",d:"88 Keys.",i:"fa-music",l:"digital+piano+88+keys"}, {t:"PlayStation",d:"Gaming.",i:"fa-gamepad",l:"playstation+5"}, {t:"Pro Camera",d:"Canon.",i:"fa-camera",l:"canon+dslr+camera"} ]
+                    "dusuk": [ {t:"Sheet Masks",d:"10-pack set.",i:"fa-mask",l:"korean+sheet+mask+set"}, {t:"Lip Balm",d:"Moisturizing.",i:"fa-lips",l:"laneige+lip+glowy+balm"}, {t:"Gua Sha",d:"Massage stone.",i:"fa-gem",l:"gua+sha+jade+roller+set"}, {t:"Bath Bombs",d:"Relaxing.",i:"fa-bath",l:"bath+bomb+gift+set"}, {t:"Nail Polish Set",d:"Colorful.",i:"fa-paint-brush",l:"gel+nail+polish+set"}, {t:"Spa Headband",d:"For makeup.",i:"fa-ribbon",l:"spa+headband+for+washing+face"}, {t:"Exfoliating Glove",d:"Skincare.",i:"fa-leaf",l:"silk+exfoliating+body+glove"}, {t:"Brow Soap",d:"Styling wax.",i:"fa-eye",l:"brow+styling+soap"}, {t:"Hand Cream",d:"Shea butter.",i:"fa-hand-holding-droplet",l:"loccitane+hand+cream"}, {t:"Eye Masks",d:"Under eye patches.",i:"fa-eye",l:"under+eye+patches+gold"} ],
+                    "orta": [ {t:"Face Serum",d:"Vitamin C.",i:"fa-bottle-droplet",l:"vitamin+c+face+serum"}, {t:"Cleansing Brush",d:"Silicone.",i:"fa-scrubber",l:"foreo+luna+facial+cleansing+brush"}, {t:"Makeup Brushes",d:"Pro set.",i:"fa-paintbrush",l:"professional+makeup+brush+set"}, {t:"Hair Oil",d:"Keratin/Argan.",i:"fa-pump-soap",l:"moroccanoil+treatment"}, {t:"Facial Steamer",d:"Spa at home.",i:"fa-cloud",l:"nano+ionic+facial+steamer"}, {t:"Manicure Set",d:"Electric.",i:"fa-hand-sparkles",l:"electric+nail+drill+machine"}, {t:"Sunscreen",d:"SPF 50.",i:"fa-sun",l:"supergoop+unseen+sunscreen"}, {t:"Silk Pillowcase",d:"For hair & skin.",i:"fa-bed",l:"pure+silk+pillowcase"}, {t:"Perfume Set",d:"Miniatures.",i:"fa-spray-can",l:"womens+perfume+discovery+set"} ],
+                    "yuksek": [ {t:"Designer Perfume",d:"Long-lasting.",i:"fa-spray-can",l:"chanel+perfume+women"}, {t:"Blow Dryer",d:"Professional.",i:"fa-wind",l:"t3+micro+hair+dryer"}, {t:"IPL Laser",d:"Hair removal.",i:"fa-bolt",l:"braun+silk+expert+pro+5"}, {t:"Waver Iron",d:"Beach waves.",i:"fa-water",l:"amika+high+tide+deep+waver"}, {t:"Straightener",d:"Ceramic.",i:"fa-wind",l:"ghd+platinum+styler"}, {t:"Skincare Set",d:"Luxury.",i:"fa-pump-medical",l:"estee+lauder+advanced+night+repair+set"}, {t:"LED Face Mask",d:"Light therapy.",i:"fa-mask",l:"led+light+therapy+face+mask"} ],
+                    "premium": [ {t:"Dyson Supersonic",d:"Fast drying.",i:"fa-wind",l:"dyson+supersonic+hair+dryer"}, {t:"Niche Perfume",d:"Luxury scent.",i:"fa-spray-can",l:"baccarat+rouge+540"}, {t:"Dyson Airstrait",d:"Wet to dry.",i:"fa-wind",l:"dyson+airstrait+straightener"}, {t:"La Mer Cream",d:"Luxury skincare.",i:"fa-pump-medical",l:"la+mer+creme+de+la+mer"}, {t:"NuFace",d:"Facial toning.",i:"fa-magic",l:"nuface+trinity+starter+kit"} ]
                 },
                 "genel": {
-                    "dusuk": [ {t:"Slippers",d:"Plush.",i:"fa-shoe-prints",l:"plush+slippers"}, {t:"Mirror",d:"Handheld.",i:"fa-magic",l:"vintage+hand+mirror"}, {t:"Keychain",d:"Fluffy.",i:"fa-key",l:"pom+pom+keychain"}, {t:"Mug",d:"Initial letter.",i:"fa-mug-hot",l:"initial+mug"}, {t:"Candle",d:"Scented.",i:"fa-fire",l:"scented+soy+candle"} ],
-                    "orta": [ {t:"Pajamas",d:"Matching set.",i:"fa-shirt",l:"womens+pajama+set"}, {t:"Robe",d:"Satin.",i:"fa-shirt",l:"satin+robe"}, {t:"Thermos",d:"Personalized.",i:"fa-mug-hot",l:"personalized+tumbler"}, {t:"Blanket",d:"Throw blanket.",i:"fa-bed",l:"fleece+throw+blanket"} ],
-                    "yuksek": [ {t:"Jacket",d:"Puffer.",i:"fa-user-tie",l:"womens+puffer+jacket"}, {t:"Luggage",d:"Carry-on.",i:"fa-plane",l:"carry+on+luggage"}, {t:"Gift Box",d:"Curated.",i:"fa-gift",l:"spa+gift+basket"} ],
-                    "premium": [ {t:"Vacation",d:"Abroad.",i:"fa-plane",l:"https://www.expedia.com/"}, {t:"Gold Necklace",d:"Investment.",i:"fa-gem",l:"14k+gold+necklace"} ]
+                    "dusuk": [ {t:"Slippers",d:"Plush.",i:"fa-shoe-prints",l:"fluffy+cross+band+slippers"}, {t:"Mirror",d:"Handheld.",i:"fa-magic",l:"vintage+handheld+mirror"}, {t:"Keychain",d:"Fluffy.",i:"fa-key",l:"pom+pom+keychain"}, {t:"Mug",d:"Initial letter.",i:"fa-mug-hot",l:"monogram+coffee+mug"}, {t:"Candle",d:"Scented.",i:"fa-fire",l:"yankee+candle+large+jar"}, {t:"Tote Bag",d:"Canvas.",i:"fa-bag-shopping",l:"aesthetic+canvas+tote+bag"}, {t:"Journal",d:"Lined.",i:"fa-book",l:"leather+journal+notebook"}, {t:"Water Bottle",d:"Aesthetic.",i:"fa-bottle-water",l:"stanley+quencher+40+oz"}, {t:"Socks",d:"Cozy.",i:"fa-socks",l:"fuzzy+socks+for+women"} ],
+                    "orta": [ {t:"Pajamas",d:"Matching set.",i:"fa-shirt",l:"womens+silk+pajama+set"}, {t:"Robe",d:"Satin.",i:"fa-shirt",l:"womens+satin+robe"}, {t:"Thermos",d:"Personalized.",i:"fa-mug-hot",l:"personalized+yeti+tumbler"}, {t:"Blanket",d:"Throw blanket.",i:"fa-bed",l:"barefoot+dreams+throw+blanket"}, {t:"Jewelry Box",d:"Travel.",i:"fa-box",l:"travel+jewelry+box+organizer"}, {t:"Wallet",d:"Leather.",i:"fa-wallet",l:"womens+rfid+leather+wallet"}, {t:"Essential Oils",d:"Diffuser set.",i:"fa-droplet",l:"essential+oil+diffuser+set"} ],
+                    "yuksek": [ {t:"Jacket",d:"Puffer.",i:"fa-user-tie",l:"womens+north+face+puffer+jacket"}, {t:"Luggage",d:"Carry-on.",i:"fa-plane",l:"samsonite+carry+on+luggage"}, {t:"Gift Box",d:"Curated.",i:"fa-gift",l:"luxury+spa+gift+basket+for+women"}, {t:"Sunglasses",d:"Ray-Ban.",i:"fa-glasses",l:"ray+ban+womens+sunglasses"}, {t:"Watch",d:"Elegant.",i:"fa-clock",l:"michael+kors+womens+watch"} ],
+                    "premium": [ {t:"Vacation",d:"Abroad.",i:"fa-plane",l:"https://www.expedia.com/"}, {t:"Gold Necklace",d:"Investment.",i:"fa-gem",l:"14k+solid+gold+chain+necklace"}, {t:"Designer Bag",d:"Tote.",i:"fa-bag-shopping",l:"tory+burch+tote+bag"} ]
                 },
-                "moda": { "dusuk":[{t:"Scarf",d:"Patterned.",i:"fa-user",l:"womens+scarf"}, {t:"Belt",d:"Skinny.",i:"fa-minus",l:"womens+skinny+belt"}, {t:"Hair Clip",d:"Pearl.",i:"fa-star",l:"pearl+hair+clip"}, {t:"Socks",d:"Ruffled.",i:"fa-socks",l:"ruffle+socks"}, {t:"Brooch",d:"Pin.",i:"fa-gem",l:"vintage+brooch"}], "orta":[{t:"Dress",d:"Elegant.",i:"fa-shirt",l:"elegant+dress"}, {t:"Bag",d:"Baguette.",i:"fa-bag-shopping",l:"baguette+bag"}, {t:"Sunglasses",d:"Cat-eye.",i:"fa-glasses",l:"womens+sunglasses"}, {t:"Blouse",d:"Satin.",i:"fa-shirt",l:"satin+blouse"}, {t:"Skirt",d:"Pleated.",i:"fa-person-dress",l:"pleated+skirt"}], "yuksek":[{t:"Boots",d:"Leather.",i:"fa-shoe-prints",l:"womens+leather+boots"}, {t:"Coat",d:"Wool.",i:"fa-user-tie",l:"womens+wool+coat"}, {t:"Watch",d:"Michael Kors.",i:"fa-clock",l:"michael+kors+watch+women"}, {t:"Heels",d:"Classic.",i:"fa-shoe-prints",l:"classic+heels"}], "premium":[{t:"Designer Bag",d:"Luxury.",i:"fa-bag-shopping",l:"designer+bag"}, {t:"Diamond",d:"Necklace.",i:"fa-gem",l:"diamond+necklace"}, {t:"Faux Fur",d:"Coat.",i:"fa-user-tie",l:"faux+fur+coat"}] },
-                "ev": { "dusuk":[{t:"Candle Holder",d:"Decor.",i:"fa-fire",l:"candle+holder"}, {t:"Mug",d:"Initial.",i:"fa-mug-hot",l:"initial+mug"}, {t:"Frame",d:"Picture.",i:"fa-image",l:"picture+frame"}, {t:"Incense",d:"Set.",i:"fa-fire",l:"incense+set"}], "orta":[{t:"Bedding",d:"Satin.",i:"fa-bed",l:"satin+bedding+set"}, {t:"Throw",d:"Blanket.",i:"fa-bed",l:"throw+blanket"}, {t:"Vase",d:"Glass.",i:"fa-glass-water",l:"glass+vase"}, {t:"Lamp",d:"Table.",i:"fa-lightbulb",l:"table+lamp"}], "yuksek":[{t:"Robot Vacuum",d:"Cleaning.",i:"fa-robot",l:"robot+vacuum"}, {t:"Rug",d:"Living room.",i:"fa-rug",l:"living+room+rug"}, {t:"Airfryer",d:"Kitchen.",i:"fa-fire-burner",l:"ninja+airfryer"}], "premium":[{t:"Dyson Vacuum",d:"The best.",i:"fa-broom",l:"dyson+stick+vacuum"}, {t:"Armchair",d:"Accent.",i:"fa-chair",l:"accent+chair"}] },
-                "kamp": { "dusuk":[{t:"Tumbler",d:"Insulated.",i:"fa-mug-hot",l:"insulated+tumbler"}, {t:"Headlamp",d:"Light.",i:"fa-lightbulb",l:"headlamp"}], "orta":[{t:"Stanley Thermos",d:"Classic.",i:"fa-bottle-water",l:"stanley+thermos"}, {t:"Camp Chair",d:"Comfortable.",i:"fa-chair",l:"camping+chair"}], "yuksek":[{t:"Tent",d:"2-person.",i:"fa-tent",l:"2+person+tent"}, {t:"Sleeping Bag",d:"Winter.",i:"fa-bed",l:"winter+sleeping+bag"}], "premium":[{t:"North Face Jacket",d:"Protection.",i:"fa-user-tie",l:"north+face+womens+jacket"}, {t:"Glamping Tent",d:"Luxury.",i:"fa-tent",l:"bell+tent"}] },
-                "bitki": { "dusuk":[{t:"Red Rose",d:"Single stem.",i:"fa-heart",l:"preserved+red+rose"}, {t:"Succulent",d:"Cute pot.",i:"fa-leaf",l:"succulent+in+pot"}, {t:"Daisy",d:"Bouquet.",i:"fa-sun",l:"artificial+daisy+bouquet"}], "orta":[{t:"Orchid",d:"White elegant.",i:"fa-leaf",l:"live+orchid+plant"}, {t:"Terrarium",d:"Glass garden.",i:"fa-heart",l:"terrarium+kit"}, {t:"Bonsai",d:"Miniature tree.",i:"fa-tree",l:"live+bonsai+tree"}], "yuksek":[{t:"Preserved Rose",d:"In glass dome.",i:"fa-heart",l:"preserved+rose+in+glass+dome"}, {t:"Large Bouquet",d:"Mixed flowers.",i:"fa-gift",l:"flower+bouquet"}, {t:"Lemon Tree",d:"Potted.",i:"fa-lemon",l:"live+lemon+tree+indoor"}], "premium":[{t:"1000 Roses",d:"Giant bouquet.",i:"fa-heart",l:"large+artificial+flower+arrangement"}, {t:"Landscaping",d:"Garden decor.",i:"fa-tree",l:"garden+decor"}, {t:"Smart Garden",d:"Click & Grow.",i:"fa-leaf",l:"click+and+grow+smart+garden"}] }
+                "moda": {
+                    "dusuk": [ {t:"Scarf",d:"Patterned.",i:"fa-user",l:"womens+pashmina+scarf"}, {t:"Belt",d:"Skinny.",i:"fa-minus",l:"womens+leather+skinny+belt"}, {t:"Hair Clip",d:"Pearl.",i:"fa-star",l:"pearl+hair+claw+clips"}, {t:"Socks",d:"Ruffled.",i:"fa-socks",l:"womens+ruffle+ankle+socks"}, {t:"Brooch",d:"Pin.",i:"fa-gem",l:"vintage+crystal+brooch+pin"}, {t:"Beanie",d:"Knit.",i:"fa-hat-cowboy",l:"carhartt+beanie+women"}, {t:"Gloves",d:"Touchscreen.",i:"fa-hand",l:"womens+touchscreen+leather+gloves"} ],
+                    "orta": [ {t:"Dress",d:"Elegant.",i:"fa-shirt",l:"womens+elegant+midi+dress"}, {t:"Bag",d:"Baguette.",i:"fa-bag-shopping",l:"90s+shoulder+bag+baguette"}, {t:"Sunglasses",d:"Cat-eye.",i:"fa-glasses",l:"womens+cat+eye+sunglasses"}, {t:"Blouse",d:"Satin.",i:"fa-shirt",l:"womens+satin+silk+blouse"}, {t:"Skirt",d:"Pleated.",i:"fa-person-dress",l:"womens+pleated+midi+skirt"}, {t:"Cardigan",d:"Chunky knit.",i:"fa-shirt",l:"womens+chunky+knit+cardigan"}, {t:"Pendant",d:"Gold plated.",i:"fa-gem",l:"18k+gold+plated+initial+necklace"} ],
+                    "yuksek": [ {t:"Boots",d:"Leather.",i:"fa-shoe-prints",l:"drmartens+womens+boots"}, {t:"Coat",d:"Wool.",i:"fa-user-tie",l:"womens+wool+blend+coat"}, {t:"Watch",d:"Michael Kors.",i:"fa-clock",l:"michael+kors+watch+women"}, {t:"Heels",d:"Classic.",i:"fa-shoe-prints",l:"steve+madden+womens+heels"}, {t:"Trench Coat",d:"Classic.",i:"fa-user-tie",l:"womens+classic+trench+coat"} ],
+                    "premium": [ {t:"Designer Bag",d:"Luxury.",i:"fa-bag-shopping",l:"coach+designer+bag+women"}, {t:"Diamond",d:"Necklace.",i:"fa-gem",l:"real+diamond+necklace"}, {t:"Faux Fur",d:"Coat.",i:"fa-user-tie",l:"luxury+faux+fur+coat+women"} ]
+                },
+                "ev": {
+                    "dusuk": [ {t:"Candle Holder",d:"Decor.",i:"fa-fire",l:"decorative+candle+holder"}, {t:"Mug",d:"Initial.",i:"fa-mug-hot",l:"monogram+coffee+mug"}, {t:"Frame",d:"Picture.",i:"fa-image",l:"aesthetic+picture+frame"}, {t:"Incense",d:"Set.",i:"fa-fire",l:"incense+sticks+and+holder"}, {t:"Coasters",d:"Marble.",i:"fa-circle",l:"marble+drink+coasters"}, {t:"Throw Pillow",d:"Velvet.",i:"fa-square",l:"velvet+throw+pillow+covers"} ],
+                    "orta": [ {t:"Bedding",d:"Satin.",i:"fa-bed",l:"satin+sheet+set"}, {t:"Throw",d:"Blanket.",i:"fa-bed",l:"chunky+knit+blanket"}, {t:"Vase",d:"Glass.",i:"fa-glass-water",l:"pampas+grass+with+vase"}, {t:"Lamp",d:"Table.",i:"fa-lightbulb",l:"modern+table+lamp"}, {t:"Diffuser",d:"Aromatherapy.",i:"fa-wind",l:"essential+oil+diffuser"}, {t:"Coffee Press",d:"French.",i:"fa-mug-hot",l:"bodum+french+press"} ],
+                    "yuksek": [ {t:"Robot Vacuum",d:"Cleaning.",i:"fa-robot",l:"eufy+robot+vacuum"}, {t:"Rug",d:"Living room.",i:"fa-rug",l:"boho+area+rug"}, {t:"Airfryer",d:"Kitchen.",i:"fa-fire-burner",l:"ninja+air+fryer"}, {t:"Nespresso",d:"Coffee maker.",i:"fa-mug-hot",l:"nespresso+vertuo+machine"}, {t:"Cookware",d:"Ceramic.",i:"fa-kitchen-set",l:"caraway+ceramic+cookware+set"} ],
+                    "premium": [ {t:"Dyson Vacuum",d:"The best.",i:"fa-broom",l:"dyson+v11+vacuum"}, {t:"Armchair",d:"Accent.",i:"fa-chair",l:"mid+century+modern+accent+chair"}, {t:"Espresso Machine",d:"Breville.",i:"fa-mug-hot",l:"breville+barista+express"} ]
+                },
+                "hobi": {
+                    "dusuk": [ {t:"Puzzle",d:"1000 Pieces.",i:"fa-puzzle-piece",l:"1000+piece+puzzle+for+adults"}, {t:"Coloring Book",d:"Adult mandala.",i:"fa-palette",l:"adult+coloring+book"}, {t:"Book",d:"Bestseller.",i:"fa-book",l:"bestseller+fiction+books"}, {t:"Tarot Cards",d:"Divination.",i:"fa-star",l:"tarot+cards+deck"}, {t:"Kalimba",d:"Thumb piano.",i:"fa-music",l:"kalimba+17+keys"}, {t:"Embroidery Kit",d:"Beginner.",i:"fa-mitten",l:"beginner+embroidery+kit"}, {t:"Calligraphy",d:"Pen set.",i:"fa-pen",l:"calligraphy+pen+set"} ],
+                    "orta": [ {t:"Canvas Set",d:"Easel and paint.",i:"fa-palette",l:"acrylic+paint+set+with+easel"}, {t:"Ukulele",d:"Instrument.",i:"fa-guitar",l:"ukulele+starter+kit"}, {t:"Vinyl Record",d:"Classic music.",i:"fa-record-vinyl",l:"taylor+swift+vinyl+record"}, {t:"Yoga Mat",d:"Exercise.",i:"fa-person-praying",l:"manduka+yoga+mat"}, {t:"Board Game",d:"Catan/Dixit.",i:"fa-chess-board",l:"catan+board+game"}, {t:"Kindle Case",d:"Protective.",i:"fa-book",l:"kindle+paperwhite+case"} ],
+                    "yuksek": [ {t:"Record Player",d:"Suitcase style.",i:"fa-record-vinyl",l:"crosley+record+player"}, {t:"Instax",d:"Camera.",i:"fa-camera",l:"fujifilm+instax+mini+12"}, {t:"Sewing Machine",d:"Singer.",i:"fa-shirt",l:"singer+heavy+duty+sewing+machine"}, {t:"Telescope",d:"Stargazing.",i:"fa-star",l:"astronomy+telescope+for+adults"}, {t:"Cricut",d:"Cutting machine.",i:"fa-scissors",l:"cricut+explore+air+2"} ],
+                    "premium": [ {t:"iPad",d:"For digital art.",i:"fa-tablet",l:"apple+ipad+air"}, {t:"Digital Piano",d:"88 Keys.",i:"fa-music",l:"yamaha+digital+piano+88+keys"}, {t:"Pro Camera",d:"Canon.",i:"fa-camera",l:"canon+eos+rebel+t7"} ]
+                },
+                "kamp": {
+                    "dusuk": [ {t:"Tumbler",d:"Insulated.",i:"fa-mug-hot",l:"yeti+rambler+tumbler"}, {t:"Headlamp",d:"Light.",i:"fa-lightbulb",l:"rechargeable+headlamp"}, {t:"Camping Mug",d:"Enamel.",i:"fa-mug-hot",l:"enamel+camping+mug"}, {t:"Socks",d:"Merino Wool.",i:"fa-socks",l:"merino+wool+hiking+socks"} ],
+                    "orta": [ {t:"Stanley Thermos",d:"Classic.",i:"fa-bottle-water",l:"stanley+classic+vacuum+bottle"}, {t:"Camp Chair",d:"Comfortable.",i:"fa-chair",l:"folding+camping+chair"}, {t:"Hammock",d:"Parachute.",i:"fa-tree",l:"eno+double+nest+hammock"}, {t:"Backpack",d:"Daypack.",i:"fa-suitcase",l:"osprey+daylite+backpack"} ],
+                    "yuksek": [ {t:"Tent",d:"2-person.",i:"fa-tent",l:"coleman+2+person+tent"}, {t:"Sleeping Bag",d:"Winter.",i:"fa-bed",l:"mummy+sleeping+bag+winter"}, {t:"Camp Stove",d:"Jetboil.",i:"fa-fire-burner",l:"jetboil+flash+cooking+system"} ],
+                    "premium": [ {t:"North Face Jacket",d:"Protection.",i:"fa-user-tie",l:"the+north+face+womens+jacket"}, {t:"Cooler",d:"Yeti Tundra.",i:"fa-snowflake",l:"yeti+tundra+cooler"} ]
+                },
+                "bitki": {
+                    "dusuk": [ {t:"Red Rose",d:"Single stem.",i:"fa-heart",l:"preserved+red+rose+real"}, {t:"Succulent",d:"Cute pot.",i:"fa-leaf",l:"live+succulent+plants+in+pots"}, {t:"Daisy",d:"Bouquet.",i:"fa-sun",l:"artificial+daisy+flower+bouquet"}, {t:"Plant Mister",d:"Glass.",i:"fa-spray-can",l:"vintage+glass+plant+mister"} ],
+                    "orta": [ {t:"Orchid",d:"White elegant.",i:"fa-leaf",l:"live+orchid+plant+indoor"}, {t:"Terrarium",d:"Glass garden.",i:"fa-earth-americas",l:"diy+terrarium+kit"}, {t:"Bonsai",d:"Miniature tree.",i:"fa-tree",l:"live+bonsai+tree+indoor"}, {t:"Plant Stand",d:"Mid-century.",i:"fa-layer-group",l:"mid+century+plant+stand"} ],
+                    "yuksek": [ {t:"Preserved Rose",d:"In glass dome.",i:"fa-heart",l:"beauty+and+the+beast+rose+glass+dome"}, {t:"Large Bouquet",d:"Mixed flowers.",i:"fa-gift",l:"fresh+flower+bouquet+delivery"}, {t:"Lemon Tree",d:"Potted.",i:"fa-lemon",l:"live+meyer+lemon+tree"} ],
+                    "premium": [ {t:"Smart Garden",d:"Click & Grow.",i:"fa-leaf",l:"click+and+grow+smart+garden+9"}, {t:"Greenhouse",d:"Mini indoor.",i:"fa-home",l:"indoor+mini+greenhouse+cabinet"} ]
+                }
             },
             "sevgili_erkek": {
                 "teknoloji": {
-                    "dusuk": [ {t:"Phone Mount",d:"Car.",i:"fa-car",l:"car+phone+mount"}, {t:"Mouse Pad",d:"XXL.",i:"fa-keyboard",l:"xxl+gaming+mouse+pad"}, {t:"USB Drive",d:"Metal.",i:"fa-usb",l:"metal+usb+flash+drive"}, {t:"Cable Protectors",d:"Set.",i:"fa-plug",l:"cable+protector+set"}, {t:"Webcam Cover",d:"Privacy.",i:"fa-user-secret",l:"webcam+cover+slide"}, {t:"Tripod",d:"Mini.",i:"fa-camera",l:"mini+phone+tripod"}, {t:"Headphone Stand",d:"Desk.",i:"fa-headphones",l:"headphone+stand"}, {t:"Cable Ties",d:"Velcro.",i:"fa-list",l:"velcro+cable+ties"}, {t:"Screen Cleaner",d:"Spray.",i:"fa-spray-can",l:"screen+cleaner+kit"} ],
-                    "orta": [ {t:"Gaming Mouse",d:"RGB.",i:"fa-computer-mouse",l:"rgb+gaming+mouse"}, {t:"Bluetooth Speaker",d:"Portable.",i:"fa-music",l:"portable+bluetooth+speaker"}, {t:"Mechanical Keyboard",d:"Red Switch.",i:"fa-keyboard",l:"mechanical+keyboard+red+switch"}, {t:"Shaver",d:"Grooming.",i:"fa-cut",l:"mens+grooming+kit"}, {t:"Smart Band",d:"Fitness.",i:"fa-watch",l:"smart+fitness+band"}, {t:"Dash Cam",d:"Security.",i:"fa-video",l:"dash+cam"}, {t:"Powerbank",d:"20,000 mAh.",i:"fa-battery-full",l:"20000mah+power+bank"}, {t:"Gamepad",d:"PC.",i:"fa-gamepad",l:"pc+gamepad+controller"}, {t:"Smart Plug",d:"Wifi.",i:"fa-plug",l:"wifi+smart+plug"} ],
-                    "yuksek": [ {t:"Gaming Headset",d:"7.1 Surround.",i:"fa-headset",l:"7.1+gaming+headset"}, {t:"Monitor",d:"165Hz.",i:"fa-desktop",l:"165hz+gaming+monitor"}, {t:"Smart Watch",d:"Samsung/Garmin.",i:"fa-clock",l:"samsung+galaxy+watch"}, {t:"Racing Wheel",d:"Sim setup.",i:"fa-car",l:"logitech+racing+wheel"}, {t:"Soundbar",d:"Audio.",i:"fa-music",l:"tv+soundbar"}, {t:"Tablet",d:"Samsung Tab.",i:"fa-tablet",l:"samsung+galaxy+tab"}, {t:"Apple Watch",d:"Series.",i:"fa-clock",l:"apple+watch"} ],
-                    "premium": [ {t:"PlayStation 5",d:"Gaming.",i:"fa-gamepad",l:"playstation+5"}, {t:"Laptop",d:"RTX 4060.",i:"fa-desktop",l:"rtx+4060+gaming+laptop"}, {t:"Drone",d:"DJI.",i:"fa-plane",l:"dji+mini+drone"}, {t:"iPhone",d:"Pro.",i:"fa-mobile",l:"iphone+pro"}, {t:"VR Headset",d:"Meta.",i:"fa-vr-cardboard",l:"meta+quest"}, {t:"MacBook Pro",d:"M3.",i:"fa-laptop",l:"macbook+pro"} ]
+                    "dusuk": [ {t:"Phone Mount",d:"Car.",i:"fa-car",l:"magnetic+car+phone+mount"}, {t:"Mouse Pad",d:"XXL.",i:"fa-keyboard",l:"xxl+gaming+mouse+pad"}, {t:"USB Drive",d:"Metal.",i:"fa-usb",l:"sandisk+usb+flash+drive"}, {t:"Cable Protectors",d:"Set.",i:"fa-plug",l:"cable+protector+set"}, {t:"Webcam Cover",d:"Privacy.",i:"fa-user-secret",l:"laptop+webcam+cover+slide"}, {t:"Headphone Stand",d:"Desk.",i:"fa-headphones",l:"aluminum+headphone+stand"}, {t:"Screen Cleaner",d:"Spray.",i:"fa-spray-can",l:"whoosh+screen+cleaner"}, {t:"AirTag Case",d:"Keychain.",i:"fa-key",l:"apple+airtag+keychain"} ],
+                    "orta": [ {t:"Gaming Mouse",d:"RGB.",i:"fa-computer-mouse",l:"logitech+g502+hero"}, {t:"Bluetooth Speaker",d:"Portable.",i:"fa-music",l:"jbl+flip+6+bluetooth+speaker"}, {t:"Mechanical Keyboard",d:"Red Switch.",i:"fa-keyboard",l:"mechanical+gaming+keyboard"}, {t:"Shaver",d:"Grooming.",i:"fa-cut",l:"philips+norelco+multigroom"}, {t:"Dash Cam",d:"Security.",i:"fa-video",l:"garmin+dash+cam"}, {t:"Powerbank",d:"20,000 mAh.",i:"fa-battery-full",l:"anker+powercore+20000"}, {t:"Gamepad",d:"PC/Xbox.",i:"fa-gamepad",l:"xbox+wireless+controller"} ],
+                    "yuksek": [ {t:"Gaming Headset",d:"7.1 Surround.",i:"fa-headset",l:"hyperx+cloud+ii+gaming+headset"}, {t:"Monitor",d:"165Hz.",i:"fa-desktop",l:"165hz+gaming+monitor"}, {t:"Smart Watch",d:"Garmin/Samsung.",i:"fa-clock",l:"garmin+instinct+smartwatch"}, {t:"Racing Wheel",d:"Sim setup.",i:"fa-car",l:"logitech+g920+racing+wheel"}, {t:"Soundbar",d:"Audio.",i:"fa-music",l:"samsung+soundbar"} ],
+                    "premium": [ {t:"PlayStation 5",d:"Gaming.",i:"fa-gamepad",l:"playstation+5+console"}, {t:"Laptop",d:"RTX Gaming.",i:"fa-desktop",l:"asus+rog+gaming+laptop"}, {t:"Drone",d:"DJI.",i:"fa-plane",l:"dji+mini+3+pro"}, {t:"VR Headset",d:"Meta.",i:"fa-vr-cardboard",l:"meta+quest+3"} ]
                 },
                 "genel": {
-                    "dusuk": [ {t:"Wallet",d:"Leather.",i:"fa-wallet",l:"mens+leather+wallet"}, {t:"Beer Glass",d:"Custom.",i:"fa-beer-mug-empty",l:"custom+beer+glass"}, {t:"Keychain",d:"Car brand.",i:"fa-key",l:"leather+car+keychain"}, {t:"Lighter",d:"Zippo.",i:"fa-fire",l:"zippo+lighter"}, {t:"Mug",d:"Matte black.",i:"fa-mug-hot",l:"matte+black+mug"}, {t:"Belt",d:"Leather.",i:"fa-minus",l:"mens+leather+belt"}, {t:"Beanie",d:"Winter.",i:"fa-hat-cowboy",l:"mens+beanie"}, {t:"Boxers",d:"Patterned.",i:"fa-shirt",l:"funny+mens+boxers"} ],
-                    "orta": [ {t:"Backpack",d:"Laptop.",i:"fa-suitcase",l:"laptop+backpack"}, {t:"Cologne",d:"Scent.",i:"fa-spray-can",l:"mens+cologne"}, {t:"Sweatshirt",d:"Hoodie.",i:"fa-shirt",l:"mens+hoodie"}, {t:"Jersey",d:"Sports team.",i:"fa-shirt",l:"soccer+jersey"}, {t:"Flannel",d:"Lumberjack.",i:"fa-shirt",l:"mens+flannel+shirt"}, {t:"Rosary",d:"Silver.",i:"fa-hand-holding",l:"silver+rosary"}, {t:"Cardholder",d:"Pop-up.",i:"fa-id-card",l:"pop+up+card+wallet"}, {t:"Whiskey Stones",d:"Cooling.",i:"fa-cube",l:"whiskey+stones+set"} ],
-                    "yuksek": [ {t:"Jacket",d:"Outdoor.",i:"fa-user-tie",l:"mens+outdoor+jacket"}, {t:"Suit",d:"Elegant.",i:"fa-user-tie",l:"mens+suit"}, {t:"Boots",d:"Leather/Timberland.",i:"fa-shoe-prints",l:"timberland+boots+men"}, {t:"Watch",d:"Steel.",i:"fa-clock",l:"mens+stainless+steel+watch"}, {t:"Sunglasses",d:"Aviator.",i:"fa-glasses",l:"mens+aviator+sunglasses"} ],
-                    "premium": [ {t:"Swiss Watch",d:"Automatic.",i:"fa-clock",l:"tissot+watch+men"}, {t:"Scooter",d:"Electric.",i:"fa-bicycle",l:"electric+scooter"}, {t:"Motorcycle Helmet",d:"Shoei.",i:"fa-motorcycle",l:"shoei+helmet"}, {t:"Flight Ticket",d:"Vacation.",i:"fa-plane",l:"https://www.expedia.com/"} ]
+                    "dusuk": [ {t:"Wallet",d:"Slim Leather.",i:"fa-wallet",l:"mens+slim+minimalist+wallet"}, {t:"Beer Glass",d:"Custom.",i:"fa-beer-mug-empty",l:"craft+beer+glasses+set"}, {t:"Lighter",d:"Zippo.",i:"fa-fire",l:"zippo+classic+lighter"}, {t:"Mug",d:"Matte black.",i:"fa-mug-hot",l:"matte+black+coffee+mug"}, {t:"Belt",d:"Leather.",i:"fa-minus",l:"mens+leather+ratchet+belt"}, {t:"Beanie",d:"Winter.",i:"fa-hat-cowboy",l:"carhartt+mens+beanie"}, {t:"Multitool",d:"Pocket.",i:"fa-wrench",l:"gerber+multitool"} ],
+                    "orta": [ {t:"Backpack",d:"Laptop.",i:"fa-suitcase",l:"swissgear+laptop+backpack"}, {t:"Cologne",d:"Scent.",i:"fa-spray-can",l:"nautica+voyage+cologne"}, {t:"Sweatshirt",d:"Hoodie.",i:"fa-shirt",l:"nike+mens+hoodie"}, {t:"Whiskey Stones",d:"Cooling.",i:"fa-cube",l:"whiskey+stones+and+glass+set"}, {t:"Duffle Bag",d:"Gym/Travel.",i:"fa-suitcase",l:"canvas+duffle+bag+for+men"} ],
+                    "yuksek": [ {t:"Jacket",d:"Outdoor.",i:"fa-user-tie",l:"columbia+mens+jacket"}, {t:"Boots",d:"Leather.",i:"fa-shoe-prints",l:"timberland+mens+boots"}, {t:"Watch",d:"Steel.",i:"fa-clock",l:"fossil+mens+chronograph+watch"}, {t:"Sunglasses",d:"Aviator.",i:"fa-glasses",l:"ray+ban+aviator+sunglasses"} ],
+                    "premium": [ {t:"Swiss Watch",d:"Automatic.",i:"fa-clock",l:"tissot+mens+prx+watch"}, {t:"Espresso Machine",d:"Coffee lover.",i:"fa-mug-hot",l:"breville+espresso+machine"} ]
                 },
                 "kamp": {
                     "dusuk": [ {t:"Pocket Knife",d:"Multi-tool.",i:"fa-screwdriver-wrench",l:"swiss+army+knife"}, {t:"Flask",d:"Steel.",i:"fa-bottle-water",l:"stainless+steel+flask"}, {t:"Fire Starter",d:"Magnesium.",i:"fa-fire",l:"magnesium+fire+starter"}, {t:"Bracelet",d:"Paracord.",i:"fa-link",l:"paracord+bracelet"}, {t:"Carabiner Mug",d:"Camping.",i:"fa-mug-hot",l:"carabiner+mug"}, {t:"Carabiners",d:"Set.",i:"fa-link",l:"carabiner+clip+set"}, {t:"Camp Knife",d:"With sheath.",i:"fa-utensils",l:"camping+knife+with+sheath"} ],
@@ -222,10 +243,10 @@
                     "premium": [ {t:"TV",d:"Big screen.",i:"fa-tv",l:"65+inch+tv"}, {t:"iPhone",d:"Upgrade.",i:"fa-mobile",l:"iphone"}, {t:"Laptop",d:"Work.",i:"fa-laptop",l:"laptop"} ]
                 },
                 "genel": {
-                    "dusuk": [ {t:"Rosary",d:"Amber.",i:"fa-hand-holding",l:"amber+rosary"}, {t:"Knife",d:"Pocket.",i:"fa-screwdriver",l:"pocket+knife"}, {t:"Socks",d:"Bamboo.",i:"fa-socks",l:"bamboo+socks"}, {t:"Cap",d:"Flat.",i:"fa-hat-cowboy",l:"flat+cap"}, {t:"Slippers",d:"Leather.",i:"fa-shoe-prints",l:"mens+leather+slippers"}, {t:"Handkerchief",d:"Cloth.",i:"fa-square",l:"mens+handkerchiefs"}, {t:"Cigarette Case",d:"Metal.",i:"fa-smoking",l:"cigarette+case"}, {t:"Keychain",d:"Leather.",i:"fa-key",l:"leather+keychain"} ],
-                    "orta": [ {t:"Shirt",d:"Classic.",i:"fa-shirt",l:"mens+button+down+shirt"}, {t:"Toolbox",d:"Empty/Set.",i:"fa-toolbox",l:"toolbox"}, {t:"BBQ",d:"Grill.",i:"fa-fire",l:"portable+bbq+grill"}, {t:"Shoes",d:"Comfort.",i:"fa-shoe-prints",l:"mens+comfort+shoes"}, {t:"Vest",d:"Fleece.",i:"fa-vest",l:"mens+fleece+vest"}, {t:"Pajamas",d:"Set.",i:"fa-shirt",l:"mens+pajama+set"} ],
-                    "yuksek": [ {t:"Jacket",d:"Winter.",i:"fa-user-tie",l:"mens+winter+jacket"}, {t:"Watch",d:"Classic.",i:"fa-clock",l:"mens+classic+watch"}, {t:"Suit",d:"Full.",i:"fa-user-tie",l:"mens+suit"}, {t:"Boots",d:"Leather.",i:"fa-shoe-prints",l:"mens+leather+boots"} ],
-                    "premium": [ {t:"TV",d:"Giant.",i:"fa-tv",l:"oled+tv"}, {t:"Tires",d:"Car.",i:"fa-car-side",l:"car+tires"} ]
+                    "dusuk": [ {t:"Coffee Mug",d:"Funny dad.",i:"fa-mug-hot",l:"funny+dad+coffee+mug"}, {t:"Socks",d:"Comfortable.",i:"fa-socks",l:"mens+cushion+crew+socks"}, {t:"Multitool",d:"Pocket.",i:"fa-wrench",l:"pocket+multitool"}, {t:"Grill Tools",d:"Spatula.",i:"fa-fire",l:"bbq+grill+accessories"}, {t:"Flashlight",d:"LED.",i:"fa-lightbulb",l:"led+tactical+flashlight"}, {t:"Rosary",d:"Amber.",i:"fa-hand-holding",l:"amber+rosary"}, {t:"Knife",d:"Pocket.",i:"fa-screwdriver",l:"pocket+knife"}, {t:"Cap",d:"Flat.",i:"fa-hat-cowboy",l:"flat+cap"} ],
+                    "orta": [ {t:"Polo Shirt",d:"Classic.",i:"fa-shirt",l:"mens+polo+shirt"}, {t:"Slippers",d:"Memory foam.",i:"fa-shoe-prints",l:"mens+memory+foam+slippers"}, {t:"Wallet",d:"RFID Leather.",i:"fa-wallet",l:"mens+rfid+blocking+leather+wallet"}, {t:"Massage Gun",d:"Muscle recovery.",i:"fa-heart-pulse",l:"percussion+massage+gun"}, {t:"Tool Set",d:"Home repair.",i:"fa-toolbox",l:"home+tool+kit"} ],
+                    "yuksek": [ {t:"Smart Watch",d:"Health tracker.",i:"fa-clock",l:"garmin+smartwatch"}, {t:"Jacket",d:"Windbreaker.",i:"fa-user-tie",l:"mens+columbia+jacket"}, {t:"Power Drill",d:"Cordless.",i:"fa-toolbox",l:"dewalt+cordless+drill+set"}, {t:"Dash Cam",d:"Car safety.",i:"fa-video",l:"garmin+dash+cam"} ],
+                    "premium": [ {t:"Smoker Grill",d:"BBQ master.",i:"fa-fire",l:"traeger+pellet+grill"}, {t:"Recliner",d:"Comfort chair.",i:"fa-chair",l:"massage+recliner+chair"} ]
                 },
                 "hobi": { "dusuk":[{t:"Backgammon",d:"Wood.",i:"fa-chess-board",l:"backgammon+set"}, {t:"Rummy",d:"Set.",i:"fa-layer-group",l:"rummy+tile+game"}], "orta":[{t:"Fishing Rod",d:"Set.",i:"fa-fish",l:"fishing+rod+set"}, {t:"Radio",d:"Nostalgic.",i:"fa-radio",l:"retro+radio"}], "yuksek":[{t:"Telescope",d:"Stargazing.",i:"fa-star",l:"telescope"}, {t:"Record Player",d:"Retro.",i:"fa-music",l:"record+player"}], "premium":[{t:"Boat Tour",d:"Trip.",i:"fa-ship",l:"https://www.expedia.com/"}, {t:"Massage Chair",d:"Comfort.",i:"fa-chair",l:"massage+chair"}] },
                 "ev": { "dusuk":[{t:"Battery Radio",d:"Nostalgia.",i:"fa-radio",l:"battery+operated+radio"}], "orta":[{t:"Drill",d:"Hammer.",i:"fa-toolbox",l:"hammer+drill"}], "yuksek":[{t:"Recliner",d:"Dad chair.",i:"fa-chair",l:"recliner+chair"}], "premium":[{t:"AC",d:"Cooling.",i:"fa-wind",l:"air+conditioner"}] },
@@ -235,10 +256,10 @@
             },
             "arkadas": {
                 "genel": {
-                    "dusuk": [ {t:"Funny Mug",d:"Joke.",i:"fa-mug-hot",l:"funny+mug"}, {t:"Socks",d:"Avocado.",i:"fa-socks",l:"novelty+socks"}, {t:"Uno",d:"Cards.",i:"fa-layer-group",l:"uno+card+game"}, {t:"Pin",d:"Badge.",i:"fa-thumbtack",l:"enamel+pin"}, {t:"Puzzle",d:"1000.",i:"fa-puzzle-piece",l:"puzzle"}, {t:"Notebook",d:"Planner.",i:"fa-book",l:"planner"}, {t:"Stickers",d:"Laptop.",i:"fa-note-sticky",l:"laptop+stickers"}, {t:"Keychain",d:"Figure.",i:"fa-key",l:"funko+pop+keychain"}, {t:"Pen",d:"Fluffy.",i:"fa-pen",l:"fluffy+pen"}, {t:"Hair Clip",d:"Colorful.",i:"fa-star",l:"claw+clips"} ],
-                    "orta": [ {t:"Taboo",d:"Game.",i:"fa-chess-board",l:"taboo+board+game"}, {t:"Dart",d:"Wall.",i:"fa-bullseye",l:"dart+board"}, {t:"Sweatshirt",d:"Oversize.",i:"fa-shirt",l:"oversize+hoodie"}, {t:"Neon",d:"Sign.",i:"fa-bolt",l:"neon+sign"}, {t:"Thermos",d:"Coffee.",i:"fa-mug-hot",l:"travel+mug"}, {t:"Vinyl",d:"Music.",i:"fa-record-vinyl",l:"vinyl+records"}, {t:"Monopoly",d:"Game.",i:"fa-chess-board",l:"monopoly"}, {t:"Lamp",d:"Desk.",i:"fa-lightbulb",l:"desk+lamp"}, {t:"Speaker",d:"Bluetooth.",i:"fa-music",l:"bluetooth+speaker"} ],
-                    "yuksek": [ {t:"Lego",d:"Technic.",i:"fa-car",l:"lego+set"}, {t:"Ticket",d:"Concert.",i:"fa-ticket",l:"https://www.ticketmaster.com/"}, {t:"Sneakers",d:"Vans.",i:"fa-shoe-prints",l:"vans+sneakers"}, {t:"Instax",d:"Camera.",i:"fa-camera",l:"fujifilm+instax"}, {t:"Record Player",d:"Suitcase.",i:"fa-record-vinyl",l:"record+player"}, {t:"Smart Watch",d:"Sport.",i:"fa-clock",l:"smart+watch"} ],
-                    "premium": [ {t:"Xbox",d:"Gaming.",i:"fa-gamepad",l:"xbox+series+s"}, {t:"Guitar",d:"Electric.",i:"fa-music",l:"electric+guitar"}, {t:"Projector",d:"Cinema.",i:"fa-film",l:"home+projector"}, {t:"iPad",d:"Tablet.",i:"fa-tablet",l:"apple+ipad"} ]
+                    "dusuk": [ {t:"Funny Mug",d:"Joke.",i:"fa-mug-hot",l:"funny+coffee+mug"}, {t:"Socks",d:"Novelty.",i:"fa-socks",l:"novelty+funny+socks"}, {t:"Card Game",d:"Party.",i:"fa-layer-group",l:"cards+against+humanity"}, {t:"Candle",d:"Aesthetic.",i:"fa-fire",l:"funny+scented+candle"}, {t:"Keychain",d:"Matching.",i:"fa-key",l:"best+friend+keychain"} ],
+                    "orta": [ {t:"Board Game",d:"Night in.",i:"fa-chess-board",l:"catan+board+game"}, {t:"Sweatshirt",d:"Oversize.",i:"fa-shirt",l:"oversize+hoodie+aesthetic"}, {t:"Neon Sign",d:"Decor.",i:"fa-bolt",l:"custom+neon+sign"}, {t:"Bluetooth Speaker",d:"Portable.",i:"fa-music",l:"jbl+clip+4"}, {t:"Tumbler",d:"Stanley/Yeti.",i:"fa-mug-hot",l:"stanley+quencher"} ],
+                    "yuksek": [ {t:"Lego Set",d:"Adults.",i:"fa-cubes",l:"lego+icons+set"}, {t:"Instax Camera",d:"Memories.",i:"fa-camera",l:"fujifilm+instax+mini"}, {t:"Record Player",d:"Vintage.",i:"fa-record-vinyl",l:"crosley+record+player"}, {t:"Tickets",d:"Concert/Event.",i:"fa-ticket",l:"https://www.ticketmaster.com/"} ],
+                    "premium": [ {t:"Nintendo Switch",d:"Gaming.",i:"fa-gamepad",l:"nintendo+switch"}, {t:"iPad",d:"Tablet.",i:"fa-tablet",l:"apple+ipad"} ]
                 },
                 "teknoloji": { "dusuk":[{t:"USB",d:"Drive.",i:"fa-usb",l:"usb+flash+drive"}, {t:"Case",d:"Phone.",i:"fa-mobile",l:"cool+phone+case"}], "orta":[{t:"Earbuds",d:"Bluetooth.",i:"fa-headphones",l:"wireless+earbuds"}, {t:"Powerbank",d:"10.000.",i:"fa-battery-full",l:"powerbank"}], "yuksek":[{t:"Speaker",d:"JBL.",i:"fa-music",l:"jbl+speaker"}, {t:"Keyboard",d:"Mechanical.",i:"fa-keyboard",l:"mechanical+keyboard"}], "premium":[{t:"Console",d:"Playstation.",i:"fa-gamepad",l:"playstation+5"}, {t:"VR Headset",d:"Gaming.",i:"fa-vr-cardboard",l:"meta+quest"}] },
                 "moda": { "dusuk":[{t:"Beanie",d:"Colorful.",i:"fa-hat-cowboy",l:"beanie"}, {t:"Socks",d:"Patterned.",i:"fa-socks",l:"novelty+socks"}], "orta":[{t:"T-shirt",d:"Graphic.",i:"fa-shirt",l:"graphic+tee"}, {t:"Sweatshirt",d:"Hoodie.",i:"fa-shirt",l:"hoodie"}], "yuksek":[{t:"Shoes",d:"Sneakers.",i:"fa-shoe-prints",l:"sneakers"}, {t:"Bag",d:"Backpack.",i:"fa-suitcase",l:"backpack"}], "premium":[{t:"Jacket",d:"Brand.",i:"fa-user-tie",l:"brand+jacket"}, {t:"Watch",d:"Smart.",i:"fa-clock",l:"apple+watch"}] },
@@ -263,64 +284,117 @@
             return array;
         }
 
-        function hediyeBul() {
+        // --- HAFIZA (STATE MANAGEMENT) DEĞİŞKENLERİ ---
+        let globalPool = [];
+        let currentIndex = 0;
+
+        // "FIND THE GIFT" butonuna basıldığında havuzu kurar ve hafızaya alır
+        function initSearch() {
             const kime = document.getElementById("kime").value;
             const ilgi = document.getElementById("ilgi").value;
             const butce = document.getElementById("butce").value;
             const loading = document.getElementById("loadingIcon");
             const results = document.getElementById("results-area");
-            const container = document.getElementById("cards-container");
             const fallbackAlert = document.getElementById("fallback-alert");
+            const container = document.getElementById("cards-container");
 
             results.style.display = "none";
             loading.style.display = "block";
-            container.innerHTML = "";
             fallbackAlert.style.display = "none";
+            container.innerHTML = "";
 
             setTimeout(() => {
                 loading.style.display = "none";
                 results.style.display = "block";
 
-                let tumHavuz = [];
+                let rawPool = [];
 
+                // 1. Birincil Veri Çekimi
                 if (ilgi === "genel") {
-                    const kategoriler = hediyeHavuzu[kime];
-                    for (const kat in kategoriler) {
-                        if (kategoriler[kat][butce]) {
-                            tumHavuz = tumHavuz.concat(kategoriler[kat][butce]);
+                    for (const kat in hediyeHavuzu[kime]) {
+                        if (hediyeHavuzu[kime][kat] && hediyeHavuzu[kime][kat][butce]) {
+                            rawPool = rawPool.concat(hediyeHavuzu[kime][kat][butce]);
                         }
                     }
                 } else {
-                    if (hediyeHavuzu[kime] && hediyeHavuzu[kime][ilgi] && hediyeHavuzu[kime][ilgi][butce]) {
-                        tumHavuz = [...hediyeHavuzu[kime][ilgi][butce]];
+                    if (hediyeHavuzu[kime][ilgi] && hediyeHavuzu[kime][ilgi][butce]) {
+                        rawPool = [...hediyeHavuzu[kime][ilgi][butce]];
                     }
                 }
 
-                if (tumHavuz.length === 0) {
-                    fallbackAlert.style.display = "block";
-                    tumHavuz = [{t:"Gift Card",d:"Safe choice.",i:"fa-ticket",l:"amazon+gift+card"}];
+                let showFallbackMessage = false;
+
+                // 2. Çok Agresif Tamamlama Algoritması (Geniş havuz garantisi)
+                if (rawPool.length < 25) {
+                    showFallbackMessage = true;
+                    // O kişinin genel kategorisinden ürün ekle
+                    if (hediyeHavuzu[kime]["genel"] && hediyeHavuzu[kime]["genel"][butce]) {
+                        rawPool = rawPool.concat(hediyeHavuzu[kime]["genel"][butce]);
+                    }
+                    // Hala 25'ten azsa o kişinin tüm diğer kategorilerinden ürün çek
+                    if (rawPool.length < 25) {
+                        for (const kat in hediyeHavuzu[kime]) {
+                            if (kat !== ilgi && kat !== "genel" && hediyeHavuzu[kime][kat] && hediyeHavuzu[kime][kat][butce]) {
+                                rawPool = rawPool.concat(hediyeHavuzu[kime][kat][butce]);
+                            }
+                        }
+                    }
                 }
 
-                const gosterilecekler = shuffleArray(tumHavuz).slice(0, 10);
+                // 3. Kopya Filtreleme (Deduplication)
+                globalPool = Array.from(new Map(rawPool.map(item => [item.t, item])).values());
 
-                gosterilecekler.forEach(urun => {
-                    const card = document.createElement("div");
-                    card.className = "product-card";
-                    
-                    // Amazon Global Link Entegrasyonu
-                    let targetUrl = urun.l.startsWith("http") ? urun.l : `https://www.amazon.com/s?k=${urun.l}`;
+                if (globalPool.length === 0) {
+                    globalPool = [{t:"Amazon Gift Card",d:"Let them choose their perfect gift.",i:"fa-ticket",l:"amazon+gift+card"}];
+                    showFallbackMessage = true;
+                }
 
-                    card.innerHTML = `
-                        <div class="icon-box"><i class="fa-solid ${urun.i}"></i></div>
-                        <div class="product-info">
-                            <div class="product-title">${urun.t}</div>
-                            <div class="product-desc">${urun.d}</div>
-                        </div>
-                        <a href="${targetUrl}" target="_blank" class="go-btn">Check Price ❯</a>
-                    `;
-                    container.appendChild(card);
-                });
+                if (showFallbackMessage && ilgi !== "genel") {
+                    fallbackAlert.style.display = "block";
+                }
+
+                // Havuzu karıştır ve ilk sayfayı göster
+                globalPool = shuffleArray(globalPool);
+                currentIndex = 0; 
+                renderNextItems();
+
             }, 600);
+        }
+
+        // "SHOW DIFFERENT OPTIONS" butonuna basıldığında sadece hafızadan sıradaki 10'luyu çeker
+        function renderNextItems() {
+            const container = document.getElementById("cards-container");
+            container.innerHTML = ""; // Mevcut ekrandakileri sil
+
+            // Eğer havuzun sonuna geldiysek, yeniden karıştır ve başa dön
+            if (currentIndex >= globalPool.length) {
+                globalPool = shuffleArray(globalPool);
+                currentIndex = 0;
+            }
+
+            // Sıradaki 10 ürünü al
+            const pageItems = globalPool.slice(currentIndex, currentIndex + 10);
+            
+            pageItems.forEach((urun, index) => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.style.animationDelay = `${index * 0.05}s`; // Ufak bir geliş animasyonu
+                
+                let targetUrl = urun.l.startsWith("http") ? urun.l : `https://www.amazon.com/s?k=${urun.l}`;
+
+                card.innerHTML = `
+                    <div class="icon-box"><i class="fa-solid ${urun.i}"></i></div>
+                    <div class="product-info">
+                        <div class="product-title">${urun.t}</div>
+                        <div class="product-desc">${urun.d}</div>
+                    </div>
+                    <a href="${targetUrl}" target="_blank" class="go-btn">Check Price ❯</a>
+                `;
+                container.appendChild(card);
+            });
+
+            // Bir sonraki tıklama için indeksi 10 ileri kaydır
+            currentIndex += 10;
         }
     </script>
 </body>
